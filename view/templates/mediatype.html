@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+    <h1>{{ deets['label'] }}</h1>
+    <ul><li><a href="{{ request.url }}&_view=alternates">Alternate Views</a></li></ul>
+    {% if deets['contributors'] is not none %}
+    <h4>Contributors</h4>
+    <ul>
+    {% for contributor in deets['contributors'] %}
+        <li><a href="{{ contributor }}">{{ contributor }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endblock %}

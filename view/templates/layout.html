@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Media Types</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='simple.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('controller.home') }}">Home</a> |
+        <a href="{{ url_for('controller.mediatypes') }}">Media Types</a> |
+        <a href="{{ url_for('controller.agents') }}">Persons</a>
+    </header>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div><!-- content -->
+    <footer>
+        <a href="https://creativecommons.org/licenses/by/4.0/">Licensed using Creative Commons 4.0</a>.
+    </footer>
+</body>
+</html>

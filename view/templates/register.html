@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+        {% block content %}
+        <h1>{{ label }}</h1>
+        <h2>Register View</h2>
+        <h3>Classes of item in this Register:</h3>
+        <ul>
+        {% for class in contained_item_classes %}
+            <li><a href="{{ class }}">{{ class }}</a></li>
+        {%  endfor %}
+        </ul>
+        <table>
+            <tr>
+                <td style="vertical-align:top; width:500px;">
+                    <h3>Items in this Register:</h3>
+                    <ul>
+                    {%- for item in register_items -%}
+                        {%- if item is not string %}
+                        <li><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+                        {%- else %}
+                        <li><a href="{{ item }}">{{ item.split('#')[-1].split('/')[-1] }}</a></li>
+                        {%- endif %}
+                    {%- endfor -%}
+                    </ul>
+                    {%  if pagination.links %}
+                    <h5>Paging</h5>
+                    {%  endif %}
+                    {{ pagination.links }}
+                </td>
+                <td style="vertical-align:top;">
+                    <h3>Automated Pagination</h3>
+                    <p>To paginate these registered items, something you may wish a link following tool like a web crawler to do, use the query string arguments 'page' for the page number and 'per_page' for the number of items per page. HTTP <code>Link</code> headers of <code>first</code>, <code>prev</code>, <code>next</code> &amp; <code>last</code> are given to indicate URIs to the first, a previous, a next and the last page.</p>
+                    <p>Example:</p>
+                    <pre>
+http://example.com/reg/?page=7&per_page=50
+                    </pre>
+                    <p>Assuming 500 items, this request would result in a response with the following Link header:</p>
+                    <pre>
+Link:   &lt;http://example.com/reg/?per_page=50&gt; rel="first",
+    &lt;http://example.com/reg/?per_page=50&page=6&gt; rel="prev",
+    &lt;http://example.com/reg/?per_page=50&page=8&gt; rel="next",
+    &lt;http://example.com/reg/?per_page=50&page=10&gt; rel="last"
+                    </pre>
+                    <p>If you want to page through the whole collection, you should start at <code>first</code> and follow the link headers until you reach <code>last</code> or until there is no <code>last</code> link given. You shouldn't try to calculate each <code>page</code> query string argument yourself.</p>
+                    <h3>Alternate views</h3>
+                    <p>Different views of this register of objects are listed at its <a href="{{ uri }}?_view=alternates">Alternate views</a> page.</p>
+                </td>
+            </tr>
+        </table>
+        {% endblock %}

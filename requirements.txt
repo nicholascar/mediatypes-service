@@ -1,0 +1,6 @@
+lxml
+flask
+flask_paginate
+rdflib
+SPARQLWrapper
+pyldapi

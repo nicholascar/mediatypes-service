@@ -1,0 +1,46 @@
+body {
+    margin: 0 auto;
+}
+h1, h2, h3 {
+    font-family: 'Muli', sans-serif;
+}
+
+p, ul {
+    font-family: Georgia, serif;
+}
+
+header, footer {
+    background-color: lightgrey;
+    padding:20px;
+}
+
+#content {
+    padding:20px;
+}
+
+a {
+    color: darkred;
+}
+
+a:hover {
+    color: darkorange;
+}
+
+
+/* Pagination */
+.pagination {
+    margin: 10px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pagination > ul li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    float: left;
+}
+
+.pagination > ul li.active {
+    font-weight: bold;
+}

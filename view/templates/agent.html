@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+    <h1>{{ deets['name'] }}</h1>
+    <ul><li><a href="{{ request.url }}&_view=alternates">Alternate Views</a></li></ul>
+    {%  if deets.get('u') is not none %}
+    <p>Contact: <a href="{{ deets.get('u') }}">{{ deets.get('u').replace('mailto:', '') }}</a></p>
+    {% endif %}
+    {% endblock %}
