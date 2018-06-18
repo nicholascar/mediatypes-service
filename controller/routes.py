@@ -1,4 +1,5 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, redirect, url_for
+import urllib.parse
 from pyldapi import *
 from model.mediatype import MediaTypeRenderer
 from model.agent import AgentRenderer
@@ -8,11 +9,16 @@ import _conf as conf
 routes = Blueprint('controller', __name__)
 
 
+#
+#   pages
+#
 @routes.route('/')
 def home():
     return render_template('page_home.html')
 
-
+#
+#   registers
+#
 @routes.route('/reg/')
 def reg():
     return RegisterOfRegistersRenderer(
@@ -118,6 +124,9 @@ def agents():
     ).render()
 
 
+#
+#   instances
+#
 @routes.route('/object')
 def object():
     if request.args.get('uri') is not None and str(request.args.get('uri')).startswith('http'):
@@ -130,3 +139,9 @@ def object():
         return MediaTypeRenderer(request, uri).render()
     else:
         return AgentRenderer(request, uri).render()
+
+
+# mediatype alias
+@routes.route('/mediatype/<path:mt>')
+def mediatype_redirect(mt):
+    return redirect(url_for('controller.object', uri='https://w3id.org/mediatype/' + mt))
