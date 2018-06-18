@@ -16,6 +16,7 @@ routes = Blueprint('controller', __name__)
 def home():
     return render_template('page_home.html')
 
+
 #
 #   registers
 #
@@ -133,6 +134,9 @@ def object():
         uri = request.args.get('uri')
     else:
         return Response('You must supply the URI if a resource with ?uri=...', status=400, mimetype='text/plain')
+
+    # protecting against '+' being rendered as a space in MTs like application/rdf+xml
+    uri = uri.replace(' ', '+')
 
     # distinguish Media Types from Agents
     if '/' in uri.replace('https://w3id.org/mediatype/', ''):
