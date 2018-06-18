@@ -1,0 +1,15 @@
+{% extends "layout-pl.html" %}
+
+    {% block content %}
+    <h1>{{ deets['label'] }}</h1>
+    <h3><code>{{ request.url.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1].replace('https://w3id.org/mediatype/', '').split('&')[0] }}</code></h3>
+    <ul><li><a href="{{ request.url }}&_view=alternates">Profil na przemian</a></li></ul>
+    {% if deets['contributors'] is not none %}
+    <h4>Współtwórcy</h4>
+    <ul>
+    {% for contributor in deets['contributors'] %}
+        <li><a href="{{ contributor }}">{{ contributor }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endblock %}

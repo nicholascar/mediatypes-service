@@ -9,6 +9,7 @@
                 <th>Token</th>
                 <th>Name</th>
                 <th>Formats</th>
+                <th>Languages</th>
                 <th>Description</th>
                 <th>Namespace</th>
             </tr>
@@ -19,6 +20,11 @@
                 <td>
                 {% for f in vals['formats'] %}
                     <a href="{{ uri }}?_view={{ token }}&_format={{ f }}">{{ f }}</a><br />
+                {% endfor %}
+                </td>
+                <td>
+                {% for l in vals['languages'] %}
+                    <a href="{{ uri }}?_view={{ token }}&_lang={{ l }}">{{ l }}</a><br />
                 {% endfor %}
                 </td>
                 <td>{{ vals['comment'] }}</td>

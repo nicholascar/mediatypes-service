@@ -13,6 +13,7 @@ class MediaTypeRenderer(Renderer):
                 'Basic properties of a Media Type, as recorded by IANA',
                 ['text/html'] + Renderer.RDF_MIMETYPES,
                 'text/turtle',
+                languages=['en', 'pl'],
                 namespace='http://test.linked.data.gov.au/def/mt#'
             )
         }
@@ -41,10 +42,16 @@ class MediaTypeRenderer(Renderer):
                     if deets is None:
                         return Response('That URI yielded no data', status=404, mimetype='text/plain')
                     else:
-                        return render_template(
-                            'mediatype.html',
-                            deets=deets
-                        )
+                        if self.language == 'pl':
+                            return render_template(
+                                'mediatype-pl.html',
+                                deets=deets
+                            )
+                        else:
+                            return render_template(
+                                'mediatype-en.html',
+                                deets=deets
+                            )
 
     def _get_instance_details(self):
         sparql = SPARQLWrapper(conf.SPARQL_QUERY_URI, returnFormat=JSON)
@@ -74,7 +81,7 @@ class MediaTypeRenderer(Renderer):
             'contributors': contributors
         }
 
-    def _get_instance_rdf(self, rdf_format='turtle'):
+    def _get_instance_rdf(self):
         deets = self._get_instance_details()
 
         g = Graph()
@@ -87,4 +94,7 @@ class MediaTypeRenderer(Renderer):
             for contributor in deets.get('contributors'):
                 g.add((me, DCT.contributor, URIRef(contributor)))
 
-        return g.serialize(format=rdf_format)
+        if self.format in ['application/rdf+json', 'application/json']:
+            return g.serialize(format='json-ld')
+        else:
+            return g.serialize(format=self.format)
