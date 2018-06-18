@@ -2,6 +2,7 @@
 
     {% block content %}
     <h1>{{ deets['label'] }}</h1>
+    <h3><code>{{ request.url.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1].replace('https://w3id.org/mediatype/', '') }}</code></h3>
     <ul><li><a href="{{ request.url }}&_view=alternates">Alternate Views</a></li></ul>
     {% if deets['contributors'] is not none %}
     <h4>Contributors</h4>
