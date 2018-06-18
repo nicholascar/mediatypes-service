@@ -85,6 +85,6 @@ class MediaTypeRenderer(Renderer):
         g.add((me, RDFS.label, Literal(deets.get('label'), datatype=XSD.string)))
         if deets.get('contributors') is not None:
             for contributor in deets.get('contributors'):
-                g.add((me, RDFS.label, URIRef(contributor)))
+                g.add((me, DCT.contributor, URIRef(contributor)))
 
         return g.serialize(format=rdf_format)
