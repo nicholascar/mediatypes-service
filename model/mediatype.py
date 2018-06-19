@@ -42,15 +42,18 @@ class MediaTypeRenderer(Renderer):
                     if deets is None:
                         return Response('That URI yielded no data', status=404, mimetype='text/plain')
                     else:
+                        mediatype = self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
                         if self.language == 'pl':
                             return render_template(
                                 'mediatype-pl.html',
-                                deets=deets
+                                deets=deets,
+                                mediatype=mediatype
                             )
                         else:
                             return render_template(
                                 'mediatype-en.html',
-                                deets=deets
+                                deets=deets,
+                                mediatype=mediatype
                             )
 
     def _get_instance_details(self):
@@ -90,6 +93,8 @@ class MediaTypeRenderer(Renderer):
         me = URIRef(self.uri)
         g.add((me, RDF.type, DCT.FileFormat))
         g.add((me, RDFS.label, Literal(deets.get('label'), datatype=XSD.string)))
+        source = 'https://www.iana.org/assignments/media-types/' + self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
+        g.add((me, DCT.source, URIRef(source)))
         if deets.get('contributors') is not None:
             for contributor in deets.get('contributors'):
                 g.add((me, DCT.contributor, URIRef(contributor)))
