@@ -1,15 +1,20 @@
 {% extends "layout-pl.html" %}
 
     {% block content %}
-    <h1>{{ deets['label'] }}</h1>
-    <h3><code>{{ request.url.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1].replace('https://w3id.org/mediatype/', '').split('&')[0] }}</code></h3>
-    <ul><li><a href="{{ request.url }}&_view=alternates">Profil na przemian</a></li></ul>
+    <h1>{{ mediatype }}</h1>
+    <h3><a href="{{ request.values.get('uri') }}">{{ request.values.get('uri') }}</a></h3>
+    <h4>Źródło:</h4>
+    <ul>
+        <li><a href="https://www.iana.org/assignments/media-types/{{ mediatype }}">https://www.iana.org/assignments/media-types/{{ mediatype }}</a></li>
+    </ul>
     {% if deets['contributors'] is not none %}
-    <h4>Współtwórcy</h4>
+    <h4>Współtwórcy:</h4>
     <ul>
     {% for contributor in deets['contributors'] %}
         <li><a href="{{ contributor }}">{{ contributor }}</a></li>
     {% endfor %}
     </ul>
     {% endif %}
+    <h3>Inne profil, formaty i języki:</h3>
+    <ul><li><a href="{{ request.base_url }}?uri={{ request.values.get('uri') }}&_view=alternates">Profil na przemian</a></li></ul>
     {% endblock %}

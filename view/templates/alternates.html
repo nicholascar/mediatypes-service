@@ -3,8 +3,8 @@
     {% block content %}
         <h1>Alternates View</h1>
         <h2>Instance <a href="{{ uri }}">{{ uri }}</a></h2>
-        <p>Default view: <a href="{{ uri }}">{{ default_view_token }}</a></p>
-        <table>
+        <h4>Default view: <a href="{{ uri }}">{{ default_view_token }}</a></h4>
+        <table class="layout">
             <tr>
                 <th>Token</th>
                 <th>Name</th>
@@ -22,7 +22,7 @@
                     <a href="{{ uri }}?_view={{ token }}&_format={{ f }}">{{ f }}</a><br />
                 {% endfor %}
                 </td>
-                <td>
+                <td style="text-align: center;">
                 {% for l in vals['languages'] %}
                     <a href="{{ uri }}?_view={{ token }}&_lang={{ l }}">{{ l }}</a><br />
                 {% endfor %}

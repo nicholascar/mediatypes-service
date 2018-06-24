@@ -44,3 +44,26 @@ a:hover {
 .pagination > ul li.active {
     font-weight: bold;
 }
+
+table.layout {
+    border-collapse: collapse;
+}
+
+table.layout th {
+    font-weight: bold;
+    text-align: left;
+}
+
+table.layout tr {
+    vertical-align: middle;
+}
+
+table.layout tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table.layout th,
+table.layout td {
+    padding: 5px;
+}
+
