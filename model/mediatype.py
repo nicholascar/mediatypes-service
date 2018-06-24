@@ -1,6 +1,6 @@
 from flask import Response, render_template
 from SPARQLWrapper import SPARQLWrapper, JSON
-from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, Literal
+from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, OWL, Literal
 from pyldapi import Renderer, View
 import _conf as conf
 
@@ -89,6 +89,11 @@ class MediaTypeRenderer(Renderer):
         g.bind('dct', DCT)
         me = URIRef(self.uri)
         g.add((me, RDF.type, DCT.FileFormat))
+        g.add((
+            me,
+            OWL.sameAs,
+            URIRef(self.uri.replace('https://w3id.org/mediatype/', 'https://www.iana.org/assignments/media-types/'))
+        ))
         g.add((me, RDFS.label, Literal(deets.get('label'), datatype=XSD.string)))
         if deets.get('contributors') is not None:
             for contributor in deets.get('contributors'):
