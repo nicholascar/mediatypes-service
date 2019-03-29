@@ -67,3 +67,20 @@ table.layout td {
     padding: 5px;
 }
 
+.altview {
+    float: right;
+    display: block;
+    background-color: #efefef;
+    padding: 10px;
+    width:320px;
+    text-align:center;
+}
+
+.autopaginationinfo {
+    float: right;
+    display: block;
+    background-color: #efefef;
+    padding: 10px;
+    width:320px;
+    text-align:center;
+}

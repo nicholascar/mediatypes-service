@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for
+from flask import Blueprint, request, redirect, url_for, render_template, Response
 from pyldapi import *
 from model.mediatype import MediaTypeRenderer
 from model.agent import AgentRenderer
@@ -52,10 +52,12 @@ def mediatypes():
         LIMIT {}
         OFFSET {}
     '''.format(per_page, (page - 1) * per_page)
-    register = []
 
+    register = []
     for r in s.sparql_query(q):
-        register.append((str(r[0]), str(r[1])))
+        register.append(
+            (str(r[0]), str(r[1]))
+        )
 
     return RegisterRenderer(
         request,
@@ -77,11 +79,6 @@ def agents():
     total = s.total_mediatypes()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
-    pagination = Pagination(page=page, total=total, per_page=per_page, record_name='Boards')
-
-    # translate pagination vars to query
-    limit = pagination.per_page
-    offset = (pagination.page - 1) * pagination.per_page
 
     # get list of org URIs and labels from the triplestore
     q = '''
@@ -95,9 +92,9 @@ def agents():
         ORDER BY ?label
         LIMIT {}
         OFFSET {}
-    '''.format(limit, offset)
-    register = []
+    '''.format(per_page, (page - 1) * per_page)
 
+    register = []
     for r in s.sparql_query(q):
         register.append((str(r[0]), str(r[1])))
 
