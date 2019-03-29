@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
     {% block content %}
-    <h1>{{ mediatype }}</h1>
+    <h1>{{ deets['label'] }}</h1>
     <h3><a href="{{ request.values.get('uri') }}">{{ request.values.get('uri') }}</a></h3>
     <h4>Source:</h4>
     <ul>

@@ -1,8 +1,7 @@
 from flask import Response, render_template
-from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, Literal
 from pyldapi import Renderer, View
-import _conf as conf
+import model.sparql as s
 
 
 class MediaTypeRenderer(Renderer):
@@ -57,32 +56,23 @@ class MediaTypeRenderer(Renderer):
                             )
 
     def _get_instance_details(self):
-        sparql = SPARQLWrapper(conf.SPARQL_QUERY_URI, returnFormat=JSON)
         q = '''
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX dct:  <http://purl.org/dc/terms/>
-            SELECT *
+            SELECT ?label ?contributor
             WHERE {{
                 <{0[uri]}>  rdfs:label ?label .
                 OPTIONAL {{ <{0[uri]}> dct:contributor ?contributor . }}
             }}
         '''.format({'uri': self.uri})
-        sparql.setQuery(q)
-        d = sparql.query().convert()
-        d = d.get('results').get('bindings')
-        if d is None or len(d) < 1:  # handle no result
-            return None
 
-        label = ''
+        label = None
         contributors = []
-        for r in d:
-            label = str(r.get('label').get('value'))
-            contributors.append(str(r.get('contributor').get('value')))
+        for r in s.sparql_query(q):
+            label = str(r[0])
+            contributors.append(str(r[1]))
 
-        return {
-            'label': label,
-            'contributors': contributors
-        }
+        return None if label is None else {'label': label, 'contributors': contributors}
 
     def _get_instance_rdf(self):
         deets = self._get_instance_details()

@@ -2,7 +2,7 @@ from flask import Blueprint, request, redirect, url_for
 from pyldapi import *
 from model.mediatype import MediaTypeRenderer
 from model.agent import AgentRenderer
-from model import sparql
+from model import sparql as s
 import _conf as conf
 
 routes = Blueprint('controller', __name__)
@@ -35,7 +35,7 @@ def mediatypes():
     per_page = request.args.get('per_page', type=int, default=20)
     page = request.args.get('page', type=int, default=1)
 
-    total = sparql.total_mediatypes()
+    total = s.total_mediatypes()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
 
@@ -53,12 +53,9 @@ def mediatypes():
         OFFSET {}
     '''.format(per_page, (page - 1) * per_page)
     register = []
-    mediatypes = sparql.sparql_query(q)
 
-    for mediatype in mediatypes:
-        o = str(mediatype['uri']['value'])
-        l = str(mediatype['label']['value'])
-        register.append((o, l))
+    for r in s.sparql_query(q):
+        register.append((str(r[0]), str(r[1])))
 
     return RegisterRenderer(
         request,
@@ -77,7 +74,7 @@ def agents():
     per_page = request.args.get('per_page', type=int, default=20)
     page = request.args.get('page', type=int, default=1)
 
-    total = sparql.total_mediatypes()
+    total = s.total_mediatypes()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
     pagination = Pagination(page=page, total=total, per_page=per_page, record_name='Boards')
@@ -100,12 +97,9 @@ def agents():
         OFFSET {}
     '''.format(limit, offset)
     register = []
-    agents = sparql.sparql_query(q)
 
-    for agent in agents:
-        o = str(agent['uri']['value'])
-        l = str(agent['label']['value'])
-        register.append((o, l))
+    for r in s.sparql_query(q):
+        register.append((str(r[0]), str(r[1])))
 
     return RegisterRenderer(
         request,
@@ -128,7 +122,6 @@ def object():
         uri = request.args.get('uri')
     else:
         return Response('You must supply the URI if a resource with ?uri=...', status=400, mimetype='text/plain')
-
     # protecting against '+' being rendered as a space in MTs like application/rdf+xml
     uri = uri.replace(' ', '+')
 

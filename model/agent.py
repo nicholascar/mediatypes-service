@@ -1,8 +1,7 @@
 from flask import Response, render_template
-from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, Literal
 from pyldapi import Renderer, View
-import _conf as conf
+import model.sparql as s
 
 
 class AgentRenderer(Renderer):
@@ -38,7 +37,6 @@ class AgentRenderer(Renderer):
                         return Response(rdf, mimetype=self.format)
                 else:  # only the HTML format left
                     deets = self._get_instance_details()
-                    print(deets)
                     if deets is None:
                         return Response('That URI yielded no data', status=404, mimetype='text/plain')
                     else:
@@ -48,26 +46,24 @@ class AgentRenderer(Renderer):
                         )
 
     def _get_instance_details(self):
-        sparql = SPARQLWrapper(conf.SPARQL_QUERY_URI, returnFormat=JSON)
+        # sparql = SPARQLWrapper(conf.SPARQL_QUERY_URI, returnFormat=JSON)
         q = '''
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            SELECT *
+            SELECT ?name ?u
             WHERE {{
                 <{0[uri]}>  foaf:name ?name .
                 OPTIONAL {{ <{0[uri]}> foaf:mbox|foaf:homepage ?u . }}
             }}
         '''.format({'uri': self.uri})
-        sparql.setQuery(q)
-        d = sparql.query().convert()
-        d = d.get('results').get('bindings')
-        if d is None or len(d) < 1:  # handle no result
-            return None
 
-        return {
-            'name': str(d[0].get('name').get('value')),
-            'u': str(d[0].get('u').get('value')) if str(d[0].get('u').get('value')) is not None else None
-        }
+        name = None
+        u = None
+        for r in s.sparql_query(q):
+            name = str(r[0])
+            u = str(r[1])
+
+        return None if name is None else {'name': name, 'u': u}
 
     def _get_instance_rdf(self, rdf_format='turtle'):
         deets = self._get_instance_details()
