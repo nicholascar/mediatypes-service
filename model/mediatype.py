@@ -1,7 +1,8 @@
 from flask import Response, render_template
-from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, Literal
+from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, OWL, Literal
 from pyldapi import Renderer, View
 import model.sparql as s
+import _conf as conf
 
 
 class MediaTypeRenderer(Renderer):
@@ -82,6 +83,11 @@ class MediaTypeRenderer(Renderer):
         g.bind('dct', DCT)
         me = URIRef(self.uri)
         g.add((me, RDF.type, DCT.FileFormat))
+        g.add((
+            me,
+            OWL.sameAs,
+            URIRef(self.uri.replace('https://w3id.org/mediatype/', 'https://www.iana.org/assignments/media-types/'))
+        ))
         g.add((me, RDFS.label, Literal(deets.get('label'), datatype=XSD.string)))
         source = 'https://www.iana.org/assignments/media-types/' + self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
         g.add((me, DCT.source, URIRef(source)))
