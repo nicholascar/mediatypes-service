@@ -1,4 +1,5 @@
-from flask import Blueprint, request, redirect, url_for, render_template, Response
+import os
+from flask import Blueprint, request, redirect, url_for, render_template, Response, send_from_directory
 from pyldapi import *
 from model.mediatype import MediaTypeRenderer
 from model.agent import AgentRenderer
@@ -6,6 +7,16 @@ from model import sparql as s
 import _conf as conf
 
 routes = Blueprint('controller', __name__)
+
+
+@routes.route('/favicon.ico')
+def favicon():
+    static_dir = os.path.join(os.path.dirname(routes.root_path), 'view', 'static')
+    return send_from_directory(
+        static_dir,
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 
 #
