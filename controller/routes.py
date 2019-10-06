@@ -34,7 +34,7 @@ def home():
 def reg():
     return RegisterOfRegistersRenderer(
         request,
-        'http://localhost:5000/',
+        request.base_url,
         'Register of Registers',
         'The master register of this API',
         conf.APP_DIR + '/rofr.ttl'
@@ -72,13 +72,13 @@ def mediatypes():
 
     return RegisterRenderer(
         request,
-        'http://localhost:5000/policy/',
+        request.base_url,
         'Register of Media Types',
         'All the Media Types in IANA\'s list at https://www.iana.org/assignments/media-types/media-types.xml.',
         register,
         ['http://purl.org/dc/terms/FileFormat'],
         total,
-        super_register='http://localhost:5000/reg/'
+        super_register=request.host_url + '/reg/'
     ).render()
 
 
@@ -111,13 +111,13 @@ def agents():
 
     return RegisterRenderer(
         request,
-        'http://localhost:5000/policy/',
+        request.base_url,
         'Register of Agents',
         'People and Organizations who have registered Media Type',
         register,
         ['http://xmlns.com/foaf/0.1/Agent'],
         total,
-        super_register='http://localhost:5000/reg/'
+        super_register=request.host_url + '/reg/'
     ).render()
 
 
