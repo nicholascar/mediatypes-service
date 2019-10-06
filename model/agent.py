@@ -12,7 +12,7 @@ class AgentRenderer(Renderer):
                 'name and mbox or homepage of a foaf:Agent',
                 ['text/html'] + Renderer.RDF_MIMETYPES,
                 'text/turtle',
-                namespace='http://test.linked.data.gov.au/def/mt#'
+                namespace='http://xmlns.com/foaf/0.1/'
             )
         }
         super().__init__(
