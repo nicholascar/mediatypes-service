@@ -12,9 +12,9 @@ class MediaTypeRenderer(Renderer):
                 'Mediatype View',
                 'Basic properties of a Media Type, as recorded by IANA',
                 ['text/html'] + Renderer.RDF_MIMETYPES,
-                'text/turtle',
+                'text/html',
                 languages=['en', 'pl'],
-                namespace='http://test.linked.data.gov.au/def/mt#'
+                namespace='https://w3id.org/profile/mediatype'
             )
         }
         super().__init__(
@@ -36,7 +36,7 @@ class MediaTypeRenderer(Renderer):
                     if rdf is None:
                         return Response('No triples contain that URI as subject', status=404, mimetype='text/plain')
                     else:
-                        return Response(rdf, mimetype=self.format)
+                        return Response(rdf, mimetype=self.format, headers=self.headers)
                 else:  # only the HTML format left
                     deets = self._get_instance_details()
                     if deets is None:
@@ -44,17 +44,19 @@ class MediaTypeRenderer(Renderer):
                     else:
                         mediatype = self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
                         if self.language == 'pl':
-                            return render_template(
+                            content = render_template(
                                 'mediatype-pl.html',
                                 deets=deets,
                                 mediatype=mediatype
                             )
                         else:
-                            return render_template(
+                            content = render_template(
                                 'mediatype-en.html',
                                 deets=deets,
                                 mediatype=mediatype
                             )
+
+                        return Response(content, headers=self.headers)
 
     def _get_instance_details(self):
         q = '''
@@ -81,6 +83,7 @@ class MediaTypeRenderer(Renderer):
         g = Graph()
         DCT = Namespace('http://purl.org/dc/terms/')
         g.bind('dct', DCT)
+        g.bind('owl', OWL)
         me = URIRef(self.uri)
         g.add((me, RDF.type, DCT.FileFormat))
         g.add((
