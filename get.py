@@ -1,6 +1,7 @@
 import requests
 from lxml import objectify
 from rdflib import ConjunctiveGraph, URIRef, Literal, XSD, RDF, RDFS, Namespace
+from rdflib.namespace import DCTERMS
 
 
 # r = requests.get('https://www.iana.org/assignments/media-types/media-types.xml', headers={'Accept': 'text/xml'})
@@ -10,8 +11,7 @@ from rdflib import ConjunctiveGraph, URIRef, Literal, XSD, RDF, RDFS, Namespace
 g = ConjunctiveGraph()
 MT = Namespace('https://w3id.org/mediatype/')
 g.bind('mt', MT)
-DCT = Namespace('http://purl.org/dc/terms/')
-g.bind('dct', DCT)
+g.bind('dct', DCTERMS)
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 g.bind('foaf', FOAF)
 
@@ -22,15 +22,15 @@ for register in objectify.parse('mediatypes.xml').getroot().getchildren():
         for record in c:
             if record.tag == '{http://www.iana.org/assignments}record':
                 if hasattr(record, 'file'):
-                    me = MT + record.file
-                    g.add((URIRef(me), RDF.type, DCT.FileFormat))
-                    g.add((URIRef(me), RDFS.label, Literal(record.name, datatype=XSD.string)))
+                    me = URIRef(MT + record.file)
+                    g.add((me, RDF.type, DCTERMS.FileFormat))
+                    g.add((me, DCTERMS.title, Literal(record.name, datatype=XSD.string)))
                     for x in record.xref:
                         if x.get('data') is not None:
                             if x.get('type') == 'rfc':
-                                g.add((URIRef(me), DCT.contributor, URIRef('https://tools.ietf.org/html/' + x.get('data'))))
+                                g.add((me, DCTERMS.source, URIRef('https://tools.ietf.org/html/' + x.get('data'))))
                             elif x.get('type') == 'person':
-                                g.add((URIRef(me), DCT.contributor, URIRef(MT + x.get('data'))))
+                                g.add((me, DCTERMS.contributor, URIRef(MT + x.get('data'))))
     elif register.tag == '{http://www.iana.org/assignments}people':
         for person in register.getchildren():
             me = URIRef(MT + person.get('id'))
