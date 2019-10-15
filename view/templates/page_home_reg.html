@@ -1,0 +1,18 @@
+{% extends "page.html" %}
+
+  {% block content %}
+    <div class="altview">
+      <h4>Alternates View</h4>
+      <p>See this content according to other views and formats:</p>
+      <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
+    </div>
+
+    <h1>Media Types Register of Registers</h1>
+    <p>This is a Register of Registers, that is, a listing of other listings of artefacts.</p>
+    <p>This Register contains the following items:</p>
+    <ul>
+      <li><a href="https://w3id.org/mediatype/">Register of Media Types</a></li>
+      <li><a href="https://w3id.org/mediatype/agent/">Register of Agents</a></li>
+    </ul>
+
+  {% endblock %}

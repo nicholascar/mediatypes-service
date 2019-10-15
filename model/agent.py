@@ -23,12 +23,9 @@ class AgentRenderer(Renderer):
         )
 
     def render(self):
-        if self.vf_error is not None:
-            return Response(self.vf_error, status=406, mimetype='text/plain')
-        else:
-            if self.view == 'alternates':
-                return self._render_alternates_view()
-            elif self.view == 'foaf':
+        response = super().render()
+        if response is None:
+            if self.view == 'foaf':
                 if self.format in Renderer.RDF_MIMETYPES:
                     rdf = self._get_instance_rdf()
                     if rdf is None:
@@ -40,7 +37,6 @@ class AgentRenderer(Renderer):
                     if deets is None:
                         return Response('That URI yielded no data', status=404, mimetype='text/plain')
                     else:
-                        print('deets')
                         return render_template(
                             'agent.html',
                             deets=deets
@@ -58,6 +54,7 @@ class AgentRenderer(Renderer):
                 ?mt dct:contributor <{0[uri]}> ;
                     dct:title ?title .
             }}
+            ORDER BY ?title
         '''.format({'uri': self.instance_uri})
 
         name = None

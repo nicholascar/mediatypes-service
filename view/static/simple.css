@@ -84,3 +84,9 @@ table.layout td {
     width:320px;
     text-align:center;
 }
+
+.rdf {
+    cursor: help;
+    border: solid 1px #eeeeee;
+    padding:3px;
+}

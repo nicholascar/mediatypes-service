@@ -1,0 +1,21 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix reg: <http://purl.org/linked-data/registry#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://w3id.org/mediatype/> a reg:RegisteredItem ;
+    rdfs:label "Register of Media Types" ;
+    reg:containedItemClass dct:FileFormat ;
+    reg:register <https://conneg.info/mediatypes> .
+
+<https://w3id.org/mediatype/agent/> a reg:RegisteredItem ;
+    rdfs:label "Register of Agents" ;
+    reg:containedItemClass foaf:Agent ;
+    reg:register <https://conneg.info/mediatypes> .
+
+<https://conneg.info/mediatypes> a reg:Register ;
+    rdfs:label "The conneg.info Register of Registers ;
+    reg:containedItemClass reg:Register .

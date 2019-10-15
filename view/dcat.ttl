@@ -1,0 +1,62 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://conneg.info/mediatypes>
+    a dcat:Dataset ;
+    dct:title "Media Types Dataset" ;
+    dct:description """This is a small dataset that contains IANA's Media Types in forms useful for Linked Data applications.
+
+It's also a demonstration implementation of the W3C's Content Negotiation by Profile specification. See the dedicated Conneg-by-P page for how this system implements the required functions.
+
+Media Types (used to be called MIME types, sometimes called formats, also see Wikipedia) are listed by IANA at https://www.iana.org/assignments/media-types/media-types.xml and we just take that data, convert it to RDF, store it, and serve it up using a small Python Linked Data API imaginatively called pyLDAPI.
+"""@en ;
+    dcat:landingPage <https://conneg.info/mediatypes> ;
+    dct:identifier <https://conneg.info/mediatypes> ;
+    dcat:distribution [
+        dct:description """The initial reason for creating this dataset was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per Linked Data expectations.
+
+For every Media Type type in IANA's list, this W3ID makes a URI like this:
+
+    https://w3id.org/mediatype/ + {Media-Type}
+
+So for text/html we have:
+
+    https://w3id.org/mediatype/text/html
+
+It's not rocket surgery...
+
+Clicking on that URI yields a simple web page (HTML) view of the Media Type's properties, however you can also get machine-readable forms of the Media Type's information, formulated using RDF, in a number of ways. The system delivering this dataset implements the Content Negotiation by Profile specification which means you can request not only different formats of information but also information according to different profiles. For example:
+
+    Add a _mediatype or a _format query string argument to the URI with a Media Type value to specify a chosen format. To get RDF in the Turtle format for the Media Type image/jpg, use this URI:
+
+        https://w3id.org/mediatype/image/jpg?_format=text/turtle
+
+    Use HTTP Content Negotiation and set an Accept header to the format you want. For image/jpg information in the text/turtle format, as above, do this, using the CURL command line tool:
+
+        $ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg"""@en ;
+        dct:conformsTo <https://w3id.org/profile/mediatype> ;
+    ] ;
+    prov:wasGeneratedBy [
+        a doap:Project , prov:Activity ;
+        doap:repository <https://github.com/nicholascar/mediatypes-dataset> ;
+    ] ;
+    dct:license <https://www.gnu.org/licenses/gpl-3.0.html> ;
+    dcat:contactPoint [
+        rdf:type v:Individual ;
+        v:fn "Nicholas J. Car"@en;
+        v:country-name "Australia" ;
+        v:region "QLD" ;
+        v:locality "Brisbane"@en;
+        v:email <mailto:nicholas.car@surroundaustralia.com> ;
+        v:hasTelephone [
+          a v:Cell , v:Voice;
+            v:hasValue <tel:+61477560177>
+        ];
+    ];
+.

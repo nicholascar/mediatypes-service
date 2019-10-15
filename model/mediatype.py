@@ -1,99 +1,102 @@
 from flask import Response, render_template
-from rdflib import Graph, URIRef, Namespace, RDF, RDFS, XSD, OWL, Literal
+from rdflib import Graph, URIRef, RDF, XSD, OWL, Literal
+from rdflib.namespace import DCTERMS
 from pyldapi import Renderer, View
 import model.sparql as s
-import _conf as conf
 
 
 class MediaTypeRenderer(Renderer):
-    def __init__(self, request, uri):
+    def __init__(self, request, instance_uri):
         views = {
             'mt': View(
                 'Mediatype View',
                 'Basic properties of a Media Type, as recorded by IANA',
                 ['text/html'] + Renderer.RDF_MIMETYPES,
-                'text/turtle',
+                'text/html',
                 languages=['en', 'pl'],
-                namespace='http://test.linked.data.gov.au/def/mt#'
+                profile_uri='https://w3id.org/profile/mediatype'
             )
         }
         super().__init__(
             request,
-            uri,
+            instance_uri,
             views,
             'mt'
         )
 
     def render(self):
-        if hasattr(self, 'vf_error'):
-            return Response(self.vf_error, status=406, mimetype='text/plain')
-        else:
-            if self.view == 'alternates':
-                return self._render_alternates_view()
-            elif self.view == 'mt':
+        response = super().render()
+        if response is None:
+            if self.view == 'mt':
                 if self.format in Renderer.RDF_MIMETYPES:
                     rdf = self._get_instance_rdf()
                     if rdf is None:
                         return Response('No triples contain that URI as subject', status=404, mimetype='text/plain')
                     else:
-                        return Response(rdf, mimetype=self.format)
+                        return Response(rdf, mimetype=self.format, headers=self.headers)
                 else:  # only the HTML format left
                     deets = self._get_instance_details()
                     if deets is None:
-                        return Response('That URI yielded no data', status=404, mimetype='text/plain')
+                        return Response('That URI yielded no data', status=404, mimetype='text/plain', headers=self.headers)
                     else:
-                        mediatype = self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
+                        mediatype = self.instance_uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
                         if self.language == 'pl':
-                            return render_template(
+                            content = render_template(
                                 'mediatype-pl.html',
                                 deets=deets,
                                 mediatype=mediatype
                             )
                         else:
-                            return render_template(
+                            content = render_template(
                                 'mediatype-en.html',
                                 deets=deets,
                                 mediatype=mediatype
                             )
 
+                        return Response(content, mimetype=self.format, headers=self.headers)
+        return response
+
     def _get_instance_details(self):
         q = '''
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX dct:  <http://purl.org/dc/terms/>
-            SELECT ?label ?contributor
+            SELECT ?title ?contributor
             WHERE {{
-                <{0[uri]}>  rdfs:label ?label .
+                <{0[uri]}> dct:title ?title .
                 OPTIONAL {{ <{0[uri]}> dct:contributor ?contributor . }}
             }}
-        '''.format({'uri': self.uri})
+        '''.format({'uri': self.instance_uri})
 
-        label = None
+        title = None
         contributors = []
         for r in s.sparql_query(q):
-            label = str(r[0])
+            title = str(r[0])
             contributors.append(str(r[1]))
 
-        return None if label is None else {'label': label, 'contributors': contributors}
+        return None if title is None else {'title': title, 'contributors': contributors}
 
     def _get_instance_rdf(self):
         deets = self._get_instance_details()
 
         g = Graph()
-        DCT = Namespace('http://purl.org/dc/terms/')
-        g.bind('dct', DCT)
-        me = URIRef(self.uri)
-        g.add((me, RDF.type, DCT.FileFormat))
+        g.bind('dct', DCTERMS)
+        g.bind('owl', OWL)
+        me = URIRef(self.instance_uri)
+        g.add((me, RDF.type, DCTERMS.FileFormat))
         g.add((
             me,
             OWL.sameAs,
-            URIRef(self.uri.replace('https://w3id.org/mediatype/', 'https://www.iana.org/assignments/media-types/'))
+            URIRef(self.instance_uri.replace(
+                'https://w3id.org/mediatype/',
+                'https://www.iana.org/assignments/media-types/'
+            ))
         ))
-        g.add((me, RDFS.label, Literal(deets.get('label'), datatype=XSD.string)))
-        source = 'https://www.iana.org/assignments/media-types/' + self.uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
-        g.add((me, DCT.source, URIRef(source)))
+        g.add((me, DCTERMS.title, Literal(deets.get('title'), datatype=XSD.string)))
+        source = 'https://www.iana.org/assignments/media-types/' + \
+                 self.instance_uri.replace('%2B', '+').replace('%2F', '/').split('/mediatype/')[1]
+        g.add((me, DCTERMS.source, URIRef(source)))
         if deets.get('contributors') is not None:
             for contributor in deets.get('contributors'):
-                g.add((me, DCT.contributor, URIRef(contributor)))
+                g.add((me, DCTERMS.contributor, URIRef(contributor)))
 
         if self.format in ['application/rdf+json', 'application/json']:
             return g.serialize(format='json-ld')
