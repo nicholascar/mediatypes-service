@@ -50,6 +50,13 @@
             </li>
           </ul>
         </li>
+        <li>
+          <em>get resource by profile</em>
+          <ul>
+            <li>As per <a href="https://w3c.github.io/dxwg/conneg-by-ap/#http-getresourcebyprofile">Content Negitiation by Profile &sect; 7.3.2 get resource by profile</a>: "issuing an HTTP GET request against the resource and specifying the desired profile URI in an Accept-Profile header. URIs MUST be enclosed in angled brackets, '<' & '>'. It is possible to specify a range of acceptable profile URIs and, when using multiple URIs, they MUST be delimited by a comma be in separate Accept-Profile headers. Preferences may be indicated by using quality indicators (q-values) as an ordering mechanism separated from the URI by a semi-colon, ';'. An example of a URI (in this case a URN) with a q-value is &lt;urn:example:profile:x>;q=1.0, where the URI is &lt;urn:example:profile:x> and the q-value is q=1.0."</li>
+            <li>For any of the following types, this server will handle <em>get resource by profile</em> as per this specification</li>
+          </ul>
+        </li>
       </ul>
 
     {% endblock %}
