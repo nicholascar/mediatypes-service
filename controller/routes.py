@@ -24,20 +24,14 @@ def about():
 
 @routes.route('/connegp')
 def connegp():
-    return render_template('conneg-by-p.html')
+    return render_template('connegp.html')
 
 #
 #   registers
 #
 @routes.route('/reg/')
 def reg():
-    return RegisterOfRegistersRenderer(
-        request,
-        'http://localhost:5000/',
-        'Register of Registers',
-        'The master register of this API',
-        conf.APP_DIR + '/rofr.ttl'
-    ).render()
+    return redirect(url_for('controller.home') + '?_view=reg')
 
 
 @routes.route('/mediatype/')
