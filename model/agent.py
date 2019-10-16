@@ -31,16 +31,17 @@ class AgentRenderer(Renderer):
                     if rdf is None:
                         return Response('No triples contain that URI as subject', status=404, mimetype='text/plain')
                     else:
-                        return Response(rdf, mimetype=self.format)
+                        return Response(rdf, mimetype=self.format, headers=self.headers)
                 else:  # only the HTML format left
                     deets = self._get_instance_details()
                     if deets is None:
                         return Response('That URI yielded no data', status=404, mimetype='text/plain')
                     else:
-                        return render_template(
+                        content = render_template(
                             'agent.html',
                             deets=deets
                         )
+                return Response(content, mimetype=self.format, headers=self.headers)
         return response
 
     def _get_instance_details(self):
@@ -68,7 +69,7 @@ class AgentRenderer(Renderer):
 
         return None if name is None else {'name': name, 'u': u, 'mt': mt}
 
-    def _get_instance_rdf(self, rdf_format='turtle'):
+    def _get_instance_rdf(self):
         deets = self._get_instance_details()
 
         g = Graph()
@@ -81,4 +82,7 @@ class AgentRenderer(Renderer):
         if deets.get('u') is not None:
             g.add((me, RDFS.label, URIRef(deets.get('u'))))
 
-        return g.serialize(format=rdf_format)
+        if self.format in ['application/rdf+json', 'application/json']:
+            return g.serialize(format='json-ld')
+        else:
+            return g.serialize(format=self.format)
