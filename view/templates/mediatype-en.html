@@ -4,7 +4,7 @@
       <div class="altview">
         <h4>Alternates View</h4>
         <p>See this content according to other views and formats:</p>
-        <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
+        <p><a href="{{ request.url }}&_view=alternates"><em>Alternates</em> View</a></p>
       </div>
       <h1>{{ deets['title'] }}</h1>
       <h3><a href="{{ request.values.get('uri') }}">{{ request.values.get('uri') }}</a></h3>

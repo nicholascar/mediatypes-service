@@ -41,6 +41,7 @@ class AgentRenderer(Renderer):
                             'agent.html',
                             deets=deets
                         )
+        return response
 
     def _get_instance_details(self):
         # sparql = SPARQLWrapper(conf.SPARQL_QUERY_URI, returnFormat=JSON)

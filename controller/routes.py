@@ -134,3 +134,11 @@ def object():
 @routes.route('/mediatype/<path:mt>')
 def mediatype_redirect(mt):
     return redirect(url_for('controller.object', uri='https://w3id.org/mediatype/' + mt))
+
+
+@routes.route('/mediatypes.ttl')
+def mediatypes_ttl():
+    return Response(
+        open('mediatypes.ttl', 'r').read(),
+        mimetype='text/turtle'
+    )

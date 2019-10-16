@@ -14,6 +14,7 @@ class MediaTypeRenderer(Renderer):
                 ['text/html'] + Renderer.RDF_MIMETYPES,
                 'text/html',
                 languages=['en', 'pl'],
+                default_language='en',
                 profile_uri='https://w3id.org/profile/mediatype'
             )
         }

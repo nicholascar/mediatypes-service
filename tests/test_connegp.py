@@ -2,11 +2,37 @@ import requests
 import connegp
 
 
+# Dataset
 def test_homepage():
     r = requests.get('http://localhost:5000')
-    assert '<title>Media Types</title>' in r.text, 'Homepage does not include <title>Media Types</title>'
+    assert '<title>Media Types Dataset</title>' in r.text, \
+        'Homepage does not include <title>Media Types</title>'
 
 
+def test_mediatypes_dataset_defaults():
+    r = requests.get('http://localhost:5000')
+    assert '<h1 title="dct:title" class="rdf">Media Types Dataset</h1>' in r.text, 'Homepage does not include <h1 title="dct:title" class="rdf">Media Types Dataset</h1>'
+
+
+def test_mediatypes_dataset_reg_qsa():
+    r = requests.get(
+        'http://localhost:5000',
+        params={'_profile': 'reg'}
+    )
+    assert '<h1>Media Types Register of Registers</h1>' in r.text, \
+        'Homepage \'reg\' view in HTML does not include <h1>Media Types Register of Registers</h1>'
+
+
+def test_mediatypes_dataset_reg_http():
+    r = requests.get(
+        'http://localhost:5000',
+        headers={'Accept-Profile': '<http://purl.org/linked-data/registry>'}
+    )
+    assert '<h1>Media Types Register of Registers</h1>' in r.text, \
+        'Homepage \'reg\' view in HTML does not include <h1>Media Types Register of Registers</h1>'
+
+
+# Register
 def test_mediatypes_register_defaults():
     r = requests.get('http://localhost:5000/mediatype/')
     assert r.headers['Content-Profile'] == '<http://purl.org/linked-data/registry>', \
@@ -170,7 +196,7 @@ def test_mediatypes_register_reg_ttl_http_multi_profile():
     assert '<h1>Register</h1>' in r.text, 'Media Types Register does not include <h1>Register</h1>'
 
 
-def test_link_header_profiles_tokens():
+def test_mediatypes_register_link_header_profiles_tokens():
     r = requests.get('http://localhost:5000/mediatype/')
     lh = connegp.LinkHeaderParser(r.headers['Link'])
     returned_profiles = []
@@ -183,7 +209,8 @@ def test_link_header_profiles_tokens():
         'Returned profiles should be {} but were {}'.format(returned_profiles, expected_profiles)
 
 
-def test_link_header_self():
+# Instance - Media Type
+def test_link_header_self_mediatype():
     r = requests.get(
         'http://localhost:5000/object',
         params={
@@ -214,16 +241,11 @@ def test_link_header_self():
         )
 
 
-
-
-    # returned_profiles = set(returned_profiles)
-    # expected_profiles = {'<https://w3id.org/profile/alt>', '<http://purl.org/linked-data/registry>'}
-    # assert returned_profiles == expected_profiles, \
-    #     'Returned profiles should be {} but were {}'.format(returned_profiles, expected_profiles)
-
-
 if __name__ == '__main__':
     # test_homepage()
+    test_mediatypes_dataset_defaults()
+    test_mediatypes_dataset_reg_qsa()
+    test_mediatypes_dataset_reg_http()
     # test_mediatypes_register_defaults()
     # test_mediatypes_register_reg_ttl_http()
     # test_mediatypes_register_reg_ttl_qsa()

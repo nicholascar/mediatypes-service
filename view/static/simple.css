@@ -90,3 +90,8 @@ table.layout td {
     border: solid 1px #eeeeee;
     padding:3px;
 }
+
+.commandline {
+    background-color: #eeeeee;
+    padding: 3px;
+}

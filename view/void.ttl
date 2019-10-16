@@ -1,1 +1,45 @@
-VOID
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gnaf: <http://linked.data.gov.au/def/gnaf#> .
+@prefix sdo: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@base <https://conneg.info/mediatypes> .
+
+
+</mediatypes>
+    a void:Dataset ;
+    dct:title "Media Types Dataset" ;
+    dct:description """This is a small dataset that contains IANA's Media Types in forms useful for Linked Data applications.
+
+It's also a demonstration implementation of the W3C's Content Negotiation by Profile specification. See the dedicated Conneg-by-P page for how this system implements the required functions.
+
+Media Types (used to be called MIME types, sometimes called formats, also see Wikipedia) are listed by IANA at https://www.iana.org/assignments/media-types/media-types.xml and we just take that data, convert it to RDF, store it, and serve it up using a small Python Linked Data API imaginatively called pyLDAPI.
+"""@en ;
+    dct:creator :nick ;
+    dct:publisher :nick ;
+    dct:license <https://www.gnu.org/licenses/gpl-3.0.html> ;
+    dct:source <https://www.iana.org/assignments/media-types/> ;
+
+    void:dataDump <http://conneg.info/mediatypes/mediatypes.ttl> ;
+    void:uriSpace "https://w3id.org/mediatype/" ;
+    void:triples 7592 ;
+    void:entities 2439 ;
+.
+
+</mediatypes/turtle> a void:Dataset ;
+    void:uriRegexPattern "^http://w3id\\.org/mediatype/(.*)$" ;
+    void:feature <http://www.w3.org/ns/formats/Turtle> ;
+    dct:format <https://w3id.org/mediatype/text/turtle > ;
+.
+
+</mediatypes/nick>
+  a sdo:Person ;
+  sdo:affiliation [
+      a sdo:Organization ;
+      sdo:name "SURROUND Australia Pty Ltd" ;
+    ] ;
+  sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+  sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+  sdo:name "Nicholas J. Car" ;
+.
