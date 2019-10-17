@@ -125,23 +125,63 @@
             <p class="connegp">For conformance to the "QSA Functional Profile", the _profile QSA key SHOULD be supported by the server to allow a client to make a list profiles request. For this request, the reserved token all SHOULD be used, e.g. _profile=all.</p>
             <p class="connegp">Implementations of this specification according to the QSA Functional Profiles MUST communicate their alternate representations information as per the Alternate Representations Data Model. They MAY do so using HTTP Link headers, as per the HTTP Functional Profile, or they MAY use other approaches.</p>
             <p>As per the HTTP <em>list profiles</em> implementation, this functionality is supported for all four resource types delivered by this system: <strong>Media Type</strong>, <strong>Agent</strong>, <strong>Register</strong>, <strong>Dataset</strong>.</p>
-            <p>An example request for <em>list profiles</em> for the <strong>Media Type</strong> <em>text/n3</em> is:</p>
-            <p><code><a href="https://w3id.org/mediatype/text/n3?_profile=all">https://w3id.org/mediatype/text/n3?_profile=all</a></code></p>
-            <p>Note that this response's HTTP header conforms to the Alternate Representations Data Model, as per the HTTP Functional Profile, which is allowed for the QSA functional Profile.</p>
-            <p>An example request for <em>list profiles</em> for the whole <strong>Dataset</strong> in the <em>application/ld+json</em> format (Media Type) is:</p>
-            <p><code><a href="https://conneg.info/mediatypes?_profile=all&_mediatype=application/ld+json">https://conneg.info/mediatypes?_profile=all&_mediatype=application/ld+json</a></code></p>
-            <p>Note that this response's HTTP header and body are conform to with the Alternate Representations Data Model.</p>
+            <ol>
+              <li>
+                An example request for <em>list profiles</em> for the <strong>Media Type</strong> <em>text/n3</em> is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3?_profile=all">https://w3id.org/mediatype/text/n3?_profile=all</a></code></li>
+                  <li>Note that this response's HTTP header conforms to the Alternate Representations Data Model, as per the HTTP Functional Profile, which is allowed for the QSA functional Profile.</li>
+                </ul>
+              </li>
+              <li>
+                An example request for <em>list profiles</em> for the whole <strong>Dataset</strong> in the <em>application/ld+json</em> format (Media Type) is:
+                <ul>
+                  <li><code><a href="https://conneg.info/mediatypes?_profile=all&_mediatype=application/ld+json">https://conneg.info/mediatypes?_profile=all&_mediatype=application/ld+json</a></code></li>
+                  <li>Note that this response's HTTP header and body are conform to with the Alternate Representations Data Model.</li>
+                </ul>
+              </li>
+            </ol>
           </section>
           <section id="qsa-getresourcebyprofile">
             <h4><em>2.2 get resource by profile</em></h4>
             <p class="connegp">To be conformant with the "QSA Functional Profile" profile of this specification, a server MUST allow clients to request resources according to profiles they identify with a _profile query string. Since either tokens or URIs may be used to identify a profile, servers MUST accept either. Servers MAY accept both encoded and un-encoded URIs but MAY also only accept one or the other. URIs MUST be enclosed in angled brackets, '<' & '>'.</p>
-            <p>An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation is:</p>
-            <p><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates">https://w3id.org/mediatype/text/n3&_profile=alternates</a></code></p>
-            <p>An example request for the <strong>Media Type</strong> <em>text/n3</em> specifying a q-value-weighted list of profile identifiers, some tokens, some URIs is:</p>
-            <p><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,&lthttps://w3id.org/profile/mediatype></a></code></p>
+            <ol>
+              <li>
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates">https://w3id.org/mediatype/text/n3&_profile=alternates</a></code></li>
+                  <li>Note that the <code>Content-Profile</code> header gives a value of <code>https://w3id.org/profile/alt</code> which is indeed the URI for the profile indicated by the token <code>alternates</code> and this can be cross-checked with the <code>Link</code> header's profile token/URI mappings</li>
+                </ul>
+              </li>
+              <li>
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> specifying a q-value-weighted list of profile identifiers, some tokens, some URIs is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,&lt;https://w3id.org/profile/mediatype></a></code></li>
+                  <li>Note that the profile identified by <code>&tlhttps://w3id.org/profile/mediatype></code> has the default weighting of <code>q=1.0</code> and thus this is selected over the <code>alternates</code> profile which has a lower q-value. The <code>Content-Profile</code> header indicates that indeed a <code>https://w3id.org/profile/mediatype</code>-conformant representation has been returned</li>
+                </ul>
+              </li>
+            </ol>
             <p class="connegp">To conform to the "QSA Functional Profile", the QSA key _profile MUST be used to indicate a profile token or URI and SHOULD use _mediatype to indicate a resource representation's Media Type.</p>
-            <p>An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation, in the <em>allpication/rdf+xml</em> Media Type (format) is:</p>
-            <p><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates&_mediatype=application/rdf+xml">https://w3id.org/mediatype/text/n3&_profile=alternates&_mediatype=application/rdf+xml</a></code></p>
+            <!--
+            <ol>
+              <li>
+
+                <ul>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+            </ol>
+            -->
+            <ol>
+              <li>
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation, in the <em>allpication/rdf+xml</em> Media Type (format) is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates&_mediatype=application/rdf+xml">https://w3id.org/mediatype/text/n3&_profile=alternates&_mediatype=application/rdf+xml</a></code></li>
+                  <li>Note that the <code>Content-Profile</code> &amp; <code>Content-Type</code> HTTP headers in the response confirm that the requested profile &amp; Media Type response was returned.</li>
+                </ul>
+              </li>
+            </ol>
           </section>
         </section>
         <section id="qsa-alt" style="border-top: solid 1px grey;">
