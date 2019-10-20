@@ -1,25 +1,25 @@
 {% extends "page.html" %}
 
-    {% block content %}
-        <div class="altview">
-            <h4>Alternates View</h4>
-            <p>See this content according to other views and formats:</p>
-            <p><a href="{{ request.url }}&_view=alternates"><em>Alternates</em> View</a></p>
-        </div>
-        <h1>{{ deets['name'] }}</h1>
-        {%  if deets.get('u') is not none %}
-          {%  if '@' in deets.get('u') %}
-            <p>Email: <a href="{{ deets.get('u') }}">{{ deets.get('u').replace('mailto:', '') }}</a></p>
-          {% else %}
-            <p>Web: <a href="{{ deets.get('u') }}">{{ deets.get('u').replace('mailto:', '') }}</a></p>
-          {% endif %}
-        {% endif %}
-        {%  if deets.get('mt') is not none %}
-          <h2>Media Types</h2>
-          <ul>
-            {% for mt in deets.get('mt') %}
-              <li><a href="{{ mt[0] }}">{{ mt[1] }}</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-    {% endblock %}
+  {% block content %}
+    <div class="altview">
+      <h4>Alternate Representations</h4>
+      <p>See this content according to other profiles/views and Media Type/formats:</p>
+      <p><a href="{{ request.url }}&_view=alternates"><em>Alternates</em> View</a></p>
+    </div>
+    <h1>{{ deets['name'] }}</h1>
+    {%  if deets.get('u') is not none %}
+      {%  if '@' in deets.get('u') %}
+        <p>Email: <a href="{{ deets.get('u') }}">{{ deets.get('u').replace('mailto:', '') }}</a></p>
+      {% else %}
+        <p>Web: <a href="{{ deets.get('u') }}">{{ deets.get('u').replace('mailto:', '') }}</a></p>
+      {% endif %}
+    {% endif %}
+    {%  if deets.get('mt') is not none %}
+      <h2>Media Types</h2>
+      <ul>
+        {% for mt in deets.get('mt') %}
+          <li><a href="{{ mt[0] }}">{{ mt[1] }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endblock %}

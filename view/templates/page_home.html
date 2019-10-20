@@ -1,79 +1,77 @@
 {% extends "page.html" %}
 
-    {% block content %}
-      <div class="altview">
-        <h4>Alternates View</h4>
-        <p>See this content according to other views and formats:</p>
-        <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
-      </div>
-      <h1 title="dct:title" class="rdf">Media Types Dataset</h1>
-      <div title="dct:description" class="rdf">
-        <p>This is a small dataset that contains IANA's Media Types in forms useful for Linked Data applications.</p>
-        <p>It's also a demonstration implementation of the W3C's <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. See the <a href="{{ url_for('controller.connegp') }}">dedicated Conneg-by-P page</a> for how this system implements the required functions.</p>
-        <p>Media Types (used to be called MIME types, sometimes called <em>formats</em>, also see <a href="https://en.wikipedia.org/wiki/Media_type">Wikipedia</a>) are listed by <a href="https://www.iana.org/">IANA</a> at <a href="https://www.iana.org/assignments/media-types/media-types.xml">https://www.iana.org/assignments/media-types/media-types.xml</a> and we just take that data, convert it to <a href="https://www.w3.org/2001/sw/wiki/RDF">RDF</a>, store it, and serve it up using a small Python Linked Data API imaginatively called <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a>.</p>
-      </div>
-      <div title="dct:identifier" class="rdf">
-        <h2>Identifiers</h2>
-        <p>The identifier for this dataset as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code> but, more importantly, the individual items within this dataset have identifiers.</p>
-        <p><a href="https://w3id.org">W3ID</a> provides a "secure, permanent URL re-direction service for Web applications.</p>
-        <p>By using W3ID-based identifiers for each Media Type, this Register provides a stable way to refer to each Media Types by <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
+  {% block content %}
+    <div class="altview">
+      <h4>Alternate Representations</h4>
+      <p>See this content according to other profiles/views and Media Type/formats:</p>
+      <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
+    </div>
+    <h1 title="dct:title" class="rdf">Media Types Web Service</h1>
+    <div title="dct:description" class="rdf">
+      <p>This web service, a Linked Data API, delivers IANA's Media Types in forms useful for Linked Data applications.</p>
+      <p>It's also a demonstration implementation of the W3C's <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. See the <a href="{{ url_for('controller.connegp') }}">dedicated Conneg-by-P page</a> for how this system implements the required functions.</p>
+      <p>Media Types (used to be called MIME types, sometimes called <em>formats</em>, also see <a href="https://en.wikipedia.org/wiki/Media_type">Wikipedia</a>) are listed by <a href="https://www.iana.org/">IANA</a> at <a href="https://www.iana.org/assignments/media-types/media-types.xml">https://www.iana.org/assignments/media-types/media-types.xml</a> and we just take that data, convert it to <a href="https://www.w3.org/2001/sw/wiki/RDF">RDF</a>, store it, and serve it up using a small Python Linked Data API imaginatively called <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a>.</p>
+      <h3>Identifiers</h3>
+      <p>The identifier for this web service as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code> but, more importantly, the individual items delivered by this web service have identifiers.</p>
+      <p><a href="https://w3id.org">W3ID</a> provides a "secure, permanent URL re-direction service for Web applications.</p>
+      <p>By using W3ID-based identifiers for each Media Type, this Register provides a stable way to refer to each Media Types by <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
 
-        <p>This is not new or groundbreaking stuff but previous attempts to make this information available via URI seem to be offline (e.g. see <a href="http://purl.org/NET/mediatypes/">http://purl.org/NET/mediatypes/</a>).</p>
-      </div>
-      <div title="dcat:distribution" class="rdf">
-        <h2>RDF &amp; Linked Data</h2>
-        <p>The initial reason for creating this dataset was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per <a href="https://www.w3.org/standards/semanticweb/data">Linked Data</a> expectations.</p>
-        <p>For every Media Type type in IANA's list, this W3ID makes a URI like this:</p>
-        <ul><li><code>https://w3id.org/mediatype/</code> + <code>{Media-Type}</code></li></ul>
-        <p>So for <code>text/html</code> we have:</p>
-        <ul><li><code>https://w3id.org/mediatype/text/html</code></li></ul>
-        <p>It's not rocket surgery...</p>
-        <p>Clicking on that URI yields a simple web page (HTML) view of the Media Type's properties, however you can also get machine-readable forms of the Media Type's information, formulated using <a href="https://www.w3.org/RDF/">RDF</a>, in a number of ways. The system delivering this dataset implements the <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a> specification which means you can request not only different formats of information but also information according to different <em>profiles</em>. For example:</p>
-        <ul>
-          <li>Add a <code>_mediatype</code> or a <code>_format</code> query string argument to the URI with a Media Type value to specify a chosen format. To get RDF in the <a href="https://www.w3.org/TR/turtle/">Turtle</a> format for the Media Type <code>image/jpg</code>, use this URI:
-          <ul><li><a href="https://w3id.org/mediatype/image/jpg?_format=text/turtle">https://w3id.org/mediatype/image/jpg<strong>?_format=text/turtle</strong></a></li>
-        </ul>
-          </li>
-          <li>Use HTTP Content Negotiation and set an <code>Accept</code> header to the format you want. For <code>image/jpg</code> information in the <code>text/turtle</code> format, as above, do this, using the <a href="https://curl.haxx.se/">CURL command line tool</a>:
-            <ul><li><code>$ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg</code></li></ul>
-          </li>
-        </ul>
-        <div title="dct:conformsTo" style="cursor: help; border: solid 1px #eeeeee; padding:3px; margin-top:5px;">
-          <h3>Profiles &amp; Dublin Core metadata</h3>
-          <p>The machine-readable RDF for this dataset is conformant with the <a href="http://www.dublincore.org/documents/dcmi-terms/">Dublin Core Terms vocabulary (DCT)</a> so we've <em>profiled</em> DCT to allows us to describe what properties from it are needed to characterise a Media Type. Our 'mediatypes' profile is defined here: <a href="https://w3id.org/profile/mediatype">https://w3id.org/profile/mt</a> and you can request machine-readable Media Type information from this system specifically by doing either of the following two things:
-          </p>
-          <ul>
-            <li>Add a <code>_profile</code> or a <code>_view</code> query string argument to the URI with the 'mediatypes' profile URI in '<>' or just the token 'mt'
-            <ul>
-              <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_view=<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/image/jpg?_view=&lt;https://w3id.org/profile/mediatype></a></li>
-              <li>or <a href="https://w3id.org/mediatype/image/jpg?_profile=mt">https://w3id.org/mediatype/image/jpg?_profile=mt</a></li>
-            </ul>
-            <li>Use HTTP Content Negotiation and set an <code>Accept-Profile</code> header <code>&lt;https://w3id.org/profile/mediatype></code>
-            <ul><li><code>$ curl --header 'Accept-Profile: &lt;https://w3id.org/profile/mediatype>' https://w3id.org/mediatype/image/jpg</code></li></ul>
-            </li>
-          </ul>
-          <p>There are also other profiles or <em>views</em> available for each meaditype, e.g. the "view that lists all other views" which you can access via <code>URI + ?_view=alternates</code></p>
-          <p>See this sytem's <a href="{{ url_for('controller.connegp') }}">Content Negotiation by Profile page</a> for full details.</p>
-        </div>
-      </div>
-      <div title="prof:wasGeneratedBy" class="rdf">
-        <h2>Code</h2>
-        <p>The code for this application is online at <a href="https://github.com/nicholascar/mediatypes-dataset">https://github.com/nicholascar/mediatypes-dataset</a>.</p>
-      </div>
-      <div title="dct:license" class="rdf">
-        <h2>License</h2>
-        <p>The content of this API is licensed for use under the GNU v3 License. See the <a href="https://github.com/nicholascar/mediatypes-dataset/blob/master/LICENSE">license deed</a> for details.</p>
-      </div>
-      <div title="dcat:contactPoint" class="rdf">
-        <h2>Contacts</h2>
-        <p>If you want to know more, contact:</p>
-        <p>
-            <strong>Nicholas Car</strong><br />
-            <em>Data Systems Architect & W3C Working Group member</em><br />
-            <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br />
-            Brisbane, Queensland, Australia<br />
-            <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a><br />
-            ORCID: <a href="https://orcid.org/0000-0002-8742-7730">0000-0002-8742-7730</a>
+      <p>This is not new or groundbreaking stuff but previous attempts to make this information available via URI seem to be offline (e.g. see <a href="http://purl.org/NET/mediatypes/">http://purl.org/NET/mediatypes/</a>).</p>
+    </div>
+    <div title="skos:scopeNote" class="rdf">
+      <h2>Usage Note - RDF &amp; Linked Data</h2>
+      <p>The initial reason for creating this web service was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per <a href="https://www.w3.org/standards/semanticweb/data">Linked Data</a> expectations.</p>
+      <p>For every Media Type type in IANA's list, this W3ID makes a URI like this:</p>
+      <ul><li><code>https://w3id.org/mediatype/</code> + <code>{Media-Type}</code></li></ul>
+      <p>So for <code>text/html</code> we have:</p>
+      <ul><li><code>https://w3id.org/mediatype/text/html</code></li></ul>
+      <p>It's not rocket surgery...</p>
+      <p>Clicking on that URI yields a simple web page (HTML) view of the Media Type's properties, however you can also get machine-readable forms of the Media Type's information, formulated using <a href="https://www.w3.org/RDF/">RDF</a>, in a number of ways. This system implements the <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a> specification which means you can request not only different formats of information but also information according to different <em>profiles</em>. For example:</p>
+      <ul>
+        <li>Add a <code>_mediatype</code> or a <code>_format</code> query string argument to the URI with a Media Type value to specify a chosen format. To get RDF in the <a href="https://www.w3.org/TR/turtle/">Turtle</a> format for the Media Type <code>image/jpg</code>, use this URI:
+        <ul><li><a href="https://w3id.org/mediatype/image/jpg?_format=text/turtle">https://w3id.org/mediatype/image/jpg<strong>?_format=text/turtle</strong></a></li>
+      </ul>
+        </li>
+        <li>Use HTTP Content Negotiation and set an <code>Accept</code> header to the format you want. For <code>image/jpg</code> information in the <code>text/turtle</code> format, as above, do this, using the <a href="https://curl.haxx.se/">CURL command line tool</a>:
+          <ul><li><code>$ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg</code></li></ul>
+        </li>
+      </ul>
+      <div title="dct:conformsTo" style="cursor: help; border: solid 1px #eeeeee; padding:3px; margin-top:5px;">
+        <h3>Profiles &amp; Dublin Core metadata</h3>
+        <p>The machine-readable RDF for this service's content is conformant with the <a href="http://www.dublincore.org/documents/dcmi-terms/">Dublin Core Terms vocabulary (DCT)</a> so we've <em>profiled</em> DCT to allows us to describe what properties from it are needed to characterise a Media Type. Our 'mediatypes' profile is defined here: <a href="https://w3id.org/profile/mediatype">https://w3id.org/profile/mediatype</a> and you can request machine-readable Media Type information from this system specifically by doing either of the following two things:
         </p>
+        <ul>
+          <li>Add a <code>_profile</code> or a <code>_view</code> query string argument to the URI with the 'mediatypes' profile URI in '<>' or just the token 'mt'
+          <ul>
+            <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_view=<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/image/jpg?_view=&lt;https://w3id.org/profile/mediatype></a></li>
+            <li>or <a href="https://w3id.org/mediatype/image/jpg?_profile=mt">https://w3id.org/mediatype/image/jpg?_profile=mt</a></li>
+          </ul>
+          <li>Use HTTP Content Negotiation and set an <code>Accept-Profile</code> header <code>&lt;https://w3id.org/profile/mediatype></code>
+          <ul><li><code>$ curl --header 'Accept-Profile: &lt;https://w3id.org/profile/mediatype>' https://w3id.org/mediatype/image/jpg</code></li></ul>
+          </li>
+        </ul>
+        <p>There are also other profiles or <em>views</em> available for each meaditype, e.g. the "view that lists all other views" which you can access via <code>URI + ?_view=alternates</code></p>
+        <p>See this system's <a href="{{ url_for('controller.connegp') }}">Content Negotiation by Profile implementation page</a>.</p>
       </div>
-    {% endblock %}
+    </div>
+    <div title="prof:wasGeneratedBy" class="rdf">
+      <h2>Code</h2>
+      <p>The code for this application is online at <a href="https://github.com/nicholascar/mediatypes-dataset">https://github.com/nicholascar/mediatypes-dataset</a>.</p>
+    </div>
+    <div title="dct:license" class="rdf">
+      <h2>License</h2>
+      <p>The content of this API is licensed for use under the GNU v3 License. See the <a href="https://github.com/nicholascar/mediatypes-dataset/blob/master/LICENSE">license deed</a> for details.</p>
+    </div>
+    <div title="dcat:contactPoint" class="rdf">
+      <h2>Contacts</h2>
+      <p>If you want to know more, contact:</p>
+      <p>
+          <strong>Nicholas Car</strong><br />
+          <em>Data Systems Architect & W3C Working Group member</em><br />
+          <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br />
+          Brisbane, Queensland, Australia<br />
+          <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a><br />
+          ORCID: <a href="https://orcid.org/0000-0002-8742-7730">0000-0002-8742-7730</a>
+      </p>
+    </div>
+  {% endblock %}

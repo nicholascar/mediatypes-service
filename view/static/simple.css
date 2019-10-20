@@ -105,3 +105,15 @@ ul, ol {
     background-color: rgba(240, 128, 128, .25);
     padding: 3px 7px 3px 7px;
 }
+
+code {
+    font-size: 1.2em;
+}
+
+h2 > a {
+    text-decoration: none;
+}
+
+.toc-list {
+    list-style: "§ ";
+}

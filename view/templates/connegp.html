@@ -2,28 +2,41 @@
 
     {% block content %}
       <h1>Content Negotiation by Profile implementation</h1>
-      <section id="intro">
+      <section id="toc">
+        <h2>Table of Contents</h2>
+        <ul class="toc-list">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#functionalprofiles">Functional Profiles implemented</a></li>
+          <li><a href="#token-header">Link Header - Token</a></li>
+          <li><a href="#conformancetofp">Indicating Conformance to Functional Profiles</a></li>
+        </ul>
+      </section>
+      <section id="intro-sec">
+        <h2 id="intro"><a href="#intro">§</a> Introduction <sup><a href="">↑</a></sup></h2>
         <p>This system implements the functions of the <a href="https://w3.org">W3C</a>'s <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. That specification "describes how Internet clients may negotiate for content provided by servers based on data profiles to which the content conforms".</p>
-        <p>The Content Negotiation by Profile (ConnegP) specification includes several <em>Functional Profiles</em> of its abstract specification that indicate how to implement it in specific environments and all implementations of the specification need to conform to one or more of these, or elsewhere defined, Functional Profiles.</p>
-        <p>This system implements several Functional Profiles of ConnegP, in fact all of those <a href="https://w3c.github.io/dxwg/conneg-by-ap/#conformance-profiles">listed in the specification</a>.</p>
-        <div style="padding:20px; border: solid 1px grey;">
+        <p>The Content Negotiation by Profile (ConnegP) specification includes several <em>Functional Profiles</em> of its abstract specification that indicate how to implement it in specific environments and all implementations of the specification need to conform to one or more of these, or elsewhere defined, Functional Profiles. This system implements several Functional Profiles of ConnegP, in fact all of those <a href="https://w3c.github.io/dxwg/conneg-by-ap/#conformance-profiles">listed in the specification</a>.</p>
+        <p>In addition to implementing Functional Profiles, this system also implements the HTTP <code>Link</code> header attributes used to associate profile tokens with profile URIs and it also demonstrates indication of conformance to Functional Profiles.</p>
+        <section id="documentation-style">
+          <h3>Documentation Style</h3>
+          <div style="padding:10px; border: solid 1px grey;">
           <h4>Quoting from Content Negotiation by Profile</h4>
           <p>Where text is quoted directly from the Content Negotiation by Profile specification, it is indicated like this:</p>
           <p class="connegp">This document describes how Internet clients may negotiate for content provided by servers based on data profiles to which the content conforms.</p>
-        </div>
-        <div style="padding:20px; border: solid 1px grey;">
-          <h4>Demonstration Commands</h4>
-          <p>Where an HTTP request that includes headers or other commands difficult to type into browser address bars is needed to demonstrate ConnegP functions, the function calls given here use the <a href="https://curl.haxx.se/">cURL program</a>. cURL is a command line tool available on many platforms for making HTTP requests.</p>
-          <p>An example request is this one for obtaining the Turtle format response from URI <code>http://example.org/eg</code> where '$' indicates teh command prompt:</p>
-          <p><code class="commandline">$ curl --header 'Accept: text/turtle' http://example.org/eg</code></p>
-          <p>The following cURL command follows any redirects and retrieves just HTTP header information:</p>
-          <p><code class="commandline">$ curl -IL --header 'Accept: text/turtle' http://example.org/eg</code></p>
-          <p>The redirect following is necissary since all URIs from <code>https:/w3id.org/mediatype/ redirect to this system.</code></p>
-        </div>
+          </div>
+          <div style="padding:10px; border: solid 1px grey; margin-top: 10px;">
+            <h4>Demonstration Commands</h4>
+            <p>Where an HTTP request that includes headers or other commands difficult to type into browser address bars is needed to demonstrate ConnegP functions, the function calls given here use the <a href="https://curl.haxx.se/">cURL program</a>. cURL is a command line tool available on many platforms for making HTTP requests.</p>
+            <p>An example request is this one for obtaining the Turtle format response from URI <code>http://example.org/eg</code> where '$' indicates teh command prompt:</p>
+            <p><code class="commandline">$ curl --header 'Accept: text/turtle' http://example.org/eg</code></p>
+            <p>The following cURL command follows any redirects and retrieves just HTTP header information:</p>
+            <p><code class="commandline">$ curl -IL --header 'Accept: text/turtle' http://example.org/eg</code></p>
+            <p>The redirect following is necissary since all URIs from <code>https:/w3id.org/mediatype/ redirect to this system.</code></p>
+          </div>
+        </section>
       </section>
-      <section id="functionalprofiles">
+      <section id="functionalprofiles-sec">
+        <h2 id="functionalprofiles"><a href="#functionalprofiles">§</a> Functional Profiles implemented <sup><a href="">↑</a></sup></h2>
         <section id="functionalprofiles-intro">
-          <h2>Functional Profiles of ConnegP implemented</h2>
           <p>This system fully implements the following ConnegP Functional Profiles described in ConnegP's <a href="https://w3c.github.io/dxwg/conneg-by-ap/#functional-profiles-definition">&sect; 7.2 Conformance to Functional Profiles</a>:</p>
           <ol style="font-weight: bold;">
             <li>HTTP Headers Functional Profile</li>
@@ -49,24 +62,24 @@
       &lt;https://w3id.org/mediatype/text/n3?_view=mt>; rel="alternate"; type="application/ld+json"; profile="https://w3id.org/profile/mediatype",
       &lt;https://w3id.org/mediatype/text/n3?_view=mt>; rel="alternate"; type="text/n3"; profile="https://w3id.org/profile/mediatype",
       &lt;https://w3id.org/mediatype/text/n3?_view=mt>; rel="alternate"; type="application/n-triples"; profile="https://w3id.org/profile/mediatype",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/html"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/json"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/turtle"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/rdf+xml"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/ld+json"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/n3"; profile="https://w3id.org/profile/alt",
-      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/n-triples"; profile="https://w3id.org/profile/alt"
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/html"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/json"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/turtle"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/rdf+xml"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/ld+json"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="text/n3"; profile="https://w3id.org/profile/alternates",
+      &lt;https://w3id.org/mediatype/text/n3?_view=alternates>; rel="alternate"; type="application/n-triples"; profile="https://w3id.org/profile/alternates"
               </pre>
             </code>
             <p>Here the returned representation is be identified by <code>rel="self"</code> and other representations by <code>rel="alternate"</code>, as required. The <em>target URIs</em> (the first part of the <code>Link</code> headers above) are the URIs of the item requested + a query string. HTTP content negotiation with or without those query strings works for <em>get resource by profile</em> but they are included as they work for other Functional Profile implementations.
             </p>
             <p>This style of response works for the following resource types handled by this server:</p>
-          <ol>
-            <li><strong>Media Type</strong> - e.g. <a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></li>
-            <li><strong>Agent</strong> - e.g. <a href="https://w3id.org/mediatype/agent/W3C">https://w3id.org/mediatype/agent/W3C</a></li>
-            <li><strong>Register</strong> - the <a href="https://w3id.org/mediatype/">Register of Media Types</a> and the <a href="https://w3id.org/mediatype/agent/">Register of Agents</a></li>
-            <li><strong>Dataset</strong> - this system as a whole can be considered to contain a <a href="https://www.w3.org/TR/vocab-dcat-2/#Class:Dataset">dcat:Dataset</a> for which <em>list profiles</em> can be obtained at <a href="https://conneg.info/mediatypes/">https://conneg.info/mediatypes/</a>.</li>
-          </ol>
+            <ol>
+              <li><strong>Media Type</strong> - e.g. <a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></li>
+              <li><strong>Agent</strong> - e.g. <a href="https://w3id.org/mediatype/agent/W3C">https://w3id.org/mediatype/agent/W3C</a></li>
+              <li><strong>Register</strong> - the <a href="https://w3id.org/mediatype/">Register of Media Types</a> and the <a href="https://w3id.org/mediatype/agent/">Register of Agents</a></li>
+              <li><strong>Dataset</strong> - this system as a whole can be considered to contain a <a href="https://www.w3.org/TR/vocab-dcat-2/#Class:Dataset">dcat:Dataset</a> for which <em>list profiles</em> can be obtained at <a href="https://conneg.info/mediatypes/">https://conneg.info/mediatypes/</a>.</li>
+            </ol>
           </section>
           <section id="http-getresourcebyprofile">
             <h4><em>1.2 get resource by profile</em></h4>
@@ -84,7 +97,7 @@
                 <strong>Agent</strong> - e.g. <a href="https://w3id.org/mediatype/agent/W3C">https://w3id.org/mediatype/agent/W3C</a>
                 <ul>
                   <li>to get the "Alternates View" profile in the Turtle format:</li>
-                  <li><code class="commandline">$ curl -L --header 'Accept-Profile: &lt;https://w3id.org/profile/alt>' --header 'Accept: text/turtle' https://w3id.org/mediatype/agent/W3C</code></li>
+                  <li><code class="commandline">$ curl -L --header 'Accept-Profile: &lt;https://w3id.org/profile/alternates>' --header 'Accept: text/turtle' https://w3id.org/mediatype/agent/W3C</code></li>
                 </ul>
               </li>
               <li>
@@ -127,10 +140,10 @@
             <p>As per the HTTP <em>list profiles</em> implementation, this functionality is supported for all four resource types delivered by this system: <strong>Media Type</strong>, <strong>Agent</strong>, <strong>Register</strong>, <strong>Dataset</strong>.</p>
             <ol>
               <li>
-                An example request for <em>list profiles</em> for the <strong>Media Type</strong> <em>text/n3</em> is:
+                An example request for <em>list profiles</em> for the <strong>Media Type</strong> resource <em>text/n3</em> is:
                 <ul>
                   <li><code><a href="https://w3id.org/mediatype/text/n3?_profile=all">https://w3id.org/mediatype/text/n3?_profile=all</a></code></li>
-                  <li>Note that this response's HTTP header conforms to the Alternate Representations Data Model, as per the HTTP Functional Profile, which is allowed for the QSA functional Profile.</li>
+                  <li>Note that this response's HTTP header conforms to the Alternate Representations Data Model, as per the HTTP Functional Profile, which is allowed for the QSA Functional Profile.</li>
                 </ul>
               </li>
               <li>
@@ -150,14 +163,14 @@
                 An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation is:
                 <ul>
                   <li><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates">https://w3id.org/mediatype/text/n3&_profile=alternates</a></code></li>
-                  <li>Note that the <code>Content-Profile</code> header gives a value of <code>https://w3id.org/profile/alt</code> which is indeed the URI for the profile indicated by the token <code>alternates</code> and this can be cross-checked with the <code>Link</code> header's profile token/URI mappings</li>
+                  <li>Note that the <code>Content-Profile</code> header gives a value of <code>https://w3id.org/profile/alternates</code> which is indeed the URI for the profile indicated by the token <code>alternates</code> and this can be cross-checked with the <code>Link</code> header's profile token/URI mappings</li>
                 </ul>
               </li>
               <li>
-                An example request for the <strong>Media Type</strong> <em>text/n3</em> specifying a q-value-weighted list of profile identifiers, some tokens, some URIs is:
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> specifying a q-value-weighted list of profile identifiers, some tokens, some URIs, is:
                 <ul>
                   <li><code><a href="https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/text/n3&_profile=alternates;q=0.5,&lt;https://w3id.org/profile/mediatype></a></code></li>
-                  <li>Note that the profile identified by <code>&tlhttps://w3id.org/profile/mediatype></code> has the default weighting of <code>q=1.0</code> and thus this is selected over the <code>alternates</code> profile which has a lower q-value. The <code>Content-Profile</code> header indicates that indeed a <code>https://w3id.org/profile/mediatype</code>-conformant representation has been returned</li>
+                  <li>Note that the profile identified by <code>&lt;https://w3id.org/profile/mediatype></code> has the default weighting of <code>q=1.0</code> and thus this is selected over the <code>alternates</code> profile which has a lower q-value. The <code>Content-Profile</code> header indicates that indeed a <code>https://w3id.org/profile/mediatype</code>-conformant representation has been returned</li>
                 </ul>
               </li>
             </ol>
@@ -188,17 +201,155 @@
           <h3>3. Query String Arguments Alternative Keywords Functional Profile</h3>
           <p class="connegp">When conforming to the profile "QSA Alternate Keywords Functional Profile", any key values acceptable within the specification of [RFC3986] MAY be used to indicate the desired profile.</p>
           <section id="qsa-alt-listprofiles">
-
+            <h4><em>3.1 list profiles</em></h4>
+            <ol>
+              <li>
+                An example request for <em>list profiles</em> for the <strong>Media Type</strong> resource <em>text/n3</em> using the alternate keyword and value <code>_view</code> in place of <code>_profile</code>, but still using the value <code>all</code> is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3?_view=all">https://w3id.org/mediatype/text/n3?_view=all</a></code></li>
+                  <li>Note that this response's HTTP header conforms to the Alternate Representations Data Model, as per the HTTP Functional Profile, which is allowed for the QSA Alternate Keywords Functional Profile.</li>
+                </ul>
+              </li>
+              <li>
+                An example request for <em>list profiles</em> for the whole <strong>Dataset</strong> in the <em>application/ld+json</em> format (Media Type) using <code>_view=all</code> and <code>_format</code> in place of <code>_mediatype</code> is:
+                <ul>
+                  <li><code><a href="https://conneg.info/mediatypes?_view=all&_format=application/ld+json">https://conneg.info/mediatypes?_view=all&_format=application/ld+json</a></code></li>
+                  <li>Note that this response's HTTP header and body are conform to with the Alternate Representations Data Model.</li>
+                </ul>
+              </li>
+            </ol>
           </section>
           <section id="qsa-alt-getresourcebyprofile">
-            <p class="connegp">To be conformant with the "QSA Functional Profile" profile of this specification, a server MUST allow clients to request resources according to profiles they identify with a _profile query string. Since either tokens or URIs may be used to identify a profile, servers MUST accept either. Servers MAY accept both encoded and un-encoded URIs but MAY also only accept one or the other. URIs MUST be enclosed in angled brackets, '<' & '>'.</p>
+            <h4><em>3.2 get resource by profile</em></h4>
+            <ol>
+              <li>
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> <em>Alternate Views</em>-conformant representation using the keyword <code>_view</code> in place of <code>_profile</code> is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3&_view=alternates">https://w3id.org/mediatype/text/n3&_profile=alternates</a></code></li>
+                  <li>Note that the <code>Content-Profile</code> header gives a value of <code>https://w3id.org/profile/alternates</code> which is indeed the URI for the profile indicated by the token <code>alternates</code> and this can be cross-checked with the <code>Link</code> header's profile token/URI mappings</li>
+                </ul>
+              </li>
+              <li>
+                An example request for the <strong>Media Type</strong> <em>text/n3</em> specifying a q-value-weighted list of profile identifiers, some tokens, some URIs, using the alternate profile-identifying keyword <code>_view</code> is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3&_view=alternates;q=0.5,<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/text/n3&_view=alternates;q=0.5,&lt;https://w3id.org/profile/mediatype></a></code></li>
+                  <li>Note that the profile identified by <code>&lt;https://w3id.org/profile/mediatype></code> has the default weighting of <code>q=1.0</code> and thus this is selected over the <code>alternates</code> profile which has a lower q-value. The <code>Content-Profile</code> header indicates that indeed a <code>https://w3id.org/profile/mediatype</code>-conformant representation has been returned</li>
+                </ul>
+              </li>
+            </ol>
           </section>
           <section id="qsa-key-discovery">
+            <h4><em>3.3 key discovery</em></h4>
             <p class="connegp">...servers conforming to this functional profile additionally MUST present a mechanism to allow clients to discover what value is used, as detailed below in § 7.4.4 QSA key discovery.</p>
+            <p class="conneg">Servers claiming conformance to the "QSA Alternate Keywords Functional Profile" MUST implement methods to allow clients to discover the QSA key used in place of the "QSA Functional Profile"'s _profile and also the equivalent of the _profile=all that is required to be implemented by any key/value combination. This allows clients with little knowledge of the server to discover how to create list profile and get resource by profile requests.</p>
+            <p class="connegp">A server responding to any request for a resource for which "QSA Alternate Keywords Functional Profile" is supported SHOULD include HTTP headers that indicate alternate profiles and Media Types, as per the HTTP Functional Profile.</p>
+            <ol>
+              <li>
+                An example request for a resource is:
+                <ul>
+                  <li><code><a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></code></li>
+                  <li>The HTTP headers of the response to this request do indicate alternate profiles and Media Types, as per the HTTP Functional Profile</li>
+                  <li>
+                    Note that the HTTP <code>Link</code> headers include Query String Arguments within the target URIs like this:
+                    <ul>
+                      <li><code>&lt;w3id.org/mediatype/text/n3?<strong>_view=alternates&_format=application/json</strong>>; rel="alternate"; type="application/json"; profile="https://w3id.org/profile/alternates",</code></li>
+                    </ul>
+                  </li>
+                  <li>This means the QSA <code>_format</code> can be understood to be being used in place of <code>_mediatype</code>, since it is indicateing the Media Type value ("<code>type=""</code>") and the QSA <code>_view</code> can be understood to be be being used in place of <code>_profile</code>, since it is indicating a token that is mapped, via other <code>Link</code> headers, to the profile URI ("<code>profile=""</code>")</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="connegp">They MAY instead, or in addition, provide HTTP body content indicating the same information. If they do, such information SHOULD be present in the default response to a URI request, i.e. in response to a request without any QSAs.</p>
+            <ol start="2">
+              <li>For the example request above, <code><a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></code>:
+                <ul>
+                  <li>The default HTTP body content is for the so-called "Media Types" profile and contains HTML content stating: "Alternate Representations. See this content according to other profiles/views and Media Type/formats: Alternates View"</li>
+                  <li>NOTE: this content is not present in non-default profile responses nor in non-default Media Type responses for the default profile.</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="connegp">Servers SHOULD also allow clients to discover the QSA keys used to indicate Media Type and other content negotiation dimensions.</p>
+            <ol start="3">
+              <li>For the example request above, <code><a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></code>:
+                <ul>
+                  <li>Media Type (QSA keyword <code>_mediatype</code>) is indicated to be using <code>_format</code> in HTTP <code>Link</code> headers as well as in the <em>Alternates View</em> (an HTML rendering of the <em>Alternate Representations Data Model</em>)</li>
+                  <li>The <em>Alternates View</em> also lists the <code>_lang</code> QSA as supplying negotiation by language.</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="connegp">To communicate to a client what QSA key/value pair is used for list profiles when the "QSA Alternate Keywords Functional Profile" is conformed to, a server SHOULD, following the methods above for list profiles communication, indicate that a representation of the resource is available that conforms to the Alternate Profiles Data Model...</p>
+            <ol start="5">
+              <li>For the example request above, <code><a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></code>:
+                <ul>
+                  <li>
+                    Representations of the resource conforming to the Alternate Profiles Data Model is listed in the <em>list profiles</em> <code>Link</code> header response like this:
+                        <code>
+                          <pre>
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=text/html>; rel="alternate"; type="text/html"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=application/json>; rel="alternate"; type="application/json"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=text/turtle>; rel="alternate"; type="text/turtle"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=application/rdf+xml>; rel="alternate"; type="application/rdf+xml"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=application/ld+json>; rel="alternate"; type="application/ld+json"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=text/n3>; rel="alternate"; type="text/n3"; profile="http://www.w3.org/ns/dx/conneg/altr",
+&lt;https://w3id.org/mediatype/text/n3?_view=all&_format=application/n-triples>; rel="alternate"; type="application/n-triples"; profile="http://www.w3.org/ns/dx/conneg/altr"
+                          </pre>
+                        </code>
+                  </li>
+                  <li>The Alternate Profiles Data Model is identified by the profile URI <code>http://www.w3.org/ns/dx/conneg/altr</code>, as per
+                    <a href="https://w3c.github.io/dxwg/conneg-by-ap/#qsa-keydiscovery">&sect; 7.4.4 QSA key discovery</a></li>
+                </ul>
+              </li>
+            </ol>
           </section>
         </section>
         <section id="rrd" style="border-top: solid 1px grey;">
           <h3>4. Resource Representation Description</h3>
+          <p class="connegp">To be used if a resource representation is able to indicate which profile(s) it conforms to, in its appropriate functional profile, as per the abstract specification in § 6.3.2 get resource by profile.</p>
+          <ol>
+            <li>
+              For all previous examples, every response returns a <code>Content-Profile</code> HTTP <code>Link</code> header that indicates the profile the resource representation conforms to.
+            </li>
+          </ol>
         </section>
+      </section>
+      <section id="token-header-sec">
+        <h2 id="token-header"><a href="#token-header">§</a> Link Header - Token <sup><a href="">↑</a></sup></h2>
+        <p>This system makes use of tokens to identify profiles, both in <em>get resource by profile</em> requests and also in responses from the server, such as HTML versions of the <em>Alternate Representations Data Model</em> content for resources.</p>
+        <p>As per ConnegP's <a href="https://w3c.github.io/dxwg/conneg-by-ap/#link-attributes">§ 8. Link Attributes</a>:</p>
+        <p class="connegp">When used in a Link header field, the attribute token is used to specify a token that a client MAY use as an alternative to the full profile URI given in the anchor attribute.</p>
+        <p class="connegp">It should be noted that the use of the token as an alternative to the profile URI is per default limited to the current resource (i. e. the resource identified by the current request URI). Servers MAY use a larger scope for their this but clients should not depend on that unless the server documentation explicitly gives other instructions through some other means.</p>
+        <p>A request for any resource delivered by this system returns a number of <code>Link</code> HTTP headers, including token headers.</p>
+        <ol>
+          <li>
+            An example is that for a GET request for <code><a href="https://w3id.org/mediatype/text/n3">https://w3id.org/mediatype/text/n3</a></code>, for the <strong>Media Type</strong> <em>text/n3</em>, the token <code>Link</code> is:
+            <code>
+              <pre>
+&lt;http://www.w3.org/ns/dx/prof/Profile>; rel="type"; token="all"; anchor=&lt;http://www.w3.org/ns/dx/conneg/altr>, \
+&lt;http://www.w3.org/ns/dx/prof/Profile>; rel="type"; token="alternates"; anchor=&lt;https://w3id.org/profile/alternates>, \
+&lt;http://www.w3.org/ns/dx/prof/Profile>; rel="type"; token="mt"; anchor=&lt;https://w3id.org/profile/mediatype></pre></code>
+            Each of the three profiles for which conformant representations are available of the resource <code>https://w3id.org/mediatype/text/n3</code> is available is given a <code>Link</code> header line with the tokens 'all', 'alternates' &amp; 'mt' which map to the profiles, identified by URI <code>http://www.w3.org/ns/dx/conneg/altr</code>, <code>https://w3id.org/profile/alternates</code> &amp; <code>https://w3id.org/profile/mediatype</code> respectively.
+          </li>
+        </ol>
+      </section>
+      <section id="conformancetofp-sec">
+        <h2 id="conformancetofp"><a href="#conformancetofp">§</a> Indicating Conformance to Functional Profiles <sup><a href="">↑</a></sup></h2>
+        <p>This system advertises the Functional Profiles of ConnegP to which it conforms. As per ConnegP's <a href="https://w3c.github.io/dxwg/conneg-by-ap/#link-attributes">§ A.2 Demonstrating system conformance to Functional Profiles</a>:</p>
+        <p class="connegp">...it is possible for systems to show conformance to the this specification or any of the profiles by using mechanisms recommended in [PROF]. PROF's recommendation is that any resource, for example &lt;http://example.org/resource/a>, wishing to claim conformance to a specification or a functional profile use the [DCTERMS] dct:conformsTo predicate like this:</p>
+        <p class="connegp"><code>&lt;http://example.com/resource/a&gt; dct:conformsTo &lt;SPEC_OR_PROFILE_URI&gt; .</code></p>
+        <p>Where [PROF] is <a href="https://w3c.github.io/dxwg/prof/">The Profiles Vocabulary</a> and [DCTERMS] is <a href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</a>.</p>
+        <p><a href="https://w3c.github.io/dxwg/conneg-by-ap/#system-conforming">Code Listing 2</a> in ConnegP shows an imaginary <code>dcat:DataService</code> indicating conformance to the QSA Alternate Keywords Functional Profile in this way.</p>
+        <ol>
+          <li>
+            Resolving the top-level resource for this system, the service as a whole with URI <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code>, and receiving it's default representation, conformant to <a href="https://www.w3.org/TR/vocab-dcat-2/">DCAT 2</a>, the following RDF can be obtained:
+            <code><pre>
+&lt;https://conneg.info/mediatypes>
+    dct:conformsTo
+        &lt;http://www.w3.org/ns/dx/conneg/profile/http> ,
+        &lt;http://www.w3.org/ns/dx/conneg/profile/qsa> ,
+        &lt;http://www.w3.org/ns/dx/conneg/profile/qsa-alt> ,
+        &lt;http://www.w3.org/ns/dx/conneg/profile/rrd> ;</pre></code>
+            This system claims conformance to all Functional Profiles listed in ConnegP's specification document.
+          </li>
+        </ol>
       </section>
     {% endblock %}

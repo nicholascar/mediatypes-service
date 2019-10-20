@@ -4,22 +4,34 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix v: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://conneg.info/mediatypes>
-    a dcat:Dataset ;
-    dct:title "Media Types Dataset" ;
-    dct:description """This is a small dataset that contains IANA's Media Types in forms useful for Linked Data applications.
+    a dcat:DataService ;
+    dct:title "Media Types Web Service" ;
+    dct:description """This web service, a Linked Data API, delivers IANA's Media Types in forms useful for Linked Data applications.
 
 It's also a demonstration implementation of the W3C's Content Negotiation by Profile specification. See the dedicated Conneg-by-P page for how this system implements the required functions.
 
 Media Types (used to be called MIME types, sometimes called formats, also see Wikipedia) are listed by IANA at https://www.iana.org/assignments/media-types/media-types.xml and we just take that data, convert it to RDF, store it, and serve it up using a small Python Linked Data API imaginatively called pyLDAPI.
 """@en ;
-    dcat:landingPage <https://conneg.info/mediatypes> ;
-    dct:identifier <https://conneg.info/mediatypes> ;
-    dcat:distribution [
-        dct:description """The initial reason for creating this dataset was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per Linked Data expectations.
+
+    # it's a public service
+    dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+
+    # where the service actually is, online
+    dcat:endpointURL <https://conneg.info/mediatypes> ;
+
+    # URIs for the Functional Profile of Content Negotiation by Profile that this system is conformant with
+    dct:conformsTo
+        <http://www.w3.org/ns/dx/conneg/profile/http> ,
+        <http://www.w3.org/ns/dx/conneg/profile/qsa> ,
+        <http://www.w3.org/ns/dx/conneg/profile/qsa-alt> ,
+        <http://www.w3.org/ns/dx/conneg/profile/rrd> ;
+
+    skos:scopeNote """The initial reason for creating this service was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per Linked Data expectations.
 
 For every Media Type type in IANA's list, this W3ID makes a URI like this:
 
@@ -40,8 +52,6 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     Use HTTP Content Negotiation and set an Accept header to the format you want. For image/jpg information in the text/turtle format, as above, do this, using the CURL command line tool:
 
         $ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg"""@en ;
-        dct:conformsTo <https://w3id.org/profile/mediatype> ;
-    ] ;
     prov:wasGeneratedBy [
         a doap:Project , prov:Activity ;
         doap:repository <https://github.com/nicholascar/mediatypes-dataset> ;

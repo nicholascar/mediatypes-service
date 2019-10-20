@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+
+  {% block content %}
+    <h1>Alternate Representations</h1>
+    <h2>Resource <a href="{{ uri }}">{{ uri }}</a></h2>
+    <h4 style="float:center;">Alternate Representations</h4>
+    <table class="layout">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Profile conformed to<br />(Token/URI)</th>
+        <th>Media Types</th>
+        <th>Languages</th>
+        <th>Default</th>
+      </tr>
+    {% for token, vals in views.items() %}
+      {% for f in vals['formats'] %}
+        <tr>
+          <td>{{ vals['label'] }}</td>
+          <td>{{ vals['comment'] }}</td>
+          <td>
+            <a href="{{ uri }}?_view={{ token }}&_mediatype={{ vals['default_mediatype'] }}">{{ token }}</a><br />
+            <a href="{{ vals['namespace'] }}">{{ vals['namespace'] }}</a>
+          </td>
+          <td><a href="{{ uri }}?_view={{ token }}&_mediatype={{ f }}">{{ f }}</a></td>
+          <td>
+          {% for l in vals['languages'] %}
+              <a href="{{ uri }}?_view={{ token }}&_lang={{ l }}">{{ l }}</a><br />
+          {% endfor %}
+          </td>
+          {% if token == defalut_view_token %}
+          <td>True</td>
+          {% else %}
+          <td></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    {% endfor %}
+    </table>
+  {% endblock %}

@@ -1,70 +1,70 @@
 {% extends "page.html" %}
 
-{% block content %}
-        <style>
-            #title {
-                min-height: 175px;
-            }
-            #leftcol {
-                float: left;
-                width: 60%;
-            }
+  {% block content %}
+    <style>
+      #title {
+          min-height: 175px;
+      }
+      #leftcol {
+          float: left;
+          width: 60%;
+      }
 
-            #rightcol {
-                float: right;
-                width: 40%;
-            }
+      #rightcol {
+          float: right;
+          width: 40%;
+      }
 
-            #twocols {
-                clear:both;
-            }
-        </style>
+      #twocols {
+          clear:both;
+      }
+    </style>
 
-        <div class="altview">
-            <h4>Alternates View</h4>
-            <p>See this content according to other views and formats:</p>
-            <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
-        </div>
-        <div id="title">
-            <h1>Register</h1>
-            <h2>Of <em><a href="{{ contained_item_classes[0] }}">{{ contained_item_classes[0].split('/')[-1].split('#')[-1] }}</a></em> class instances</h2>
-        </div>
-        <div id="leftcol">
-            <div id="items">
-                <h3>Items</h3>
-                <ul>
-                    {% for item in register_items %}
-                        <li><a href="{{ item[0] }}">{{ item[1] }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% if not register_items %}
-                    <p><em>Coming soon!</em></p>
-                {% endif %}
-            </div>
-            <div id="pagination">
-                {%  if pagination.links %}
-                <h5>Paging</h5>
-                {{ pagination.links }}
-                {%  endif %}
-            </div>
-        </div><!-- leftcol -->
-        <div id="rightcol">
-            <div class="autopaginationinfo">
-                <h4>Automated Pagination</h4>
-                <p>To page through these items, use query string arguments 'page' and 'per_page'. HTTP <code>Link</code> headers of <code>first</code>, <code>prev</code>, <code>next</code> &amp; <code>last</code> are given in web responses.</p>
-                <p>Example, assuming 500 items, page 7, of 50 per page, is given by:</p>
-                <pre>
+    <div class="altview">
+      <h4>Alternate Representations</h4>
+      <p>See this content according to other profiles/views and Media Type/formats:</p>
+      <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
+    </div>
+    <div id="title">
+      <h1>Register</h1>
+      <h2>Of <em><a href="{{ contained_item_classes[0] }}">{{ contained_item_classes[0].split('/')[-1].split('#')[-1] }}</a></em> class instances</h2>
+    </div>
+    <div id="leftcol">
+      <div id="items">
+        <h3>Items</h3>
+        <ul>
+            {% for item in register_items %}
+                <li><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+            {% endfor %}
+        </ul>
+        {% if not register_items %}
+            <p><em>Coming soon!</em></p>
+        {% endif %}
+      </div>
+      <div id="pagination">
+        {%  if pagination.links %}
+        <h5>Paging</h5>
+        {{ pagination.links }}
+        {%  endif %}
+      </div>
+    </div><!-- leftcol -->
+    <div id="rightcol">
+      <div class="autopaginationinfo">
+        <h4>Automated Pagination</h4>
+        <p>To page through these items, use query string arguments 'page' and 'per_page'. HTTP <code>Link</code> headers of <code>first</code>, <code>prev</code>, <code>next</code> &amp; <code>last</code> are given in web responses.</p>
+        <p>Example, assuming 500 items, page 7, of 50 per page, is given by:</p>
+        <pre>
 .../?page=7&per_page=50
-                </pre>
-                <p>Link header with a response assuming 500 items would be:</p>
-                <pre>
+        </pre>
+        <p>Link header with a response assuming 500 items would be:</p>
+        <pre>
 Link:   &lt;.../?per_page=500&gt; rel="first",
 &lt;.../?per_page=500&page=6&gt; rel="prev",
 &lt;.../?per_page=500&page=8&gt; rel="next",
 &lt;.../?per_page=500&page=10&gt; rel="last"
-                </pre>
-                <p>If you want to page through the whole collection, start at <code>first</code> and follow link headers until you reach <code>last</code> or until no <code>last</code> is given. You shouldn't try to calculate each <code>page</code> query string argument yourself.</p>
-            </div>
-        </div><!-- rightcol -->
-        <div id="twocols"></div>
-{% endblock %}
+        </pre>
+        <p>If you want to page through the whole collection, start at <code>first</code> and follow link headers until you reach <code>last</code> or until no <code>last</code> is given. You shouldn't try to calculate each <code>page</code> query string argument yourself.</p>
+      </div>
+    </div><!-- rightcol -->
+    <div id="twocols"></div>
+  {% endblock %}

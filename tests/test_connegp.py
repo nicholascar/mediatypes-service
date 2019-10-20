@@ -77,11 +77,11 @@ def test_mediatypes_register_alternates_html_http():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         headers={
-            'Accept-Profile': '<https://w3id.org/profile/alt>'
+            'Accept-Profile': '<https://w3id.org/profile/alternates>'
         }
     )
-    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alt>', \
-        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alt>, ' \
+    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alternates>', \
+        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alternates>, ' \
         'instead {}'.format(r.headers['Content-Profile'])
     assert r.headers['Content-Type'].startswith('text/html'), \
         'Media Types Register does not have a header of Content-Type: text/html, instead {}'\
@@ -94,12 +94,12 @@ def test_mediatypes_register_alternates_ttl_http():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         headers={
-            'Accept-Profile': '<https://w3id.org/profile/alt>',
+            'Accept-Profile': '<https://w3id.org/profile/alternates>',
             'Accept': 'text/turtle'
         }
     )
-    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alt>', \
-        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alt>, ' \
+    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alternates>', \
+        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alternates>, ' \
         'instead {}'.format(r.headers['Content-Profile'])
     assert r.headers['Content-Type'].startswith('text/turtle'), \
         'Media Types Register does not have a header of Content-Type: text/turtle, instead {}'\
@@ -116,8 +116,8 @@ def test_mediatypes_register_alternates_ttl_qsa_token():
             '_mediatype': 'text/turtle'
         }
     )
-    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alt>', \
-        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alt>, ' \
+    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alternates>', \
+        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alternates>, ' \
         'instead {}'.format(r.headers['Content-Profile'])
     assert r.headers['Content-Type'].startswith('text/turtle'), \
         'Media Types Register does not have a header of Content-Type: text/turtle, instead {}'\
@@ -130,12 +130,12 @@ def test_mediatypes_register_alternates_ttl_qsa_uri():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         params={
-            '_profile': '<https://w3id.org/profile/alt>',
+            '_profile': '<https://w3id.org/profile/alternates>',
             '_mediatype': 'text/turtle'
         }
     )
-    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alt>', \
-        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alt>, ' \
+    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alternates>', \
+        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alternates>, ' \
         'instead {}'.format(r.headers['Content-Profile'])
     assert r.headers['Content-Type'].startswith('text/turtle'), \
         'Media Types Register does not have a header of Content-Type: text/turtle, instead {}'\
@@ -148,12 +148,12 @@ def test_mediatypes_register_alternates_ttl_qsa_alternate_keywords():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         params={
-            '_view': '<https://w3id.org/profile/alt>',
+            '_view': '<https://w3id.org/profile/alternates>',
             '_format': 'text/turtle'
         }
     )
-    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alt>', \
-        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alt>, ' \
+    assert r.headers['Content-Profile'] == '<https://w3id.org/profile/alternates>', \
+        'Media Types Register does not have a Content-Profile header of <https://w3id.org/profile/alternates>, ' \
         'instead {}'.format(r.headers['Content-Profile'])
     assert r.headers['Content-Type'].startswith('text/turtle'), \
         'Media Types Register does not have a header of Content-Type: text/turtle, instead {}'\
@@ -166,7 +166,7 @@ def test_mediatypes_register_alternates_qsa_alternate_keywords_multi_profile():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         params={
-            '_view': '<https://w3id.org/profile/alt>;q=0.5,reg',  # i.e. reg;q=1
+            '_view': '<https://w3id.org/profile/alternates>;q=0.5,reg',  # i.e. reg;q=1
             '_format': 'text/turtle'
         }
     )
@@ -184,7 +184,7 @@ def test_mediatypes_register_reg_ttl_http_multi_profile():
     r = requests.get(
         'http://localhost:5000/mediatype/',
         headers={
-            'Accept-Profile': '<https://w3id.org/profile/alt>;q=0,<http://purl.org/linked-data/registry>,<http://example.org/profile/x>;q=0.8'
+            'Accept-Profile': '<https://w3id.org/profile/alternates>;q=0,<http://purl.org/linked-data/registry>,<http://example.org/profile/x>;q=0.8'
         }
     )
     assert r.headers['Content-Profile'] == '<http://purl.org/linked-data/registry>', \
@@ -204,7 +204,7 @@ def test_mediatypes_register_link_header_profiles_tokens():
         returned_profiles.append(profile)
 
     returned_profiles = set(returned_profiles)
-    expected_profiles = {'<https://w3id.org/profile/alt>', '<http://purl.org/linked-data/registry>'}
+    expected_profiles = {'<https://w3id.org/profile/alternates>', '<http://purl.org/linked-data/registry>'}
     assert returned_profiles == expected_profiles, \
         'Returned profiles should be {} but were {}'.format(returned_profiles, expected_profiles)
 

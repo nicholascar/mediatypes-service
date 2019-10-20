@@ -1,23 +1,23 @@
 {% extends "page.html" %}
 
-    {% block content %}
-      <div class="altview">
-        <h4>Alternates View</h4>
-        <p>See this content according to other views and formats:</p>
-        <p><a href="{{ request.url }}&_view=alternates"><em>Alternates</em> View</a></p>
-      </div>
-      <h1>{{ deets['title'] }}</h1>
-      <h3><a href="{{ request.values.get('uri') }}">{{ request.values.get('uri') }}</a></h3>
-      <h4>Source:</h4>
+  {% block content %}
+    <div class="altview">
+      <h4>Alternate Representations</h4>
+      <p>See this content according to other profiles/views and Media Type/formats:</p>
+      <p><a href="{{ request.url }}&_view=alternates"><em>Alternates</em> View</a></p>
+    </div>
+    <h1>{{ deets['title'] }}</h1>
+    <h3><a href="{{ request.values.get('uri') }}">{{ request.values.get('uri') }}</a></h3>
+    <h4>Source:</h4>
+    <ul>
+      <li><a href="https://www.iana.org/assignments/media-types/{{ mediatype }}">https://www.iana.org/assignments/media-types/{{ mediatype }}</a></li>
+    </ul>
+    {% if deets['contributors'] is not none %}
+      <h4>Contributors:</h4>
       <ul>
-        <li><a href="https://www.iana.org/assignments/media-types/{{ mediatype }}">https://www.iana.org/assignments/media-types/{{ mediatype }}</a></li>
+      {% for contributor in deets['contributors'] %}
+          <li><a href="{{ contributor }}">{{ contributor }}</a></li>
+      {% endfor %}
       </ul>
-      {% if deets['contributors'] is not none %}
-        <h4>Contributors:</h4>
-        <ul>
-        {% for contributor in deets['contributors'] %}
-            <li><a href="{{ contributor }}">{{ contributor }}</a></li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endblock %}
+    {% endif %}
+  {% endblock %}
