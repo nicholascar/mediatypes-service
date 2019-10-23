@@ -17,7 +17,7 @@ class DatasetRenderer(Renderer):
                 'The DCAT view, according to DCATv2 (2018)',
                 ['text/html'] + Renderer.RDF_MIMETYPES,
                 'text/html',
-                profile_uri='http://www.w3.org/ns/dcat'
+                profile_uri='https://www.w3.org/TR/vocab-dcat-2/'
             ),
             'reg': View(
                 'Registry Ontology view',
