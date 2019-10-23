@@ -103,3 +103,40 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
 
         $ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg"""@en ;
 .
+
+<https://conneg.info/mediatypes/mediatypes.ttl>
+    a dcat:Distribution ;
+    dcat:accessService <https://conneg.info/mediatypes> ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:rights "(c) Nicholas J. Car, 2019" ;
+    odrl:hasPolicy [
+        a odrl:Policy ;
+        odrl:permission [
+            odrl:action cc:Reproduction , cc:Distribution ;
+        ] ;
+        odrl:obligation [
+            odrl:action cc:Attribution , cc:ShareAlike ;
+
+        ] ;
+        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
+    ] ;
+.
+
+<https://conneg.info/mediatypes/mediatypes.tar.gz>
+    a dcat:Distribution ;
+    dcat:accessService <https://conneg.info/mediatypes> ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:rights "(c) Nicholas J. Car, 2019" ;
+    odrl:hasPolicy [
+        a odrl:Policy ;
+        odrl:permission [
+            odrl:action cc:Reproduction , cc:Distribution ;
+        ] ;
+        odrl:obligation [
+            odrl:action cc:Attribution , cc:ShareAlike ;
+
+        ] ;
+        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
+    ] ;
+    dcat:packageFormat <https://w3id.org/mediatype/application/gzip> ;
+.

@@ -4,6 +4,7 @@ from model.mediatype import MediaTypeRenderer
 from model.agent import AgentRenderer
 from model.dataset import DatasetRenderer
 from model import sparql as s
+import os
 import _conf as conf
 
 routes = Blueprint('controller', __name__)
@@ -139,6 +140,14 @@ def mediatype_redirect(mt):
 @routes.route('/mediatypes.ttl')
 def mediatypes_ttl():
     return Response(
-        open('mediatypes.ttl', 'r').read(),
+        open(os.path.join(conf.APP_DIR, 'mediatypes.ttl'), 'rb').read(),
         mimetype='text/turtle'
+    )
+
+
+@routes.route('/mediatypes.tar.gz')
+def mediatypes_gzip():
+    return Response(
+        open(os.path.join(conf.APP_DIR, 'mediatypes.tar.gz'), 'rb').read(),
+        mimetype='application/gzip'
     )
