@@ -6,7 +6,7 @@
       <p>See this content according to other profiles/views and Media Type/formats:</p>
       <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
     </div>
-    <div resource="https://conneg.info/mediatypes" prefix="dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
+    <div resource="https://conneg.info/mediatypes" prefix="cc: http://creativecommons.org/ns# dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
       <h1 class="rdf" property="dct:title">Media Types Web Service</h1>
       <div title="dct:description" class="rdf" property="dct:description">
         <h3>Description</h3>
@@ -50,18 +50,18 @@
       <div class="rdf">
         <h3>License &amp; Rights</h3>
         <p>The content of this API is licensed for use under the <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a>, <span property="dct:rights">&copy; Nicholas J Car, 2019</span>.</p>
-        <p>
-          Breaking this licence's parts down into the <em>dos</em> and <em>don'ts</em>, you have <code>permission</code> to:
+        <p property="odrl:hasPolicy" typeof="odrl:Policy" resource="_:7">
+          You are permitted to
+          <span about="_:7" property="odrl:permission" resource="_:1">
+            <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Reproduction">reproduce</a> &amp;
+            <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Distribution">distribute</a>
+          </span>
+          and, if you do, you must
+          <span about="_:7" property="odrl:obligation" resource="_:2">
+            <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#Attribution">attribute</a> &amp;
+            <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#ShareAlike">share alike</a>.
+          </span>
         </p>
-        <ul>
-          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Reproduction">reproduce</a></li>
-          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Distribution">distribute</a></li>
-        </ul>
-        <p>But if you do you are <code>obligated</code> to:</p>
-        <ul>
-          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Attribution">attribute</a></li>
-          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#ShareAlike">share alike</a></li>
-        </ul>
       </div>
       <div class="rdf">
         <h3>Contacts</h3>
@@ -135,5 +135,53 @@
         <p>See this system's <a href="{{ url_for('controller.connegp') }}">Content Negotiation by Profile implementation page</a>.</p>
       </div>
     </div>
+      <div class="rdf">
+        <h3>Downloads</h3>
+        <p>You can download the entire content that this service delivers as a single file:</p>
+        <ul>
+          <li resource="https://conneg.info/mediatypes/mediatypes.ttl" typeof="dcat:Distribution">
+            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes/mediatypes.ttl">https://conneg.info/mediatypes/mediatypes.ttl</a>
+            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes"></a>
+            <ul>
+              <li>format: <a property="dct:format" href="https://w3id.org/mediatype/text/turtle">text/turtle</a></li>
+              <li>license: <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a></li>
+              <li>rights: <span property="dct:rights">&copy; Nicholas Car, 2019</span></li>
+              <li property="odrl:hasPolicy" typeof="odrl:Policy" resource="_:7">
+                you are permitted to
+                <span about="_:7" property="odrl:permission" resource="_:1">
+                  <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Reproduction">reproduce</a> &amp;
+                  <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Distribution">distribute</a>
+                </span>
+                and, if you do, you must
+                <span about="_:7" property="odrl:obligation" resource="_:2">
+                  <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#Attribution">attribute</a> &amp;
+                  <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#ShareAlike">share alike</a>.
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li resource="https://conneg.info/mediatypes/mediatypes.tar.gz" typeof="dcat:Distribution">
+            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes/mediatypes.tar.gz">https://conneg.info/mediatypes/mediatypes.tar.gz</a>
+            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes"></a>
+            <ul>
+              <li>package format: <a property="dct:packageFormat" href="https://w3id.org/mediatype/application/gzip">GZip</a></li>
+              <li>license: <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a></li>
+              <li>rights: <span property="dct:rights">&copy; Nicholas Car, 2019</span></li>
+              <li property="odrl:hasPolicy" typeof="odrl:Policy" resource="_:7">
+                you are permitted to
+                <span about="_:7" property="odrl:permission" resource="_:1">
+                  <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Reproduction">reproduce</a> &amp;
+                  <a about="_:1" property="odrl:action" href="http://creativecommons.org/ns#Distribution">distribute</a>
+                </span>
+                and, if you do, you must
+                <span about="_:7" property="odrl:obligation" resource="_:2">
+                  <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#Attribution">attribute</a> &amp;
+                  <a about="_:2" property="odrl:action" href="http://creativecommons.org/ns#ShareAlike">share alike</a>.
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   {% endblock %}
