@@ -1,6 +1,8 @@
+@prefix cc: <http://creativecommons.org/ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -8,8 +10,13 @@
 @prefix v: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+
 <https://conneg.info/mediatypes>
     a dcat:DataService ;
+    dct:identifier <https://conneg.info/mediatypes> ;  # trivial, same as the URI
+
+    # basic annotations
+    dct:type <http://purl.org/dc/dcmitype/Service> ;
     dct:title "Media Types Web Service" ;
     dct:description """This web service, a Linked Data API, delivers IANA's Media Types in forms useful for Linked Data applications.
 
@@ -17,20 +24,63 @@ It's also a demonstration implementation of the W3C's Content Negotiation by Pro
 
 Media Types (used to be called MIME types, sometimes called formats, also see Wikipedia) are listed by IANA at https://www.iana.org/assignments/media-types/media-types.xml and we just take that data, convert it to RDF, store it, and serve it up using a small Python Linked Data API imaginatively called pyLDAPI.
 """@en ;
+    dct:created "2019-04-03"^^xsd:date ;
+    dct:modified "2019-10-23"^^xsd:date ;
 
     # it's a public service
     dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
 
+    # other rights
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:rights "(c) Nicholas J. Car, 2019" ;
+    odrl:hasPolicy [
+        a odrl:Policy ;
+        odrl:permission [
+            odrl:action cc:Reproduction , cc:Distribution ;
+        ] ;
+        odrl:obligation [
+            odrl:action cc:Attribution , cc:ShareAlike ;
+
+        ] ;
+        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
+    ] ;
+
     # where the service actually is, online
     dcat:endpointURL <https://conneg.info/mediatypes> ;
 
-    # URIs for the Functional Profile of Content Negotiation by Profile that this system is conformant with
+    # URIs for the Functional Profiles of Content Negotiation by Profile that this system is conformant with
+    # It is conformant with all four listed in the specification document
     dct:conformsTo
         <http://www.w3.org/ns/dx/conneg/profile/http> ,
         <http://www.w3.org/ns/dx/conneg/profile/qsa> ,
         <http://www.w3.org/ns/dx/conneg/profile/qsa-alt> ,
         <http://www.w3.org/ns/dx/conneg/profile/rrd> ;
 
+    # who to call
+    dcat:contactPoint [
+        rdf:type v:Individual ;
+        v:fn "Nicholas J. Car"@en;
+        v:country-name "Australia" ;
+        v:region "QLD" ;
+        v:locality "Brisbane"@en;
+        v:email <mailto:nicholas.car@surroundaustralia.com> ;
+        v:hasTelephone [
+          a v:Cell , v:Voice;
+            v:hasValue <tel:+61477560177>
+        ];
+    ];
+
+    # some useful categorisations
+    dct:language <http://id.loc.gov/vocabulary/iso639-2/eng> , <http://id.loc.gov/vocabulary/iso639-2/pol> ;
+    dcat:keyword "Media Type" , "format" , "IANA" , "Content Negotiation" ;
+    dcat:theme <http://purl.org/coar/resource_type/c_7ad9> , <http://pid.geoscience.gov.au/def/voc/ga/servicetype/W3C> ;
+
+    prov:wasGeneratedBy [
+        a doap:Project , prov:Activity ;
+        doap:repository <https://github.com/nicholascar/mediatypes-dataset> ;
+    ] ;
+
+    # how to use this service
     skos:scopeNote """The initial reason for creating this service was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per Linked Data expectations.
 
 For every Media Type type in IANA's list, this W3ID makes a URI like this:
@@ -52,21 +102,4 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     Use HTTP Content Negotiation and set an Accept header to the format you want. For image/jpg information in the text/turtle format, as above, do this, using the CURL command line tool:
 
         $ curl --headers 'Accept: text/turtle' https://w3id.org/mediatype/image/jpg"""@en ;
-    prov:wasGeneratedBy [
-        a doap:Project , prov:Activity ;
-        doap:repository <https://github.com/nicholascar/mediatypes-dataset> ;
-    ] ;
-    dct:license <https://www.gnu.org/licenses/gpl-3.0.html> ;
-    dcat:contactPoint [
-        rdf:type v:Individual ;
-        v:fn "Nicholas J. Car"@en;
-        v:country-name "Australia" ;
-        v:region "QLD" ;
-        v:locality "Brisbane"@en;
-        v:email <mailto:nicholas.car@surroundaustralia.com> ;
-        v:hasTelephone [
-          a v:Cell , v:Voice;
-            v:hasValue <tel:+61477560177>
-        ];
-    ];
 .

@@ -6,20 +6,101 @@
       <p>See this content according to other profiles/views and Media Type/formats:</p>
       <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
     </div>
-    <h1 title="dct:title" class="rdf">Media Types Web Service</h1>
-    <div title="dct:description" class="rdf">
-      <p>This web service, a Linked Data API, delivers IANA's Media Types in forms useful for Linked Data applications.</p>
-      <p>It's also a demonstration implementation of the W3C's <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. See the <a href="{{ url_for('controller.connegp') }}">dedicated Conneg-by-P page</a> for how this system implements the required functions.</p>
-      <p>Media Types (used to be called MIME types, sometimes called <em>formats</em>, also see <a href="https://en.wikipedia.org/wiki/Media_type">Wikipedia</a>) are listed by <a href="https://www.iana.org/">IANA</a> at <a href="https://www.iana.org/assignments/media-types/media-types.xml">https://www.iana.org/assignments/media-types/media-types.xml</a> and we just take that data, convert it to <a href="https://www.w3.org/2001/sw/wiki/RDF">RDF</a>, store it, and serve it up using a small Python Linked Data API imaginatively called <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a>.</p>
-      <h3>Identifiers</h3>
-      <p>The identifier for this web service as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code> but, more importantly, the individual items delivered by this web service have identifiers.</p>
-      <p><a href="https://w3id.org">W3ID</a> provides a "secure, permanent URL re-direction service for Web applications.</p>
-      <p>By using W3ID-based identifiers for each Media Type, this Register provides a stable way to refer to each Media Types by <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
-
-      <p>This is not new or groundbreaking stuff but previous attempts to make this information available via URI seem to be offline (e.g. see <a href="http://purl.org/NET/mediatypes/">http://purl.org/NET/mediatypes/</a>).</p>
-    </div>
-    <div title="skos:scopeNote" class="rdf">
-      <h2>Usage Note - RDF &amp; Linked Data</h2>
+    <div resource="https://conneg.info/mediatypes" prefix="dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
+      <h1 class="rdf" property="dct:title">Media Types Web Service</h1>
+      <div title="dct:description" class="rdf" property="dct:description">
+        <h3>Description</h3>
+        <p>This web service, a Linked Data API, delivers IANA's Media Types in forms useful for Linked Data applications.</p>
+        <p>It's also a demonstration implementation of the W3C's <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. See the <a href="{{ url_for('controller.connegp') }}">dedicated Conneg-by-P page</a> for how this system implements the required functions.</p>
+        <p>Media Types (used to be called MIME types, sometimes called <em>formats</em>, also see <a href="https://en.wikipedia.org/wiki/Media_type">Wikipedia</a>) are listed by <a href="https://www.iana.org/">IANA</a> at <a href="https://www.iana.org/assignments/media-types/media-types.xml">https://www.iana.org/assignments/media-types/media-types.xml</a> and we just take that data, convert it to <a href="https://www.w3.org/2001/sw/wiki/RDF">RDF</a>, store it, and serve it up using a small Python Linked Data API imaginatively called <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a>.</p>
+        <h3>Identifiers</h3>
+        <p>The identifier for this web service as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code> but, more importantly, the individual items delivered by this web service have identifiers.</p>
+        <p><a href="https://w3id.org">W3ID</a> provides a "secure, permanent URL re-direction service for Web applications.</p>
+        <p>By using W3ID-based identifiers for each Media Type, this Register provides a stable way to refer to each Media Types by <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
+        <p>This is not new or groundbreaking stuff but previous attempts to make this information available via URI seem to be offline (e.g. see <a href="http://purl.org/NET/mediatypes/">http://purl.org/NET/mediatypes/</a>).</p>
+      </div>
+      <div class="rdf">
+        <h3>Dates</h3>
+        <dl>
+          <dt>Created</dt><dd>2019-04-03</dd>
+          <dt>Modified</dt><dd>2019-10-23</dd>
+        </dl>
+      </div>
+      <div class="rdf">
+        <h3>Types &amp; Identifiers</h3>
+        <p>
+          This is a <a property="dct:type" href="http://purl.org/dc/dcmitype/Service">Service</a> type of thing that is <a property="dct:accessRights" href="http://publications.europa.eu/resource/authority/access-right/PUBLIC">publicly accessible</a>.
+        </p>
+        <p>
+          This system conforms to functional profiles of the <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a> <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-Standard">specification</a>, specifically:
+        </p>
+        <ul>
+          <li><a property="dct:conformsTo" href="http://www.w3.org/ns/dx/conneg/profile/http">HTTP Headers Functional Profile</a></li>
+          <li><a property="dct:conformsTo" href="http://www.w3.org/ns/dx/conneg/profile/gsa">QSA Functional Profile</a></li>
+          <li><a property="dct:conformsTo" href="http://www.w3.org/ns/dx/conneg/profile/qsa-alt">QSA Alternate Keywords Functional Profile</a></li>
+          <li><a property="dct:conformsTo" href="http://www.w3.org/ns/dx/conneg/profile/rrd">Resource Representation Description</a></li>
+        </ul>
+        <p>
+          You should identify this service using the identifier <a property="dct:identifier" href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a>.
+        </p>
+        <p>
+          The endpoint of this service is at its URI identifier location: <a property="http://www.w3.org/ns/dcat#endpointURL" href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a>.
+        </p>
+      </div>
+      <div class="rdf">
+        <h3>License &amp; Rights</h3>
+        <p>The content of this API is licensed for use under the <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a>, <span property="dct:rights">&copy; Nicholas J Car, 2019</span>.</p>
+        <p>
+          Breaking this licence's parts down into the <em>dos</em> and <em>don'ts</em>, you have <code>permission</code> to:
+        </p>
+        <ul>
+          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Reproduction">reproduce</a></li>
+          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Distribution">distribute</a></li>
+        </ul>
+        <p>But if you do you are <code>obligated</code> to:</p>
+        <ul>
+          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#Attribution">attribute</a></li>
+          <li><a property="http://www.w3.org/ns/odrl/2/action" href="http://creativecommons.org/ns#ShareAlike">share alike</a></li>
+        </ul>
+      </div>
+      <div class="rdf">
+        <h3>Contacts</h3>
+        <p>If you want to know more, contact:</p>
+        <p property="dcat:contactPoint" typeof="v:Individual">
+            <strong property="v:fn">Nicholas Car</strong><br />
+            <em>Data Systems Architect & W3C Working Group member</em><br />
+            <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br />
+            <span property="v:region">Brisbane, Queensland, Australia</span><br />
+            <a property="v:email" href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a><br />
+            ORCID: <a href="https://orcid.org/0000-0002-8742-7730">0000-0002-8742-7730</a>
+        </p>
+      </div>
+      <div class="rdf">
+        <h3>Languages</h3>
+        <p>
+          All of the content delivered by this service is available in <a property="dct:language" href="http://id.loc.gov/vocabulary/iso639-2/eng">English</a> and some of it is also available in <a property="dct:language" href="http://id.loc.gov/vocabulary/iso639-2/pol">Polish</a>.
+        </p>
+      </div>
+      <div class="rdf">
+        <h3>Keywords &amp; Themes</h3>
+        <p>
+          This service is tagged and classified as follows:
+        </p>
+        <ul>
+          <li><span property="dcat:keyword">Media Type</span></li>
+          <li><span property="dcat:keyword">format</span></li>
+          <li><span property="dcat:keyword">MIME Type</span></li>
+          <li><span property="dcat:keyword">Content Negotiation</span></li>
+          <li><a property="dcat:theme" href="http://purl.org/coar/resource_type/c_7ad9">website</a></li>
+          <li><a property="dcat:theme" href="http://pid.geoscience.gov.au/def/voc/ga/servicetype/W3C">World Wide Web Consortium service</a></li>
+        </ul>
+      </div>
+      <div class="rdf">
+        <h3>Code</h3>
+        <p>The code for this application is online at <a property="http://usefulinc.com/ns/doap#repository" href="https://github.com/nicholascar/mediatypes-dataset">https://github.com/nicholascar/mediatypes-dataset</a>.</p>
+      </div>
+      <div class="rdf" property="http://www.w3.org/2004/02/skos/core#scopeNote">
+      <h3>Usage Note - RDF &amp; Linked Data</h3>
       <p>The initial reason for creating this web service was to allow for standardised human- and machine-readable forms of the IANA Media Types information to be accessible (dereferencable) via stable URIs, as per <a href="https://www.w3.org/standards/semanticweb/data">Linked Data</a> expectations.</p>
       <p>For every Media Type type in IANA's list, this W3ID makes a URI like this:</p>
       <ul><li><code>https://w3id.org/mediatype/</code> + <code>{Media-Type}</code></li></ul>
@@ -41,9 +122,9 @@
         <p>The machine-readable RDF for this service's content is conformant with the <a href="http://www.dublincore.org/documents/dcmi-terms/">Dublin Core Terms vocabulary (DCT)</a> so we've <em>profiled</em> DCT to allows us to describe what properties from it are needed to characterise a Media Type. Our 'mediatypes' profile is defined here: <a href="https://w3id.org/profile/mediatype">https://w3id.org/profile/mediatype</a> and you can request machine-readable Media Type information from this system specifically by doing either of the following two things:
         </p>
         <ul>
-          <li>Add a <code>_profile</code> or a <code>_view</code> query string argument to the URI with the 'mediatypes' profile URI in '<>' or just the token 'mt'
+          <li>Add a <code>_profile</code> or a <code>_view</code> query string argument to the URI with the 'mediatypes' profile URI in '&lt;&gt;' or just the token 'mt'
           <ul>
-            <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_view=<https://w3id.org/profile/mediatype>">https://w3id.org/mediatype/image/jpg?_view=&lt;https://w3id.org/profile/mediatype></a></li>
+            <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_view=%3Chttps://w3id.org/profile/mediatype%3E">https://w3id.org/mediatype/image/jpg?_view=&lt;https://w3id.org/profile/mediatype&gt;</a></li>
             <li>or <a href="https://w3id.org/mediatype/image/jpg?_profile=mt">https://w3id.org/mediatype/image/jpg?_profile=mt</a></li>
           </ul>
           <li>Use HTTP Content Negotiation and set an <code>Accept-Profile</code> header <code>&lt;https://w3id.org/profile/mediatype></code>
@@ -54,24 +135,5 @@
         <p>See this system's <a href="{{ url_for('controller.connegp') }}">Content Negotiation by Profile implementation page</a>.</p>
       </div>
     </div>
-    <div title="prof:wasGeneratedBy" class="rdf">
-      <h2>Code</h2>
-      <p>The code for this application is online at <a href="https://github.com/nicholascar/mediatypes-dataset">https://github.com/nicholascar/mediatypes-dataset</a>.</p>
-    </div>
-    <div title="dct:license" class="rdf">
-      <h2>License</h2>
-      <p>The content of this API is licensed for use under the GNU v3 License. See the <a href="https://github.com/nicholascar/mediatypes-dataset/blob/master/LICENSE">license deed</a> for details.</p>
-    </div>
-    <div title="dcat:contactPoint" class="rdf">
-      <h2>Contacts</h2>
-      <p>If you want to know more, contact:</p>
-      <p>
-          <strong>Nicholas Car</strong><br />
-          <em>Data Systems Architect & W3C Working Group member</em><br />
-          <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br />
-          Brisbane, Queensland, Australia<br />
-          <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a><br />
-          ORCID: <a href="https://orcid.org/0000-0002-8742-7730">0000-0002-8742-7730</a>
-      </p>
     </div>
   {% endblock %}

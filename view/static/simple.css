@@ -86,9 +86,10 @@ table.layout td {
 }
 
 .rdf {
-    cursor: help;
+    /*cursor: help;*/
     border: solid 1px #eeeeee;
     padding:3px;
+    margin-top:5px;
 }
 
 .commandline {
