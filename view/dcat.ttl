@@ -33,17 +33,7 @@ Media Types (used to be called MIME types, sometimes called formats, also see Wi
     # other rights
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
-    odrl:hasPolicy [
-        a odrl:Policy ;
-        odrl:permission [
-            odrl:action cc:Reproduction , cc:Distribution ;
-        ] ;
-        odrl:obligation [
-            odrl:action cc:Attribution , cc:ShareAlike ;
-
-        ] ;
-        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
-    ] ;
+    odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
 
     # where the service actually is, online
     dcat:endpointURL <https://conneg.info/mediatypes> ;
@@ -109,16 +99,7 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dcat:accessService <https://conneg.info/mediatypes> ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
-    odrl:hasPolicy [
-        a odrl:Policy ;
-        odrl:permission [
-            odrl:action cc:Reproduction , cc:Distribution ;
-        ] ;
-        odrl:obligation [
-            odrl:action cc:Attribution , cc:ShareAlike ;
-
-        ] ;
-        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
+    odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0>
     ] ;
 .
 
@@ -127,16 +108,6 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dcat:accessService <https://conneg.info/mediatypes> ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
-    odrl:hasPolicy [
-        a odrl:Policy ;
-        odrl:permission [
-            odrl:action cc:Reproduction , cc:Distribution ;
-        ] ;
-        odrl:obligation [
-            odrl:action cc:Attribution , cc:ShareAlike ;
-
-        ] ;
-        rdfs:seeAlso <https://creativecommons.org/licenses/by/4.0/> ;
-    ] ;
+    odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
     dcat:packageFormat <https://w3id.org/mediatype/application/gzip> ;
 .
