@@ -119,20 +119,20 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     ] ;
 .
 
-<https://conneg.info/mediatypes/mediatypes.ttl>
+<https://conneg.info/mediatypes-service/mediatypes.ttl>
     a dcat:Distribution ;
     dct:title "Media Types Dataset in RDF (turtle)" ;
-    dcat:downloadURL <https://conneg.info/mediatypes/mediatypes.ttl> ;
+    dcat:downloadURL <https://conneg.info/mediatypes-service/mediatypes.ttl> ;
     dcat:accessService <https://conneg.info/mediatypes-service> ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
     odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
 .
 
-<https://conneg.info/mediatypes/mediatypes.tar.gz>
+<https://conneg.info/mediatypes-service/mediatypes.tar.gz>
     a dcat:Distribution ;
     dct:title "Media Types Dataset in archived (tar), zipped (gz) RDF (turtle)" ;
-    dcat:downloadURL <https://conneg.info/mediatypes/mediatypes.tar.gz> ;
+    dcat:downloadURL <https://conneg.info/mediatypes-service/mediatypes.tar.gz> ;
     dcat:accessService <https://conneg.info/mediatypes-service> ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;

@@ -6,7 +6,7 @@
       <p>See this content according to other profiles/views and Media Type/formats:</p>
       <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
     </div>
-    <div resource="https://conneg.info/mediatypes" prefix="cc: http://creativecommons.org/ns# dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
+    <div resource="https://conneg.info/mediatypes-service" prefix="cc: http://creativecommons.org/ns# dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
       <h1 class="rdf" property="dct:title">Media Types Web Service</h1>
       <div class="rdf">
         This service serves the <a property="dcat:servesDataset" href="https://conneg.info/mediatypes">Media Types Dataset</a>.
@@ -17,7 +17,7 @@
         <p>It's also a demonstration implementation of the W3C's <a href="https://w3c.github.io/dxwg/conneg-by-ap/">Content Negotiation by Profile</a> specification. See the <a href="{{ url_for('controller.connegp') }}">dedicated Conneg-by-P page</a> for how this system implements the required functions.</p>
         <p>Media Types (used to be called MIME types, sometimes called <em>formats</em>, also see <a href="https://en.wikipedia.org/wiki/Media_type">Wikipedia</a>) are listed by <a href="https://www.iana.org/">IANA</a> at <a href="https://www.iana.org/assignments/media-types/media-types.xml">https://www.iana.org/assignments/media-types/media-types.xml</a> and we just take that data, convert it to <a href="https://www.w3.org/2001/sw/wiki/RDF">RDF</a>, store it, and serve it up using a small Python Linked Data API imaginatively called <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a>.</p>
         <h3>Identifiers</h3>
-        <p>The identifier for this web service as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a></code> but, more importantly, the individual items delivered by this web service have identifiers.</p>
+        <p>The identifier for this web service as a whole is just it's web address: <code><a href="https://conneg.info/mediatypes-service">https://conneg.info/mediatypes-service</a></code> but, more importantly, the individual items delivered by this web service have identifiers.</p>
         <p><a href="https://w3id.org">W3ID</a> provides a "secure, permanent URL re-direction service for Web applications.</p>
         <p>By using W3ID-based identifiers for each Media Type, this Register provides a stable way to refer to each Media Types by <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
         <p>This is not new or groundbreaking stuff but previous attempts to make this information available via URI seem to be offline (e.g. see <a href="http://purl.org/NET/mediatypes/">http://purl.org/NET/mediatypes/</a>).</p>
@@ -45,10 +45,10 @@
           <li><a property="dct:conformsTo" href="http://www.w3.org/ns/dx/conneg/profile/rrd">Resource Representation Description</a></li>
         </ul>
         <p>
-          You should identify this service using the identifier <a property="dct:identifier" href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a>.
+          You should identify this service using the identifier <a property="dct:identifier" href="https://conneg.info/mediatypes-service">https://conneg.info/mediatypes-service</a>.
         </p>
         <p>
-          The endpoint of this service is at its URI identifier location: <a property="http://www.w3.org/ns/dcat#endpointURL" href="https://conneg.info/mediatypes">https://conneg.info/mediatypes</a>.
+          The endpoint of this service is at its URI identifier location: <a property="http://www.w3.org/ns/dcat#endpointURL" href="https://conneg.info/mediatypes-service">https://conneg.info/mediatypes-service</a>.
         </p>
       </div>
       <div class="rdf">
@@ -142,9 +142,9 @@
         <h3>Downloads</h3>
         <p>You can download the entire content that this service delivers as a single file:</p>
         <ul>
-          <li resource="https://conneg.info/mediatypes/mediatypes.ttl" typeof="dcat:Distribution">
-            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes/mediatypes.ttl">https://conneg.info/mediatypes/mediatypes.ttl</a>
-            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes"></a>
+          <li resource="https://conneg.info/mediatypes-service/mediatypes.ttl" typeof="dcat:Distribution">
+            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes-service/mediatypes.ttl">https://conneg.info/mediatypes/mediatypes.ttl</a>
+            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes-service"></a>
             <ul>
               <li>format: <a property="dct:format" href="https://w3id.org/mediatype/text/turtle">text/turtle</a></li>
               <li>license: <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a></li>
@@ -163,9 +163,9 @@
               </li>
             </ul>
           </li>
-          <li resource="https://conneg.info/mediatypes/mediatypes.tar.gz" typeof="dcat:Distribution">
-            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes/mediatypes.tar.gz">https://conneg.info/mediatypes/mediatypes.tar.gz</a>
-            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes"></a>
+          <li resource="https://conneg.info/mediatypes-service/mediatypes.tar.gz" typeof="dcat:Distribution">
+            <a property="dcat:downloadURL" href="https://conneg.info/mediatypes-service/mediatypes.tar.gz">https://conneg.info/mediatypes/mediatypes.tar.gz</a>
+            <a style="display: none;" property="dcat:accessService" href="https://conneg.info/mediatypes-service"></a>
             <ul>
               <li>package format: <a property="dct:packageFormat" href="https://w3id.org/mediatype/application/gzip">GZip</a></li>
               <li>license: <a property="dct:license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a></li>
