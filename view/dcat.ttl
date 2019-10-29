@@ -10,9 +10,9 @@
 @prefix v: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://conneg.info/mediatypes>
+<https://w3id.org/mediatype/dataset>
     a dcat:Dataset ;
-    dct:identifier <https://conneg.info/mediatypes> ;  # trivial, same as the URI
+    dct:identifier <https://w3id.org/mediatype/dataset> ;  # trivial, same as the URI
 
     # basic annotations
     dct:type <http://purl.org/dc/dcmitype/Dataset> ;
@@ -50,8 +50,8 @@
 
     # distributions
     dcat:distribution
-        <https://conneg.info/mediatypes/mediatypes.ttl> ,
-        <https://conneg.info/mediatypes/mediatypes.tar.gz> ;
+        <https://conneg.info/mediatypes-service/mediatypes.ttl> ,
+        <https://conneg.info/mediatypes-service/mediatypes.tar.gz> ;
 .
 
 <https://conneg.info/mediatypes-service>
@@ -72,7 +72,7 @@ Media Types (used to be called MIME types, sometimes called formats, also see Wi
     dct:issued "2019-04-13"^^xsd:date ;
 
     # what the service serves
-    dcat:servesDataset <https://conneg.info/mediatypes> ;
+    dcat:servesDataset <https://w3id.org/mediatype/dataset> ;
 
     # where the service actually is, online
     dcat:endpointURL <https://conneg.info/mediatypes-service> ;
