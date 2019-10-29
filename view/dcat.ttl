@@ -127,6 +127,7 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
     odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
+    dct:format <https://w3id.org/mediatype/text/turtle> ;
 .
 
 <https://conneg.info/mediatypes-service/mediatypes.tar.gz>
@@ -137,5 +138,7 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:rights "(c) Nicholas J. Car, 2019" ;
     odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
-    dcat:packageFormat <https://w3id.org/mediatype/application/gzip> ;
+    dct:format <https://w3id.org/mediatype/text/turtle> ;
+    dcat:packageFormat <http://publications.europa.eu/resource/authority/file-type/TAR> ;
+    dcat:compressFormat <https://w3id.org/mediatype/application/gzip> ;
 .
