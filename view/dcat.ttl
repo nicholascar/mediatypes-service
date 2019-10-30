@@ -21,6 +21,7 @@
     dct:created "2019-04-03"^^xsd:date ;
     dct:modified "2019-10-28"^^xsd:date ;
     dct:issued "2019-04-13"^^xsd:date ;
+    dct:creator <https://orcid.org/0000-0002-8742-7730> ;
 
     # it's a public dataset
     dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
@@ -57,6 +58,7 @@
 <https://conneg.info/mediatypes-service>
     a dcat:DataService ;
     dct:identifier <https://conneg.info/mediatypes-service> ;  # trivial, same as the URI
+    dcat:landingPage <https://conneg.info/mediatypes-service> ;
 
     # basic annotations
     dct:type <http://purl.org/dc/dcmitype/Service> ;
@@ -70,6 +72,7 @@ Media Types (used to be called MIME types, sometimes called formats, also see Wi
     dct:created "2019-04-03"^^xsd:date ;
     dct:modified "2019-10-28"^^xsd:date ;
     dct:issued "2019-04-13"^^xsd:date ;
+    dct:creator <https://orcid.org/0000-0002-8742-7730> ;
 
     # what the service serves
     dcat:servesDataset <https://w3id.org/mediatype/dataset> ;
@@ -117,6 +120,8 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
         a doap:Project , prov:Activity ;
         doap:repository <https://github.com/nicholascar/mediatypes-service> ;
     ] ;
+
+    dcat:endpointDescription <https://www.w3.org/TR/dx-prof-conneg/> ;
 .
 
 <https://conneg.info/mediatypes-service/mediatypes.ttl>
@@ -128,6 +133,7 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dct:rights "(c) Nicholas J. Car, 2019" ;
     odrl:hasPolicy <http://purl.org/NET/rdflicense/cc-by-nc4.0> ;
     dct:format <https://w3id.org/mediatype/text/turtle> ;
+    dct:conformsTo <https://w3id.org/profile/mediatype> ;
 .
 
 <https://conneg.info/mediatypes-service/mediatypes.tar.gz>
@@ -141,4 +147,5 @@ Clicking on that URI yields a simple web page (HTML) view of the Media Type's pr
     dct:format <https://w3id.org/mediatype/text/turtle> ;
     dcat:packageFormat <http://publications.europa.eu/resource/authority/file-type/TAR> ;
     dcat:compressFormat <https://w3id.org/mediatype/application/gzip> ;
+    dct:conformsTo <https://w3id.org/profile/mediatype> ;
 .
