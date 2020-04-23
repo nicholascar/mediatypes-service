@@ -8,11 +8,13 @@ app = Flask(__name__, template_folder=conf.TEMPLATES_DIR, static_folder=conf.STA
 app.register_blueprint(routes.routes)
 
 # run the Flask app
-if __name__ == '__main__':
-    logging.basicConfig(filename=conf.LOGFILE,
-                        level=logging.DEBUG,
-                        datefmt='%Y-%m-%d %H:%M:%S',
-                        format='%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s')
+if __name__ == "__main__":
+    logging.basicConfig(
+        filename=conf.LOGFILE,
+        level=logging.DEBUG,
+        datefmt="%Y-%m-%d %H:%M:%S",
+        format="%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s",
+    )
 
     # generate the RDF sitemap
     # thread = pyldapi.setup(app, conf.APP_DIR, conf.URI_BASE)

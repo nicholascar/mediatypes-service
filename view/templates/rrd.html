@@ -19,16 +19,16 @@
           <td>{{ vals['label'] }}</td>
           <td>{{ vals['comment'] }}</td>
           <td>
-            <a href="{{ uri }}?_view={{ token }}&_mediatype={{ vals['default_mediatype'] }}">{{ token }}</a><br />
+            <a href="{{ uri }}?_profile={{ token }}&_mediatype={{ vals['default_mediatype'] }}">{{ token }}</a><br />
             <a href="{{ vals['namespace'] }}">{{ vals['namespace'] }}</a>
           </td>
-          <td><a href="{{ uri }}?_view={{ token }}&_mediatype={{ f }}">{{ f }}</a></td>
+          <td><a href="{{ uri }}?_profile={{ token }}&_mediatype={{ f }}">{{ f }}</a></td>
           <td>
           {% for l in vals['languages'] %}
-              <a href="{{ uri }}?_view={{ token }}&_lang={{ l }}">{{ l }}</a><br />
+              <a href="{{ uri }}?_profile={{ token }}&_lang={{ l }}">{{ l }}</a><br />
           {% endfor %}
           </td>
-          {% if token == defalut_view_token %}
+          {% if token == defalut_profile_token %}
           <td>True</td>
           {% else %}
           <td></td>

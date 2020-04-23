@@ -1,3 +1,55 @@
 * AltP view by default with Alternates
 * add schema.org view to Dataset
 * add sdo JSON_LD to HTML
+
+
+DCAT 2 implementation evidence:
+
+https://docs.google.com/spreadsheets/d/1eEVUuPFAGO2GjS5ocxylY8T1AlpqlwnOTc3er_Mhcv4/edit#gid=1783901278
+
+dcat:DataService:
+
+dcat:endpointDescription
+dcat:endpointURL
+dct:license
+dct:accessRights
+dcat:servesDataset
+dct:conformsTo
+dcat:contactPoint
+dct:creator
+dct:description
+odrl:hasPolicy *
+dct:identifier *
+dcat:keyword *
+dcat:landingPage
+dct:language *
+dct:relation *
+dct:rights *
+dcat:qualifiedRelation
+dct:publisher
+dct:issued
+dcat:theme *
+dct:title
+dct:type *
+dct:modified
+prov:qualifiedAttribution
+dct:isReferencedBy
+
+
+
+dcat:Role
+
+dcat:Dataset		odrl:hasPolicy
+
+
+dcat:Catalog		dcat:catalog *
+dcat:Catalog		odrl:hasPolicy *
+dcat:Catalog		dcat:qualifiedRelation *
+
+dcat:Catalog		dcat:service
+dcat:Catalog		dct:accrualPeriodicity
+dcat:Catalog		dct:temporal
+dcat:Catalog		dcat:keyword
+dcat:Catalog		dcat:landingPage
+dcat:Catalog		dcat:qualifiedRelation
+dcat:Catalog		dcat:theme

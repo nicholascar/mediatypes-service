@@ -4,7 +4,7 @@
     <div class="altview">
       <h4>Alternate Representations</h4>
       <p>See this content according to other profiles/views and Media Type/formats:</p>
-      <p><a href="{{ request.base_url }}?_view=alternates"><em>Alternates</em> View</a></p>
+      <p><a href="{{ request.base_url }}?_profile=alternates"><em>Alternates</em> View</a></p>
     </div>
     <div resource="https://conneg.info/mediatypes-service" prefix="cc: http://creativecommons.org/ns# dcat: http://www.w3.org/ns/dcat# dct: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# odrl: http://www.w3.org/ns/odrl/2/ skos: http://www.w3.org/2004/02/skos/core# v: http://www.w3.org/2006/vcard/ns#">
       <h1 class="rdf" property="dct:title">Media Types Web Service</h1>
@@ -125,16 +125,16 @@
         <p>The machine-readable RDF for this service's content is conformant with the <a href="http://www.dublincore.org/documents/dcmi-terms/">Dublin Core Terms vocabulary (DCT)</a> so we've <em>profiled</em> DCT to allows us to describe what properties from it are needed to characterise a Media Type. Our 'mediatypes' profile is defined here: <a href="https://w3id.org/profile/mediatype">https://w3id.org/profile/mediatype</a> and you can request machine-readable Media Type information from this system specifically by doing either of the following two things:
         </p>
         <ul>
-          <li>Add a <code>_profile</code> or a <code>_view</code> query string argument to the URI with the 'mediatypes' profile URI in '&lt;&gt;' or just the token 'mt'
+          <li>Add a <code>_profile</code> or a <code>_profile</code> query string argument to the URI with the 'mediatypes' profile URI in '&lt;&gt;' or just the token 'mt'
           <ul>
-            <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_view=%3Chttps://w3id.org/profile/mediatype%3E">https://w3id.org/mediatype/image/jpg?_view=&lt;https://w3id.org/profile/mediatype&gt;</a></li>
+            <li>e.g. <a href="https://w3id.org/mediatype/image/jpg?_profile=%3Chttps://w3id.org/profile/mediatype%3E">https://w3id.org/mediatype/image/jpg?_profile=&lt;https://w3id.org/profile/mediatype&gt;</a></li>
             <li>or <a href="https://w3id.org/mediatype/image/jpg?_profile=mt">https://w3id.org/mediatype/image/jpg?_profile=mt</a></li>
           </ul>
           <li>Use HTTP Content Negotiation and set an <code>Accept-Profile</code> header <code>&lt;https://w3id.org/profile/mediatype></code>
           <ul><li><code>$ curl --header 'Accept-Profile: &lt;https://w3id.org/profile/mediatype>' https://w3id.org/mediatype/image/jpg</code></li></ul>
           </li>
         </ul>
-        <p>There are also other profiles or <em>views</em> available for each meaditype, e.g. the "view that lists all other views" which you can access via <code>URI + ?_view=alternates</code></p>
+        <p>There are also other profiles or <em>views</em> available for each meaditype, e.g. the "view that lists all other views" which you can access via <code>URI + ?_profile=alternates</code></p>
         <p>See this system's <a href="{{ url_for('controller.connegp') }}">Content Negotiation by Profile implementation page</a>.</p>
       </div>
     </div>

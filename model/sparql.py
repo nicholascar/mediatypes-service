@@ -14,10 +14,10 @@ def sparql_query(q):
 
 
 def total_mediatypes():
-    q = '''
+    q = """
     PREFIX dct: <http://purl.org/dc/terms/>
     SELECT (COUNT(*) as ?count) WHERE {?s a dct:FileFormat .}
-    '''
+    """
     count = None
     for r in sparql_query(q):
         count = r[0]
@@ -25,10 +25,10 @@ def total_mediatypes():
 
 
 def total_agents():
-    q = '''
+    q = """
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     SELECT (COUNT(*) as ?count) WHERE {?s a foaf:Agent .}
-    '''
+    """
     count = None
     for r in sparql_query(q):
         count = r[0]
