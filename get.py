@@ -1,7 +1,7 @@
 import requests
 from lxml import objectify
-from rdflib import ConjunctiveGraph, URIRef, Literal, XSD, RDF, RDFS, Namespace
-from rdflib.namespace import DCTERMS
+from rdflib import ConjunctiveGraph, URIRef, Literal, Namespace
+from rdflib.namespace import DCTERMS, FOAF, RDF, XSD
 
 
 # r = requests.get('https://www.iana.org/assignments/media-types/media-types.xml', headers={'Accept': 'text/xml'})
@@ -11,8 +11,7 @@ from rdflib.namespace import DCTERMS
 g = ConjunctiveGraph()
 MT = Namespace("https://w3id.org/mediatype/")
 g.bind("mt", MT)
-g.bind("dct", DCTERMS)
-FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+g.bind("dcterms", DCTERMS)
 g.bind("foaf", FOAF)
 
 for register in objectify.parse("mediatypes.xml").getroot().getchildren():
@@ -25,7 +24,7 @@ for register in objectify.parse("mediatypes.xml").getroot().getchildren():
                     me = URIRef(MT + record.file)
                     g.add((me, RDF.type, DCTERMS.FileFormat))
                     g.add(
-                        (me, DCTERMS.title, Literal(record.name, datatype=XSD.string))
+                        (me, DCTERMS.title, Literal(record.name))
                     )
                     for x in record.xref:
                         if x.get("data") is not None:
@@ -52,22 +51,23 @@ for register in objectify.parse("mediatypes.xml").getroot().getchildren():
         for person in register.getchildren():
             me = URIRef(MT + person.get("id"))
             g.add((me, RDF.type, FOAF.Agent))
-            g.add((me, FOAF.name, Literal(person.name, datatype=XSD.string)))
+            g.add((me, FOAF.name, Literal(person.name)))
             if hasattr(person, "uri"):
-                if str(person.uri).startswith("mailto:"):
-                    g.get_context(URIRef(MT + "person/")).add(
-                        (
-                            me,
-                            FOAF.mbox,
-                            URIRef(
-                                str(person.uri).replace("&", "@").replace(" at ", "@")
-                            ),
-                        )
-                    )
-                else:  # normal URI, not email
-                    g.get_context(URIRef(MT + "person/")).add(
-                        (me, FOAF.homepage, URIRef(person.uri))
-                    )
+                if str(person.uri).startswith("mailto:") or "@" in str(person.uri):
+                    g.get_context(URIRef(MT + "person/")).add((
+                        me,
+                        FOAF.mbox,
+                        URIRef(str(person.uri).replace("&", "@").replace(" at ", "@"))
+                    ))
+                elif str(person.uri).startswith("http"):
+                    g.get_context(URIRef(MT + "person/")).add((
+                        me,
+                        FOAF.homepage,
+                        URIRef(str(person.uri))
+                    ))
+                else:
+                    # junk value
+                    pass
 
 with open("mediatypes.ttl", "w") as f:
     f.write(g.serialize(format="turtle").decode("utf-8"))

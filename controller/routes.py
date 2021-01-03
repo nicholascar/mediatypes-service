@@ -62,14 +62,14 @@ def mediatypes():
 
     register = []
     for r in s.sparql_query(q):
-        register.append((str(r[0]), str(r[1])))
+        register.append((url_for("controller.object") + "?uri=" + str(r[0]), str(r[1])))
 
     return ContainerRenderer(
         request,
-        "http://localhost:5000/mediatype/",
+        "https://mediatypes.conneg.info/mediatype/",
         "Register of Media Types",
-        "All the Media Types in IANA's list at https://www.iana.org/assignments/media-types/media-types.xml.",
-        "http://localhost:5000/reg/",
+        "All the Media Types in IANA's list at <code>https://www.iana.org/assignments/media-types/media-types.xml.</code>",
+        "https://mediatypes.conneg.info/reg/",
         "MediaTypes Service",
         register,
         total,

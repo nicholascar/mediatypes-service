@@ -4,12 +4,12 @@
 <registry xmlns="http://www.iana.org/assignments" id="media-types">
   <title>Media Types</title>
   <category>Multipurpose Internet Mail Extensions (MIME) and Media Types</category>
-  <updated>2019-10-10</updated>
-
-
-
+  <updated>2020-12-23</updated>
+  
+  
+ 
   <registration_rule>Expert Review for Vendor and Personal Trees.</registration_rule>
-  <expert>Ned Freed, Murray Kucherawy</expert>
+  <expert>Ned Freed, Alexey Melnikov, Murray Kucherawy (backup)</expert>
   <xref type="rfc" data="rfc6838"/>
   <xref type="rfc" data="rfc4855"/>
   <note>Per Section 3.1 of <xref type="rfc" data="rfc6838"/>, Standards Tree requests made through IETF
@@ -21,20 +21,21 @@ IESG.</note>
 <note><xref type="rfc" data="rfc2046"/> specifies that Media Types (formerly known as MIME types) and Media
 Subtypes will be assigned and listed by the IANA.
 
-Procedures for registering Media Types can be found in <xref type="rfc" data="rfc6838"/>, <xref type="rfc" data="rfc4289"/>,
-and <xref type="rfc" data="rfc6657"/>. Additional procedures for registering media types for transfer via
+Procedures for registering Media Types can be found in <xref type="rfc" data="rfc6838"/>, <xref type="rfc" data="rfc4289"/>, 
+and <xref type="rfc" data="rfc6657"/>. Additional procedures for registering media types for transfer via 
 Real-time Transport Protocol (RTP) can be found in <xref type="rfc" data="rfc4855"/>.
 
-The following is the list of Directories of Content Types and Subtypes. If you wish to
+The following is the list of Directories of Content Types and Subtypes. If you wish to 
 register a Media Type with the IANA, please see the following for the online application:
 
 <xref type="uri" data="http://www.iana.org/form/media-types">Application for registration of Media Types</xref>
 
 Other Media Type Parameters: <xref type="registry" data="media-types-parameters"/>
 Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters"/>
+Provisional Standard Media Type Registry: <xref type="registry" data="provisional-standard-media-types"/>
 </note>
-
-
+  
+  
   <registry id="application">
     <title>application</title>
     <hide/>
@@ -51,6 +52,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record>
       <name>3gpp-ims+xml</name>
+      <xref type="person" data="_3GPP"/>
       <xref type="person" data="John_M_Meredith"/>
       <file type="template">application/3gpp-ims+xml</file>
     </record>
@@ -121,6 +123,16 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc7285"/>
       <file type="template">application/alto-networkmap+json</file>
     </record>
+    <record date="2020-03-26">
+      <name>alto-updatestreamcontrol+json</name>
+      <xref type="rfc" data="rfc8895"/>
+      <file type="template">application/alto-updatestreamcontrol+json</file>
+    </record>
+    <record date="2020-03-26">
+      <name>alto-updatestreamparams+json</name>
+      <xref type="rfc" data="rfc8895"/>
+      <file type="template">application/alto-updatestreamparams+json</file>
+    </record>
     <record date="2014-11-11">
       <name>AML</name>
       <xref type="person" data="ASAM"/>
@@ -180,10 +192,20 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="ATSC"/>
       <file type="template">application/atsc-dwd+xml</file>
     </record>
+    <record date="2020-03-18">
+      <name>atsc-dynamic-event-message</name>
+      <xref type="person" data="ATSC"/>
+      <file type="template">application/atsc-dynamic-event-message</file>
+    </record>
     <record date="2019-03-07">
       <name>atsc-held+xml</name>
       <xref type="person" data="ATSC"/>
       <file type="template">application/atsc-held+xml</file>
+    </record>
+    <record date="2019-10-14">
+      <name>atsc-rdt+json</name>
+      <xref type="person" data="ATSC"/>
+      <file type="template">application/atsc-rdt+json</file>
     </record>
     <record date="2019-03-07">
       <name>atsc-rsat+xml</name>
@@ -237,14 +259,19 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc1895"/>
       <file type="template">application/CALS-1840</file>
     </record>
+    <record date="2020-07-07">
+      <name>captive+json</name>
+      <xref type="rfc" data="rfc8908"/>
+      <file type="template">application/captive+json</file>
+    </record>
     <record>
       <name>cbor</name>
-      <xref type="rfc" data="rfc7049"/>
+      <xref type="rfc" data="rfc8949"/>
       <file type="template">application/cbor</file>
     </record>
     <record date="2019-10-10">
       <name>cbor-seq</name>
-      <xref type="draft" data="RFC-ietf-cbor-sequence-02"/>
+      <xref type="rfc" data="rfc8742"/>
       <file type="template">application/cbor-seq</file>
     </record>
     <record date="2017-07-05">
@@ -319,10 +346,21 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc6230"/>
       <file type="template">application/cfw</file>
     </record>
+    <record date="2020-10-02">
+      <name>clr</name>
+      <xref type="person" data="IMS_Global"/>
+      <xref type="person" data="Andy_Miller"/>
+      <file type="template">application/clr</file>
+    </record>
     <record date="2016-09-06">
       <name>clue_info+xml</name>
       <xref type="draft" data="RFC-ietf-clue-data-model-schema-17"/>
       <file type="template">application/clue_info+xml</file>
+    </record>
+    <record date="2019-12-19">
+      <name>clue+xml</name>
+      <xref type="draft" data="RFC-ietf-clue-protocol-19"/>
+      <file type="template">application/clue+xml</file>
     </record>
     <record date="2014-02-11">
       <name>cms</name>
@@ -488,6 +526,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc8484"/>
       <file type="template">application/dns-message</file>
     </record>
+    <record date="2020-01-16">
+      <name>dots+cbor</name>
+      <xref type="rfc" data="rfc8782"/>
+      <file type="template">application/dots+cbor</file>
+    </record>
     <record>
       <name>dskpp+xml</name>
       <xref type="rfc" data="rfc6063"/>
@@ -534,6 +577,23 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Samer_El-Haj-Mahmoud"/>
       <file type="template">application/efi</file>
     </record>
+    <record date="2020-11-23">
+      <name>elm+json</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">application/elm+json</file>
+    </record>
+    <record date="2020-11-23">
+      <name>elm+xml</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">application/elm+xml</file>
+    </record>
+    <record date="2020-03-10" updated="2020-08-20">
+      <name>EmergencyCallData.cap+xml</name>
+      <xref type="rfc" data="rfc8876"/>
+      <file type="template">application/EmergencyCallData.cap+xml</file>
+    </record>
     <record date="2015-12-10">
       <name>EmergencyCallData.Comment+xml</name>
       <xref type="rfc" data="rfc7852"/>
@@ -579,6 +639,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2007/CR-emma-20071211/#media-type-registration"/>
       <xref type="person" data="ISO-IEC_JTC1"/>
+      <file type="template">application/emma+xml</file>
     </record>
     <record>
       <name>emotionml+xml</name>
@@ -616,6 +677,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>exi</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2009/CR-exi-20091208/#mediaTypeRegistration"/>
+      <file type="template">application/exi</file>
     </record>
     <record date="2018-12-21">
       <name>expect-ct-report+json</name>
@@ -812,9 +874,9 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">application/ipp</file>
     </record>
     <record>
-      <name>isup</name>
+      <name>ISUP</name>
       <xref type="rfc" data="rfc3204"/>
-      <file type="template">application/isup</file>
+      <file type="template">application/ISUP</file>
     </record>
     <record>
       <name>its+xml</name>
@@ -847,6 +909,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>jrd+json</name>
       <xref type="rfc" data="rfc7033"/>
       <file type="template">application/jrd+json</file>
+    </record>
+    <record updated="2020-11-25">
+      <name>jscalendar+json</name>
+      <xref type="draft" data="RFC-ietf-calext-jscalendar-32"/>
+      <file type="template">application/jscalendar+json</file>
     </record>
     <record updated="2017-07-21">
       <name>json</name>
@@ -888,7 +955,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc4730"/>
       <file type="template">application/kpml-response+xml</file>
     </record>
-    <record>
+    <record updated="2020-03-17">
       <name>ld+json</name>
       <xref type="person" data="W3C"/>
       <xref type="person" data="Ivan_Herman"/>
@@ -918,6 +985,12 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>lostsync+xml</name>
       <xref type="rfc" data="rfc6739"/>
       <file type="template">application/lostsync+xml</file>
+    </record>
+    <record date="2020-03-18">
+      <name>lpf+zip</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Ivan_Herman"/>
+      <file type="template">application/lpf+zip</file>
     </record>
     <record date="2014-11-11">
       <name>LXF</name>
@@ -956,19 +1029,22 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">application/mathematica</file>
     </record>
     <record>
+      <name>mathml+xml</name>
+      <xref type="person" data="W3C"/>
+      <xref type="uri" data="http://www.w3.org/TR/MathML3/appendixb.html"/>
+      <file type="template">application/mathml+xml</file>
+    </record>
+    <record>
       <name>mathml-content+xml</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/MathML3/appendixb.html"/>
+      <file type="template">application/mathml-content+xml</file>
     </record>
     <record>
       <name>mathml-presentation+xml</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/MathML3/appendixb.html"/>
-    </record>
-    <record>
-      <name>mathml+xml</name>
-      <xref type="person" data="W3C"/>
-      <xref type="uri" data="http://www.w3.org/TR/MathML3/appendixb.html"/>
+      <file type="template">application/mathml-presentation+xml</file>
     </record>
     <record>
       <name>mbms-associated-procedure-description+xml</name>
@@ -1172,7 +1248,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2019-09-26">
       <name>multipart-core</name>
-      <xref type="draft" data="RFC-ietf-core-multipart-ct-04"/>
+      <xref type="rfc" data="rfc8710"/>
       <file type="template">application/multipart-core</file>
     </record>
     <record>
@@ -1217,7 +1293,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc6787"/>
       <file type="template">application/nlsml+xml</file>
     </record>
-    <record date="2017-12-11">
+    <record date="2017-12-11" updated="2020-03-30">
       <name>node</name>
       <xref type="person" data="Node.js_TSC"/>
       <file type="template">application/node</file>
@@ -1271,6 +1347,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc7845"/>
       <file type="template">application/ogg</file>
     </record>
+    <record date="2020-09-01">
+      <name>opc-nodeset+xml</name>
+      <xref type="person" data="OPC_Foundation"/>
+      <file type="template">application/opc-nodeset+xml</file>
+    </record>
     <record date="2019-03-26">
       <name>oscore</name>
       <xref type="rfc" data="rfc8613"/>
@@ -1286,9 +1367,10 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc6940"/>
       <file type="template">application/p2p-overlay+xml</file>
     </record>
-    <record>
+    <record updated="2020-10-12">
       <name>parityfec</name>
-      <xref type="rfc" data="rfc5109"/>
+      <xref type="rfc" data="rfc3009"/>
+      <file type="template">application/parityfec</file>
     </record>
     <record date="2017-06-12">
       <name>passport</name>
@@ -1324,6 +1406,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     <record>
       <name>pgp-keys</name>
       <xref type="rfc" data="rfc3156"/>
+      <file type="template">application/pgp-keys</file>
     </record>
     <record>
       <name>pgp-signature</name>
@@ -1339,7 +1422,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>pidf+xml</name>
       <xref type="rfc" data="rfc3863"/>
       <file type="template">application/pidf+xml</file>
-    </record>
+    </record>  
     <record>
       <name>pkcs10</name>
       <xref type="rfc" data="rfc5967"/>
@@ -1443,6 +1526,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Khemchart_Rungchavalnont"/>
       <file type="template">application/prs.cww</file>
     </record>
+    <record date="2020-09-29">
+      <name>prs.cyn</name>
+      <xref type="person" data="Cynthia_RevstrÃ¶m"/>
+      <file type="template">application/prs.cyn</file>
+    </record>
     <record>
       <name>prs.hpub+zip</name>
       <xref type="person" data="Giulio_Zambon"/>
@@ -1465,13 +1553,18 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record>
       <name>prs.xsf+xml</name>
-      <xref type="person" data="Maik_Stührenberg"/>
+      <xref type="person" data="Maik_StÃ¼hrenberg"/>
       <file type="template">application/prs.xsf+xml</file>
     </record>
     <record>
       <name>pskc+xml</name>
       <xref type="rfc" data="rfc6030"/>
       <file type="template">application/pskc+xml</file>
+    </record>
+    <record date="2020-02-18">
+      <name>pvd+json</name>
+      <xref type="rfc" data="rfc8801"/>
+      <file type="template">application/pvd+json</file>
     </record>
     <record>
       <name>rdf+xml</name>
@@ -1609,6 +1702,19 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="OASIS_Security_Services_Technical_Committee_SSTC"/>
       <file type="template">application/samlmetadata+xml</file>
     </record>
+    <record date="2020-09-15">
+      <name>sarif+json</name>
+      <xref type="person" data="OASIS"/>
+      <xref type="person" data="Michael_C._Fanning"/>
+      <xref type="person" data="Laurence_J._Golding"/>
+      <file type="template">application/sarif+json</file>
+    </record> 
+    <record date="2020-04-14">
+      <name>sbe</name>
+      <xref type="person" data="FIX_Trading_Community"/>
+      <xref type="person" data="Donald_L._Mendelson"/>
+      <file type="template">application/sbe</file>
+    </record>
     <record>
       <name>sbml+xml</name>
       <xref type="rfc" data="rfc3823"/>
@@ -1653,6 +1759,16 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>secevent+jwt</name>
       <xref type="rfc" data="rfc8417"/>
       <file type="template">application/secevent+jwt</file>
+    </record>
+    <record date="2020-03-13">
+      <name>senml-etch+cbor</name>
+      <xref type="rfc" data="rfc8790"/>
+      <file type="template">application/senml-etch+cbor</file>
+    </record>
+    <record date="2020-03-13">
+      <name>senml-etch+json</name>
+      <xref type="rfc" data="rfc8790"/>
+      <file type="template">application/senml-etch+json</file>
     </record>
     <record date="2018-06-01">
       <name>senml-exi</name>
@@ -1733,9 +1849,9 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">application/set-registration-initiation</file>
     </record>
     <record>
-      <name>sgml</name>
+      <name>SGML</name>
       <xref type="rfc" data="rfc1874"/>
-      <file type="template">application/sgml</file>
+      <file type="template">application/SGML</file>
     </record>
     <record>
       <name>sgml-open-catalog</name>
@@ -1807,11 +1923,13 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>sparql-query</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2007/CR-rdf-sparql-query-20070614/#mediaType"/>
+      <file type="template">application/sparql-query</file>
     </record>
     <record>
       <name>sparql-results+xml</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2007/CR-rdf-sparql-XMLres-20070925/#mime"/>
+      <file type="template">application/sparql-results+xml</file>
     </record>
     <record>
       <name>spirits-event+xml</name>
@@ -1843,12 +1961,12 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc4267"/>
       <file type="template">application/ssml+xml</file>
     </record>
-    <record date="2018-07-05">
+    <record date="2018-07-05" updated="2020-04-23">
       <name>stix+json</name>
       <xref type="person" data="OASIS"/>
       <xref type="person" data="Chet_Ensign"/>
       <file type="template">application/stix+json</file>
-    </record>
+    </record> 
     <record date="2019-09-03">
       <name>swid+xml</name>
       <xref type="person" data="ISO-IEC_JTC1"/>
@@ -1911,11 +2029,17 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc5934"/>
       <file type="template">application/tamp-update-confirm</file>
     </record>
-    <record date="2018-07-11">
+    <record date="2018-07-11" updated="2020-04-04">
       <name>taxii+json</name>
       <xref type="person" data="OASIS"/>
       <xref type="person" data="Chet_Ensign"/>
       <file type="template">application/taxii+json</file>
+    </record>
+    <record date="2020-02-12">
+      <name>td+json</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Matthias_Kovatsch"/>
+      <file type="template">application/td+json</file>
     </record>
     <record>
       <name>tei+xml</name>
@@ -2057,6 +2181,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>vnd.3gpp.GMOP+xml</name>
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp.GMOP+xml</file>
+    </record>
+    <record date="2020-10-05">
+      <name>vnd.3gpp.interworking-data</name>
+      <xref type="person" data="Frederic_Firmin"/>
+      <file type="template">application/vnd.3gpp.interworking-data</file>
     </record>
     <record date="2018-07-30">
       <name>vnd.3gpp.mc-signalling-ear</name>
@@ -2341,13 +2470,68 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2018-04-10">
       <name>vnd.afpc.afplinedata</name>
-      <xref type="person" data="Jörg_Palmer"/>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
       <file type="template">application/vnd.afpc.afplinedata</file>
+    </record>
+    <record date="2019-10-14" updated="2020-04-06">
+      <name>vnd.afpc.afplinedata-pagedef</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.afplinedata-pagedef</file>
+    </record>
+    <record date="2020-10-12">
+      <name>vnd.afpc.cmoca-cmresource</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.cmoca-cmresource</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.foca-charset</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.foca-charset</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.foca-codedfont</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.foca-codedfont</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.foca-codepage</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.foca-codepage</file>
     </record>
     <record date="2018-05-01">
       <name>vnd.afpc.modca</name>
-      <xref type="person" data="Jörg_Palmer"/>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
       <file type="template">application/vnd.afpc.modca</file>
+    </record>
+    <record date="2020-10-12">
+      <name>vnd.afpc.modca-cmtable</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-cmtable</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.modca-formdef</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-formdef</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.modca-mediummap</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-mediummap</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.modca-objectcontainer</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-objectcontainer</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.modca-overlay</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-overlay</file>
+    </record>
+    <record date="2019-10-14">
+      <name>vnd.afpc.modca-pagesegment</name>
+      <xref type="person" data="JÃ¶rg_Palmer"/>
+      <file type="template">application/vnd.afpc.modca-pagesegment</file>
     </record>
     <record>
       <name>vnd.ah-barcode</name>
@@ -2436,9 +2620,14 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Steve_Klabnik"/>
       <file type="template">application/vnd.api+json</file>
     </record>
+    <record date="2019-11-21">
+      <name>vnd.aplextor.warrp+json</name>
+      <xref type="person" data="Oleg_Uryutin"/>
+      <file type="template">application/vnd.aplextor.warrp+json</file>
+    </record>
     <record date="2017-02-07">
       <name>vnd.apothekende.reservation+json</name>
-      <xref type="person" data="Adrian_Föder"/>
+      <xref type="person" data="Adrian_FÃ¶der"/>
       <file type="template">application/vnd.apothekende.reservation+json</file>
     </record>
     <record>
@@ -2446,7 +2635,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Peter_Bierman"/>
       <file type="template">application/vnd.apple.installer+xml</file>
     </record>
-    <record date="2018-08-09">
+    <record date="2018-08-09" updated="2020-05-04">
       <name>vnd.apple.keynote</name>
       <xref type="person" data="Manichandra_Sajjanapu"/>
       <file type="template">application/vnd.apple.keynote</file>
@@ -2518,22 +2707,22 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2018-06-18">
       <name>vnd.banana-accounting</name>
-      <xref type="person" data="José_Del_Romano"/>
+      <xref type="person" data="JosÃ©_Del_Romano"/>
       <file type="template">application/vnd.banana-accounting</file>
     </record>
-    <record date="2019-04-29">
+    <record date="2019-04-29" updated="2019-12-13">
       <name>vnd.bbf.usp.error</name>
-      <xref type="person" data="William_Lupton"/>
+      <xref type="person" data="Broadband_Forum"/>
       <file type="template">application/vnd.bbf.usp.error</file>
     </record>
-    <record date="2017-09-07">
+    <record date="2017-09-07" updated="2019-12-13">
       <name>vnd.bbf.usp.msg</name>
-      <xref type="person" data="William_Lupton"/>
+      <xref type="person" data="Broadband_Forum"/>
       <file type="template">application/vnd.bbf.usp.msg</file>
     </record>
-    <record date="2017-12-14">
+    <record date="2017-12-14" updated="2019-12-13">
       <name>vnd.bbf.usp.msg+json</name>
-      <xref type="person" data="William_Lupton"/>
+      <xref type="person" data="Broadband_Forum"/>
       <file type="template">application/vnd.bbf.usp.msg+json</file>
     </record>
     <record date="2015-05-06">
@@ -2548,7 +2737,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2017-04-07">
       <name>vnd.bint.med-content</name>
-      <xref type="person" data="Heinz-Peter_Schütz"/>
+      <xref type="person" data="Heinz-Peter_SchÃ¼tz"/>
       <file type="template">application/vnd.bint.med-content</file>
     </record>
     <record date="2015-06-09">
@@ -2620,7 +2809,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2017-05-03">
       <name>vnd.capasystems-pg+json</name>
-      <xref type="person" data="Yüksel_Aydemir"/>
+      <xref type="person" data="YÃ¼ksel_Aydemir"/>
       <file type="template">application/vnd.capasystems-pg+json</file>
     </record>
     <record>
@@ -2810,14 +2999,14 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2019-07-25">
       <name>vnd.cryptii.pipe+json</name>
-      <xref type="person" data="Fränz_Friederes"/>
+      <xref type="person" data="FrÃ¤nz_Friederes"/>
       <file type="template">application/vnd.cryptii.pipe+json</file>
     </record>
     <record>
       <name>vnd.crypto-shade-file</name>
       <xref type="person" data="Connor_Horman"/>
       <file type="template">application/vnd.crypto-shade-file</file>
-    </record>
+    </record>    
     <record>
       <name>vnd.ctc-posml</name>
       <xref type="person" data="Bayard_Kohlhepp"/>
@@ -2873,6 +3062,16 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Viktor_Haag"/>
       <file type="template">application/vnd.d2l.coursepackage1p0+zip</file>
     </record>
+    <record date="2020-09-18">
+      <name>vnd.d3m-dataset</name>
+      <xref type="person" data="Mi_Tar"/>
+      <file type="template">application/vnd.d3m-dataset</file>
+    </record>
+    <record date="2020-09-18">
+      <name>vnd.d3m-problem</name>
+      <xref type="person" data="Mi_Tar"/>
+      <file type="template">application/vnd.d3m-problem</file>
+    </record>
     <record>
       <name>vnd.dart</name>
       <xref type="person" data="Anders_Sandholm"/>
@@ -2892,6 +3091,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>vnd.dataresource+json</name>
       <xref type="person" data="Paul_Walsh"/>
       <file type="template">application/vnd.dataresource+json</file>
+    </record>
+    <record date="2020-03-17">
+      <name>vnd.dbf</name>
+      <xref type="person" data="Mi_Tar"/>
+      <file type="template">application/vnd.dbf</file>
     </record>
     <record date="2014-05-20">
       <name>vnd.debian.binary-package</name>
@@ -2960,7 +3164,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2014-07-25">
       <name>vnd.doremir.scorecloud-binary-document</name>
-      <xref type="person" data="Erik_Ronström"/>
+      <xref type="person" data="Erik_RonstrÃ¶m"/>
       <file type="template">application/vnd.doremir.scorecloud-binary-document</file>
     </record>
     <record>
@@ -2998,6 +3202,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Peter_Siebert"/>
       <xref type="person" data="Michael_Lagally"/>
       <file type="template">application/vnd.dvb.ait</file>
+    </record>
+    <record date="2020-02-07">
+      <name>vnd.dvb.dvbisl+xml</name>
+      <xref type="person" data="Emily_DUBS"/>
+      <file type="template">application/vnd.dvb.dvbisl+xml</file>
     </record>
     <record>
       <name>vnd.dvb.dvbj</name>
@@ -3216,12 +3425,12 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2016-08-12">
       <name>vnd.espass-espass+zip</name>
-      <xref type="person" data="Marcus_Ligi_Büschleb"/>
+      <xref type="person" data="Marcus_Ligi_BÃ¼schleb"/>
       <file type="template">application/vnd.espass-espass+zip</file>
     </record>
     <record>
       <name>vnd.eszigno3+xml</name>
-      <xref type="person" data="Szilveszter_Tóth"/>
+      <xref type="person" data="Szilveszter_TÃ³th"/>
       <file type="template">application/vnd.eszigno3+xml</file>
     </record>
     <record>
@@ -3446,13 +3655,15 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Mike_Wexler"/>
       <file type="template">application/vnd.framemaker</file>
     </record>
-    <record>
-      <name>vnd.frogans.fnc</name>
+    <record updated="2020-05-04">
+      <name>vnd.frogans.fnc - OBSOLETE</name>
+      <xref type="person" data="OP3FT"/>
       <xref type="person" data="Alexis_Tamas"/>
       <file type="template">application/vnd.frogans.fnc</file>
     </record>
-    <record>
-      <name>vnd.frogans.ltf</name>
+    <record updated="2020-05-04">
+      <name>vnd.frogans.ltf - OBSOLETE</name>
+      <xref type="person" data="OP3FT"/>
       <xref type="person" data="Alexis_Tamas"/>
       <file type="template">application/vnd.frogans.ltf</file>
     </record>
@@ -3501,9 +3712,9 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Masanori_Onda"/>
       <file type="template">application/vnd.fujixerox.ddd</file>
     </record>
-    <record>
+    <record updated="2019-12-03">
       <name>vnd.fujixerox.docuworks</name>
-      <xref type="person" data="Yasuo_Taguchi"/>
+      <xref type="person" data="Takatomo_Wakibayashi"/>
       <file type="template">application/vnd.fujixerox.docuworks</file>
     </record>
     <record>
@@ -3546,6 +3757,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Torben_Frey"/>
       <file type="template">application/vnd.genomatix.tuxedo</file>
     </record>
+    <record date="2019-11-26">
+      <name>vnd.gentics.grd+json</name>
+      <xref type="person" data="Philipp_Gortan"/>
+      <file type="template">application/vnd.gentics.grd+json</file>
+    </record>
     <record date="2014-05-20">
       <name>vnd.geo+json (OBSOLETED by <xref type="rfc" data="rfc7946"/> in favor of application/geo+json)</name>
       <xref type="person" data="Sean_Gillies"/>
@@ -3561,6 +3777,13 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="GeoGebra"/>
       <xref type="person" data="Yves_Kreis"/>
       <file type="template">application/vnd.geogebra.file</file>
+    </record>
+    <record date="2020-10-19">
+      <name>vnd.geogebra.slides</name>
+      <xref type="person" data="GeoGebra"/>
+      <xref type="person" data="Michael_Borcherds"/>
+      <xref type="person" data="Markus_Hohenwarter"/>
+      <file type="template">application/vnd.geogebra.slides</file>
     </record>
     <record>
       <name>vnd.geogebra.tool</name>
@@ -3703,7 +3926,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2017-01-09">
       <name>vnd.hc+json</name>
-      <xref type="person" data="Jan_Schütze"/>
+      <xref type="person" data="Jan_SchÃ¼tze"/>
       <file type="template">application/vnd.hc+json</file>
     </record>
     <record>
@@ -3713,7 +3936,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
     </record>
     <record date="2016-01-07">
       <name>vnd.hdt</name>
-      <xref type="person" data="Javier_D._Fernández"/>
+      <xref type="person" data="Javier_D._FernÃ¡ndez"/>
       <file type="template">application/vnd.hdt</file>
     </record>
     <record>
@@ -3780,7 +4003,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>vnd.hyperdrive+json</name>
       <xref type="person" data="Daniel_Sims"/>
       <file type="template">application/vnd.hyperdrive+json</file>
-    </record>
+    </record> 
     <record>
       <name>vnd.hzn-3d-crossword</name>
       <xref type="person" data="James_Minnis"/>
@@ -4980,6 +5203,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Michael_Koster"/>
       <file type="template">application/vnd.ocf+cbor</file>
     </record>
+    <record date="2020-04-04" updated="2020-04-09">
+      <name>vnd.oci.image.manifest.v1+json</name>
+      <xref type="person" data="Steven_Lasker"/>
+      <file type="template">application/vnd.oci.image.manifest.v1+json</file>
+    </record>
     <record>
       <name>vnd.oftn.l10n+json</name>
       <xref type="person" data="Eli_Grey"/>
@@ -5183,16 +5411,22 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="OMA_Presence_and_Availability_PAG_Working_Group"/>
       <file type="template">application/vnd.oma.group-usage-list+xml</file>
     </record>
+    <record date="2020-08-03">
+      <name>vnd.oma.lwm2m+cbor</name>
+      <xref type="person" data="Open_Mobile_Naming_Authority"/>
+      <xref type="person" data="John_Mudge"/>
+      <file type="template">application/vnd.oma.lwm2m+cbor</file>
+    </record>
     <record>
       <name>vnd.oma.lwm2m+json</name>
-      <xref type="person" data="John_Mudge"/>
       <xref type="person" data="Open_Mobile_Naming_Authority"/>
+      <xref type="person" data="John_Mudge"/>
       <file type="template">application/vnd.oma.lwm2m+json</file>
     </record>
     <record date="2016-06-20">
       <name>vnd.oma.lwm2m+tlv</name>
-      <xref type="person" data="John_Mudge"/>
       <xref type="person" data="Open_Mobile_Naming_Authority"/>
+      <xref type="person" data="John_Mudge"/>
       <file type="template">application/vnd.oma.lwm2m+tlv</file>
     </record>
     <record>
@@ -6056,6 +6290,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Heikki_Vesalainen"/>
       <file type="template">application/vnd.sailingtracker.track</file>
     </record>
+    <record date="2020-01-31">
+      <name>vnd.sar</name>
+      <xref type="person" data="Markus_Strehle"/>
+      <file type="template">application/vnd.sar</file>
+    </record>
     <record>
       <name>vnd.sbm.cid</name>
       <xref type="person" data="Shinji_Kusakari"/>
@@ -6132,6 +6371,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Steve_Webb"/>
       <file type="template">application/vnd.seemail</file>
     </record>
+    <record date="2020-09-30">
+      <name>vnd.seis+json</name>
+      <xref type="person" data="ICT_Manager"/>
+      <file type="template">application/vnd.seis+json</file>
+    </record>
     <record>
       <name>vnd.sema</name>
       <xref type="person" data="Anders_Hansson"/>
@@ -6182,6 +6426,16 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Ronald_Jacobs"/>
       <file type="template">application/vnd.shopkick+json</file>
     </record>
+    <record date="2020-03-17">
+      <name>vnd.shp</name>
+      <xref type="person" data="Mi_Tar"/>
+      <file type="template">application/vnd.shp</file>
+    </record>
+    <record date="2020-03-17">
+      <name>vnd.shx</name>
+      <xref type="person" data="Mi_Tar"/>
+      <file type="template">application/vnd.shx</file>
+    </record>
     <record date="2017-06-06">
       <name>vnd.sigrok.session</name>
       <xref type="person" data="Uwe_Hermann"/>
@@ -6211,6 +6465,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>vnd.smart.teacher</name>
       <xref type="person" data="Michael_Boyle"/>
       <file type="template">application/vnd.smart.teacher</file>
+    </record>
+    <record date="2020-04-06">
+      <name>vnd.snesdev-page-table</name>
+      <xref type="person" data="Connor_Horman"/>
+      <file type="template">application/vnd.snesdev-page-table</file>
     </record>
     <record>
       <name>vnd.software602.filler.form+xml</name>
@@ -6293,6 +6552,11 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>vnd.swiftview-ics</name>
       <xref type="person" data="Glenn_Widener"/>
       <file type="template">application/vnd.swiftview-ics</file>
+    </record>
+    <record date="2020-09-02">
+      <name>vnd.sycle+xml</name>
+      <xref type="person" data="Johann_Terblanche"/>
+      <file type="template">application/vnd.sycle+xml</file>
     </record>
     <record>
       <name>vnd.syncml.dm.notification</name>
@@ -6598,6 +6862,12 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Yaser_Rehem"/>
       <file type="template">application/vnd.webturbo</file>
     </record>
+    <record date="2020-10-19">
+      <name>vnd.wfa.dpp</name>
+      <xref type="person" data="Wi-Fi_Alliance"/>
+      <xref type="person" data="Dr._Jun_Tian"/>
+      <file type="template">application/vnd.wfa.dpp</file>
+    </record>
     <record>
       <name>vnd.wfa.p2p</name>
       <xref type="person" data="Mick_Conley"/>
@@ -6861,10 +7131,30 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="W3C"/>
       <file type="template">application/wspolicy+xml</file>
     </record>
-    <record date="2014-05-14">
+    <record date="2020-03-25">
+      <name>x-pki-message</name>
+      <xref type="rfc" data="rfc8894"/>
+      <file type="template">application/x-pki-message</file>
+    </record>
+    <record updated="2020-07-14">
       <name>x-www-form-urlencoded</name>
-      <xref type="person" data="W3C"/><xref type="person" data="Robin_Berjon"/>
+      <xref type="person" data="WHATWG"/><xref type="person" data="Anne_van_Kesteren"/>
       <file type="template">application/x-www-form-urlencoded</file>
+    </record>
+    <record date="2020-03-25">
+      <name>x-x509-ca-cert</name>
+      <xref type="rfc" data="rfc8894"/>
+      <file type="template">application/x-x509-ca-cert</file>
+    </record>
+    <record date="2020-03-25">
+      <name>x-x509-ca-ra-cert</name>
+      <xref type="rfc" data="rfc8894"/>
+      <file type="template">application/x-x509-ca-ra-cert</file>
+    </record>
+    <record date="2020-03-25">
+      <name>x-x509-next-ca-cert</name>
+      <xref type="rfc" data="rfc8894"/>
+      <file type="template">application/x-x509-next-ca-cert</file>
     </record>
     <record>
       <name>x400-bp</name>
@@ -6968,6 +7258,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>xslt+xml</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2007/REC-xslt20-20070123/#media-type-registration"/>
+      <file type="template">application/xslt+xml</file>
     </record>
     <record>
       <name>xv+xml</name>
@@ -7014,14 +7305,14 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc6713"/>
       <file type="template">application/zlib</file>
     </record>
-    <record date="2018-07-16">
+    <record date="2018-07-16" updated="2020-05-19">
       <name>zstd</name>
-      <xref type="rfc" data="rfc8478"/>
+      <xref type="draft" data="RFC-kucherawy-rfc8478bis-05"/>
       <file type="template">application/zstd</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="audio">
     <title>audio</title>
     <hide/>
@@ -7281,7 +7572,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>G722</name>
       <xref type="rfc" data="rfc4856"/>
       <file type="template">audio/G722</file>
-    </record>
+    </record>   
     <record>
       <name>G723</name>
       <xref type="rfc" data="rfc4856"/>
@@ -7321,6 +7612,7 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <name>G7291</name>
       <xref type="rfc" data="rfc4749"/>
       <xref type="rfc" data="rfc5459"/>
+      <file type="template">audio/G7291</file>
     </record>
     <record>
       <name>G729D</name>
@@ -7402,6 +7694,13 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc8130"/>
       <file type="template">audio/MELP2400</file>
     </record>
+    <record date="2020-04-04">
+      <name>mhas</name>
+      <xref type="person" data="ISO-IEC_JTC1"/>
+      <xref type="person" data="Nils_Peters"/>
+      <xref type="person" data="Ingo_Hofmann"/>
+      <file type="template">audio/mhas</file>
+    </record>
     <record>
       <name>mobile-xmf</name>
       <xref type="rfc" data="rfc4723"/>
@@ -7451,9 +7750,10 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="rfc" data="rfc7587"/>
       <file type="template">audio/opus</file>
     </record>
-    <record>
+    <record updated="2020-10-12">
       <name>parityfec</name>
-      <xref type="rfc" data="rfc5109"/>
+      <xref type="rfc" data="rfc3009"/>
+      <file type="template">audio/parityfec</file>
     </record>
     <record>
       <name>PCMA</name>
@@ -7531,6 +7831,12 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">audio/SMV-QCP</file>
     </record>
     <record>
+      <name>sofa</name>
+      <xref type="person" data="AES"/>
+      <xref type="person" data="Piotr_Majdak"/>
+      <file type="template">audio/sofa</file>
+    </record>
+    <record>
       <name>sp-midi</name>
       <xref type="person" data="Timo_Kosonen"/>
       <xref type="person" data="Tom_White"/>
@@ -7562,10 +7868,21 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <xref type="person" data="Miguel_Angel_Reina_Ortega"/>
       <file type="template">audio/TETRA_ACELP</file>
     </record>
+    <record date="2020-01-10">
+      <name>TETRA_ACELP_BB</name>
+      <xref type="person" data="ETSI"/>
+      <xref type="person" data="Miguel_Angel_Reina_Ortega"/>
+      <file type="template">audio/TETRA_ACELP_BB</file>
+    </record>
     <record>
       <name>tone</name>
       <xref type="rfc" data="rfc4733"/>
       <file type="template">audio/tone</file>
+    </record>
+    <record date="2020-06-19">
+      <name>TSVCIS</name>
+      <xref type="rfc" data="rfc8817"/>
+      <file type="template">audio/TSVCIS</file>
     </record>
     <record>
       <name>UEMCLIP</name>
@@ -7805,8 +8122,8 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">audio/vorbis-config</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="font">
     <title>font</title>
     <hide/>
@@ -7841,8 +8158,8 @@ Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters
       <file type="template">font/woff2</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="examples">
     <title>example</title>
     <hide/>
@@ -7852,14 +8169,14 @@ IANA. For more information see<xref type="rfc" data="rfc4735"/>.
 
 Note: The occurrence of an 'example' media type as a media type outside
 of examples, e.g. in a Content-Type header, is an error and should be
-reported to the implementor.<xref type="rfc" data="rfc2045"/><xref type="rfc" data="rfc2046"/>
-specifies that Content Types, Content Subtypes, Character Sets, Access
-Types, and conversion values for MIME mail will be assigned and listed
+reported to the implementor.<xref type="rfc" data="rfc2045"/><xref type="rfc" data="rfc2046"/> 
+specifies that Content Types, Content Subtypes, Character Sets, Access 
+Types, and conversion values for MIME mail will be assigned and listed 
 by the IANA.</note>
     <note>Other MIME Media Type Parameters: <xref type="registry" data="media-types-parameters"/></note>
   </registry>
-
-
+  
+  
   <registry id="image">
     <title>image</title>
     <hide/>
@@ -8042,7 +8359,13 @@ by the IANA.</note>
       <name>ktx</name>
       <xref type="person" data="Khronos"/>
       <xref type="person" data="Mark_Callow"/>
-      <xref type="uri" data="http://www.khronos.org/opengles/sdk/tools/KTX/file_format_spec/#mimeregistration"/>
+      <file type="template">image/ktx</file>
+    </record>
+    <record date="2020-08-11">
+      <name>ktx2</name>
+      <xref type="person" data="Khronos"/>
+      <xref type="person" data="Mark_Callow"/>
+      <file type="template">image/ktx2</file>
     </record>
     <record>
       <name>naplps</name>
@@ -8073,6 +8396,7 @@ by the IANA.</note>
       <name>svg+xml</name>
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/SVG/mimereg.html"/>
+      <file type="template">image/svg+xml</file>
     </record>
     <record>
       <name>t38</name>
@@ -8185,6 +8509,12 @@ by the IANA.</note>
       <xref type="person" data="Marc_Douglas_Spencer"/>
       <file type="template">image/vnd.net-fpx</file>
     </record>
+    <record date="2020-09-17">
+      <name>vnd.pco.b16</name>
+      <xref type="person" data="PCO_AG"/>
+      <xref type="person" data="Jan_Zeman"/>
+      <file type="template">image/vnd.pco.b16</file>
+    </record>
     <record>
       <name>vnd.radiance</name>
       <xref type="person" data="Randolph_Fritz"/>
@@ -8252,8 +8582,8 @@ by the IANA.</note>
       <file type="template">image/wmf</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="message">
     <title>message</title>
     <hide/>
@@ -8364,8 +8694,8 @@ by the IANA.</note>
       <file type="template">message/vnd.wfa.wsc</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="model">
     <title>model</title>
     <hide/>
@@ -8375,6 +8705,11 @@ by the IANA.</note>
       <xref type="person" data="_3MF"/>
       <xref type="person" data="Michael_Sweet"/>
       <file type="template">model/3mf</file>
+    </record>
+    <record date="2020-07-20">
+      <name>e57</name>
+      <xref type="person" data="ASTM"/>
+      <file type="template">model/e57</file>
     </record>
     <record>
       <name>example</name>
@@ -8401,6 +8736,18 @@ by the IANA.</note>
     <record>
       <name>mesh</name>
       <xref type="rfc" data="rfc2077"/>
+    </record>
+    <record date="2020-02-13">
+      <name>mtl</name>
+      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="Luiza_Kowalczyk"/>
+      <file type="template">model/mtl</file>
+    </record>
+    <record date="2020-02-13">
+      <name>obj</name>
+      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="Luiza_Kowalczyk"/>
+      <file type="template">model/obj</file>
     </record>
     <record date="2018-03-06">
       <name>stl</name>
@@ -8505,8 +8852,8 @@ by the IANA.</note>
       <file type="template">model/x3d+xml</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="multipart">
     <title>multipart</title>
     <hide/>
@@ -8528,7 +8875,7 @@ by the IANA.</note>
     <record>
       <name>digest</name>
       <xref type="rfc" data="rfc2046"/>
-      <xref type="rfc" data="rfc2045"/>
+      <xref type="rfc" data="rfc2045"/>  
     </record>
     <record>
       <name>encrypted</name>
@@ -8582,7 +8929,7 @@ by the IANA.</note>
     </record>
     <record date="2017-04-07">
       <name>vnd.bint.med-plus</name>
-      <xref type="person" data="Heinz-Peter_Schütz"/>
+      <xref type="person" data="Heinz-Peter_SchÃ¼tz"/>
       <file type="template">multipart/vnd.bint.med-plus</file>
     </record>
     <record updated="2016-08-10">
@@ -8596,8 +8943,8 @@ by the IANA.</note>
       <file type="template">multipart/x-mixed-replace</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="text">
     <title>text</title>
     <hide/>
@@ -8616,6 +8963,24 @@ by the IANA.</note>
       <name>calendar</name>
       <xref type="rfc" data="rfc5545"/>
       <file type="template">text/calendar</file>
+    </record>
+    <record date="2020-12-08">
+      <name>cql</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">text/cql</file>
+    </record>
+    <record date="2020-12-08">
+      <name>cql-expression</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">text/cql-expression</file>
+    </record>
+    <record date="2020-12-08">
+      <name>cql-identifier</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">text/cql-identifier</file>
     </record>
     <record>
       <name>css</name>
@@ -8664,6 +9029,12 @@ by the IANA.</note>
       <xref type="rfc" data="rfc4735"/>
       <file type="template">text/example</file>
     </record>
+    <record date="2020-12-08">
+      <name>fhirpath</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Bryn_Rhodes"/>
+      <file type="template">text/fhirpath</file>
+    </record>
     <record date="2019-05-23">
       <name>flexfec</name>
       <xref type="rfc" data="rfc8627"/>
@@ -8673,6 +9044,11 @@ by the IANA.</note>
       <name>fwdred</name>
       <xref type="rfc" data="rfc6354"/>
       <file type="template">text/fwdred</file>
+    </record>
+    <record date="2020-08-17">
+      <name>gff3</name>
+      <xref type="person" data="Sequence_Ontology"/>
+      <file type="template">text/gff3</file>
     </record>
     <record>
       <name>grammar-ref-list</name>
@@ -8716,9 +9092,10 @@ by the IANA.</note>
       <xref type="rfc" data="rfc7826"/>
       <file type="template">text/parameters</file>
     </record>
-    <record>
+    <record updated="2020-10-12">
       <name>parityfec</name>
-      <xref type="rfc" data="rfc5109"/>
+      <xref type="rfc" data="rfc3009"/>
+      <file type="template">text/parityfec</file>
     </record>
     <record>
       <name>plain</name>
@@ -8788,9 +9165,21 @@ by the IANA.</note>
       <file type="template">text/rtx</file>
     </record>
     <record>
-      <name>sgml</name>
+      <name>SGML</name>
       <xref type="rfc" data="rfc1874"/>
-      <file type="template">text/sgml</file>
+      <file type="template">text/SGML</file>
+    </record>
+    <record date="2020-06-30">
+      <name>shaclc</name>
+      <xref type="person" data="W3C_SHACL_Community_Group"/>
+      <xref type="person" data="Vladimir_Alexiev"/>
+      <file type="template">text/shaclc</file>
+    </record>
+    <record date="2020-05-04">
+      <name>spdx</name>
+      <xref type="person" data="Linux_Foundation"/>
+      <xref type="person" data="Rose_Judge"/>
+      <file type="template">text/spdx</file>
     </record>
     <record date="2017-05-01">
       <name>strings</name>
@@ -8899,6 +9288,11 @@ by the IANA.</note>
       <xref type="person" data="John_Ellson"/>
       <file type="template">text/vnd.graphviz</file>
     </record>
+    <record date="2020-09-15">
+      <name>vnd.hans</name>
+      <xref type="person" data="Hill_Hanxv"/>
+      <file type="template">text/vnd.hans</file>
+    </record>
     <record date="2018-07-03">
       <name>vnd.hgl</name>
       <xref type="person" data="Heungsub_Lee"/>
@@ -8994,6 +9388,12 @@ by the IANA.</note>
       <xref type="person" data="Peter_Stark"/>
       <file type="template">text/vnd.wap.wmlscript</file>
     </record>
+    <record date="2019-10-14">
+      <name>vtt</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Silvia_Pfeiffer"/>
+      <file type="template">text/vtt</file>
+    </record>
     <record>
       <name>xml</name>
       <xref type="rfc" data="rfc7303"/>
@@ -9005,8 +9405,8 @@ by the IANA.</note>
       <file type="template">text/xml-external-parsed-entity</file>
     </record>
   </registry>
-
-
+  
+  
   <registry id="video">
     <title>video</title>
     <hide/>
@@ -9181,9 +9581,10 @@ by the IANA.</note>
       <xref type="rfc" data="rfc7845"/>
       <file type="template">video/ogg</file>
     </record>
-    <record>
+    <record updated="2020-10-12">
       <name>parityfec</name>
-      <xref type="rfc" data="rfc5109"/>
+      <xref type="rfc" data="rfc3009"/>
+      <file type="template">video/parityfec</file>
     </record>
     <record>
       <name>pointer</name>
@@ -9204,6 +9605,7 @@ by the IANA.</note>
     <record>
       <name>raw</name>
       <xref type="rfc" data="rfc4175"/>
+      <file type="template">video/raw</file>
     </record>
     <record>
       <name>rtp-enc-aescm128</name>
@@ -9452,10 +9854,19 @@ by the IANA.</note>
       <uri>mailto:gadams&amp;waynesworld.ucsd.edu</uri>
       <updated>1997-03-19</updated>
     </person>
+    <person id="AES">
+      <name>Audio Engineering Society (AES)</name>
+      <uri>http://www.aes.org</uri>
+    </person>
     <person id="Jesse_Alama">
       <name>Jesse Alama</name>
       <uri>mailto:j.alama&amp;fct.unl.pt</uri>
       <updated>2006-09-13</updated>
+    </person>
+    <person id="Vladimir_Alexiev">
+      <name>Vladimir Alexiev</name>
+      <uri>mailto:vladimir.alexiev&amp;ontotext.com</uri>
+      <updated>2020-06-30</updated>
     </person>
     <person id="Steve_Allen">
       <name>Steve Allen</name>
@@ -9537,23 +9948,28 @@ by the IANA.</note>
       <uri>mailto:ashrae&amp;ashrae.org</uri>
       <updated>2014-01-29</updated>
     </person>
+    <person id="ASTM">
+      <name>ASTM International</name>
+      <uri>https://www.astm.org</uri>
+      <updated>2020-07-20</updated>
+    </person>
     <person id="Peter_Astrand">
-      <name>Peter Åstrand</name>
+      <name>Peter Ãstrand</name>
       <uri>mailto:astrand&amp;cendio.se</uri>
       <updated>2007-06-12</updated>
     </person>
     <person id="ATSC">
       <name>Advanced Television Systems Committee</name>
       <uri>mailto:jwhitaker&amp;atsc.org</uri>
-      <updated>2019-03-07</updated>
+      <updated>2020-03-18</updated>
     </person>
     <person id="Steve_Aubrey">
       <name>Steve Aubrey</name>
       <uri>mailto:steve_aubrey&amp;hp.com</uri>
       <updated>1998-07-19</updated>
     </person>
-    <person id="Yüksel_Aydemir">
-      <name>Yüksel Aydemir</name>
+    <person id="YÃ¼ksel_Aydemir">
+      <name>YÃ¼ksel Aydemir</name>
       <uri>mailto:yay&amp;capasystems.com</uri>
       <updated>2017-05-03</updated>
     </person>
@@ -9692,15 +10108,15 @@ by the IANA.</note>
       <uri>mailto:Malte.Borcherding&amp;brokat.com</uri>
       <updated>2000-08-20</updated>
     </person>
+    <person id="Michael_Borcherds">
+      <name>Michael Borcherds</name>
+      <uri>mailto:office&amp;geogebra.org</uri>
+      <updated>2020-10-19</updated>
+    </person>
     <person id="Nathaniel_Borenstein">
       <name>Nathaniel Borenstein</name>
       <uri>mailto:NSB&amp;bellcore.com</uri>
       <updated>1994-04-19</updated>
-    </person>
-    <person id="Howard_Lukk">
-      <name>Howard Lukk</name>
-      <uri>mailto:hlukk&amp;smpte.org</uri>
-      <updated>2017-12-11</updated>
     </person>
     <person id="Jan_Bostrom">
       <name>Jan Bostrom</name>
@@ -9733,7 +10149,7 @@ by the IANA.</note>
       <updated>2010-01-13</updated>
     </person>
     <person id="Guenther_Brammer">
-      <name>Günther Brammer</name>
+      <name>GÃ¼nther Brammer</name>
       <uri>mailto:gbrammer&amp;gmx.de</uri>
       <updated>2007-06-12</updated>
     </person>
@@ -9751,6 +10167,11 @@ by the IANA.</note>
       <name>Ryan Brinkman</name>
       <uri>mailto:rbrinkman&amp;bccrc.ca</uri>
       <updated>2010-03-26</updated>
+    </person>
+    <person id="Broadband_Forum">
+      <name>Broadband Forum</name>
+      <uri>mailto:help&amp;broadband-forum.org</uri>
+      <updated>2019-12-13</updated>
     </person>
     <person id="Tim_Brody">
       <name>Tim Brody</name>
@@ -9802,8 +10223,8 @@ by the IANA.</note>
       <uri>mailto:andrewburt&amp;cricksoft.com</uri>
       <updated>2006-03-20</updated>
     </person>
-    <person id="Marcus_Ligi_Büschleb">
-      <name>Marcus Ligi Büschleb</name>
+    <person id="Marcus_Ligi_BÃ¼schleb">
+      <name>Marcus Ligi BÃ¼schleb</name>
       <uri>mailto:marcus.bueschleb&amp;googlemail.com</uri>
       <updated>2016-08-12</updated>
     </person>
@@ -9824,8 +10245,8 @@ by the IANA.</note>
     </person>
     <person id="Mark_Callow">
       <name>Mark Callow</name>
-      <uri>mailto:callow_mark&amp;hicorp.co.jp</uri>
-      <updated>2010-09-27</updated>
+      <uri>mailto:khronos&amp;callow.im</uri>
+      <updated>2020-08-11</updated>
     </person>
     <person id="Larry_Campbell">
       <name>Larry Campbell</name>
@@ -9963,8 +10384,8 @@ by the IANA.</note>
       <uri>mailto:biznis&amp;regadou.net</uri>
       <updated>2014-02-07</updated>
     </person>
-    <person id="José_Del_Romano">
-      <name>José Del Romano</name>
+    <person id="JosÃ©_Del_Romano">
+      <name>JosÃ© Del Romano</name>
       <uri>mailto:development&amp;banana.ch</uri>
       <updated>2018-06-18</updated>
     </person>
@@ -9991,7 +10412,7 @@ by the IANA.</note>
     <person id="DICOM_Standards_Committee">
       <name>DICOM Standards Committee</name>
       <uri>mailto:dicom&amp;medicalimaging.org</uri>
-      <updated>2018-03-06</updated>
+      <updated>2020-02-13</updated>
     </person>
     <person id="Dirk_DiGiorgio-Haag">
       <name>Dirk DiGiorgio-Haag</name>
@@ -10042,6 +10463,11 @@ by the IANA.</note>
       <name>Alex Dubov</name>
       <uri>mailto:adubov&amp;ea.com</uri>
       <updated>2015-09-01</updated>
+    </person>
+    <person id="Emily_DUBS">
+      <name>Emily DUBS</name>
+      <uri>mailto:dubs&amp;dvb.org</uri>
+      <updated>2020-02-07</updated>
     </person>
     <person id="Dan_DuFeu">
       <name>Dan DuFeu</name>
@@ -10121,7 +10547,7 @@ by the IANA.</note>
     <person id="Chet_Ensign">
       <name>Chet Ensign</name>
       <uri>mailto:chet.ensign&amp;oasis-open.org</uri>
-      <updated>2018-07-11</updated>
+      <updated>2020-04-23</updated>
     </person>
     <person id="Per_Ersson">
       <name>Per Ersson</name>
@@ -10137,7 +10563,7 @@ by the IANA.</note>
       <updated>2016-05-19</updated>
     </person>
     <person id="Joerg_Falkenberg">
-      <name>Jörg Falkenberg</name>
+      <name>JÃ¶rg Falkenberg</name>
       <uri>mailto:j.falkenberg&amp;cabgmbh.com</uri>
       <updated>2007-01-18</updated>
     </person>
@@ -10149,6 +10575,11 @@ by the IANA.</note>
     <person id="Patrik_Faltstrom">
       <name>Patrik Faltstrom</name>
       <uri>mailto:paf&amp;nada.kth.se</uri>
+    </person>
+    <person id="Michael_C._Fanning">
+      <name>Michael C. Fanning</name>
+      <uri>mailto:mikefan&amp;microsoft.com</uri>
+      <updated>2020-09-15</updated>
     </person>
     <person id="Dirk_Farin">
       <name>Dirk Farin</name>
@@ -10175,8 +10606,8 @@ by the IANA.</note>
       <uri>mailto:Lyndsey&amp;nemetschek.net</uri>
       <updated>2008-10-16</updated>
     </person>
-    <person id="Javier_D._Fernández">
-      <name>Javier D. Fernández</name>
+    <person id="Javier_D._FernÃ¡ndez">
+      <name>Javier D. FernÃ¡ndez</name>
       <uri>mailto:javier.fernandez&amp;wu.ac.at</uri>
       <updated>2016-01-07</updated>
     </person>
@@ -10193,12 +10624,17 @@ by the IANA.</note>
     <person id="Frederic_Firmin">
       <name>Frederic Firmin</name>
       <uri>mailto:Frederic.Firmin&amp;etsi.org</uri>
-      <updated>2019-08-14</updated>
+      <updated>2020-10-05</updated>
     </person>
     <person id="Tim_Fisher">
       <name>Tim Fisher</name>
       <uri>mailto:tim.fisher&amp;indiepath.com</uri>
       <updated>2006-07-25</updated>
+    </person>
+    <person id="FIX_Trading_Community">
+      <name>FIX Trading Community</name>
+      <uri>mailto:fix&amp;fixtrading.org</uri>
+      <updated>2020-04-14</updated>
     </person>
     <person id="Eric_Fleischman">
       <name>Eric Fleischman</name>
@@ -10215,8 +10651,8 @@ by the IANA.</note>
       <uri>mailto:henryf&amp;mediastation.com</uri>
       <updated>1999-04-19</updated>
     </person>
-    <person id="Adrian_Föder">
-      <name>Adrian Föder</name>
+    <person id="Adrian_FÃ¶der">
+      <name>Adrian FÃ¶der</name>
       <uri>mailto:adrian.foeder&amp;netformic.de</uri>
       <updated>2017-02-07</updated>
     </person>
@@ -10250,8 +10686,8 @@ by the IANA.</note>
       <uri>mailto:frey&amp;genomatix.de</uri>
       <updated>2003-10-20</updated>
     </person>
-    <person id="Fränz_Friederes">
-      <name>Fränz Friederes</name>
+    <person id="FrÃ¤nz_Friederes">
+      <name>FrÃ¤nz Friederes</name>
       <uri>mailto:fraenz&amp;frieder.es</uri>
       <updated>2019-07-25</updated>
     </person>
@@ -10308,7 +10744,7 @@ by the IANA.</note>
     <person id="GeoGebra">
       <name>GeoGebra</name>
       <uri>mailto:office&amp;geogebra.org</uri>
-      <updated>2009-03-13</updated>
+      <updated>2020-10-19</updated>
     </person>
     <person id="Arne_Gerdes">
       <name>Arne Gerdes</name>
@@ -10345,6 +10781,11 @@ by the IANA.</note>
       <uri>mailto:ben&amp;bengo.co</uri>
       <updated>2018-03-06</updated>
     </person>
+    <person id="Laurence_J._Golding">
+      <name>Laurence J. Golding</name>
+      <uri>mailto:v-lgold&amp;microsoft.com</uri>
+      <updated>2020-09-15</updated>
+    </person>
     <person id="Google">
       <name>Google LLC</name>
       <uri>mailto:ytb-external&amp;google.com</uri>
@@ -10354,6 +10795,11 @@ by the IANA.</note>
       <name>Mikhail Gorshenev</name>
       <uri>mailto:Mikhail.Gorshenev&amp;sun.com</uri>
       <updated>2007-06-25</updated>
+    </person>
+    <person id="Philipp_Gortan">
+      <name>Philipp Gortan</name>
+      <uri>mailto:P.Gortan&amp;gentics.com</uri>
+      <updated>2019-11-26</updated>
     </person>
     <person id="Tadashi_Gotoh">
       <name>Tadashi Gotoh</name>
@@ -10475,6 +10921,11 @@ by the IANA.</note>
       <uri>mailto:anders.hansson&amp;securedemail.com</uri>
       <updated>2006-09-13</updated>
     </person>
+    <person id="Hill_Hanxv">
+      <name>Hill Hanxv</name>
+      <uri>mailto:i&amp;hanxv.com</uri>
+      <updated>2020-09-15</updated>
+    </person>
     <person id="Lee_Harding">
       <name>Lee Harding</name>
       <uri>mailto:lee.harding&amp;circuitpeople.com</uri>
@@ -10533,7 +10984,7 @@ by the IANA.</note>
     <person id="Ivan_Herman">
       <name>Ivan Herman</name>
       <uri>mailto:ivan&amp;w3.org</uri>
-      <updated>2017-06-27</updated>
+      <updated>2020-03-18</updated>
     </person>
     <person id="Uwe_Hermann">
       <name>Uwe Hermann</name>
@@ -10589,10 +11040,20 @@ by the IANA.</note>
       <uri>mailto:pete.hoch&amp;efi.com</uri>
       <updated>2005-11-20</updated>
     </person>
+    <person id="Ingo_Hofmann">
+      <name>Ingo Hofmann</name>
+      <uri>mailto:ingo.hofmann&amp;iis.fraunhofer.de</uri>
+      <updated>2020-04-04</updated>
+    </person>
     <person id="Reinhard_Hohensee">
       <name>Reinhard Hohensee</name>
       <uri>mailto:rhohensee&amp;VNET.IBM.COM</uri>
       <updated>1997-09-19</updated>
+    </person>
+    <person id="Markus_Hohenwarter">
+      <name>Markus Hohenwarter</name>
+      <uri>mailto:markus&amp;geogebra.org</uri>
+      <updated>2020-10-19</updated>
     </person>
     <person id="Thomas_Holmstrom">
       <name>Thomas Holmstrom</name>
@@ -10607,8 +11068,8 @@ by the IANA.</note>
     <person id="Connor_Horman">
       <name>Connor Horman</name>
       <uri>mailto:chorman64&amp;gmail.com</uri>
-      <updated>2019-08-13</updated>
-    </person>
+      <updated>2020-04-06</updated>
+    </person>   
     <person id="Shoji_Hoshina">
       <name>Shoji Hoshina</name>
       <uri>mailto:Hoshina.Shoji&amp;exc.epson.co.jp</uri>
@@ -10658,10 +11119,19 @@ by the IANA.</note>
       <uri>mailto:hytka&amp;602.cz</uri>
       <updated>2008-08-06</updated>
     </person>
+    <person id="ICT_Manager">
+      <name>ICT Manager</name>
+      <uri>mailto:hostmaster&amp;aaltronav.eu</uri>
+      <updated>2020-09-30</updated>
+    </person>
     <person id="IETF">
       <name>IETF</name>
       <uri>mailto:ietf&amp;ietf.org</uri>
-      <updated>2015-08-21</updated>
+    </person>
+    <person id="IMS_Global">
+      <name>IMS Global Learning Consortium Inc.</name>
+      <uri>https://www.imsglobal.org</uri>
+      <updated>2020-10-02</updated>
     </person>
     <person id="IPTC">
       <name>International Press Telecommunications Council (David Allen)</name>
@@ -10770,6 +11240,11 @@ by the IANA.</note>
       <uri>mailto:todd_joseph&amp;groove.net</uri>
       <updated>2002-10-20</updated>
     </person>
+    <person id="Rose_Judge">
+      <name>Rose Judge</name>
+      <uri>mailto:rjudge&amp;vmware.com</uri>
+      <updated>2020-05-04</updated>
+    </person>
     <person id="Steve_Judkins">
       <name>Steve Judkins</name>
       <uri>mailto:stevenj007&amp;hotmail.com</uri>
@@ -10855,7 +11330,7 @@ by the IANA.</note>
       <updated>2012-03-27</updated>
     </person>
     <person id="Thomas_Kjornes">
-      <name>Thomas Kjørnes</name>
+      <name>Thomas KjÃ¸rnes</name>
       <uri>mailto:thomas&amp;ipv.no</uri>
       <updated>2007-10-11</updated>
     </person>
@@ -10908,6 +11383,16 @@ by the IANA.</note>
       <name>Michael Koster</name>
       <uri>mailto:michael.koster&amp;smartthings.com</uri>
       <updated>2017-03-03</updated>
+    </person>
+    <person id="Matthias_Kovatsch">
+      <name>Matthias Kovatsch</name>
+      <uri>mailto:w3c&amp;kovatsch.net</uri>
+      <updated>2020-02-12</updated>
+    </person>
+    <person id="Luiza_Kowalczyk">
+      <name>Luiza Kowalczyk</name>
+      <uri>mailto:LKowalczyk&amp;dicomstandard.org</uri>
+      <updated>2020-02-13</updated>
     </person>
     <person id="Yves_Kreis">
       <name>Yves Kreis</name>
@@ -10989,6 +11474,11 @@ by the IANA.</note>
       <uri>mailto:laramiem&amp;btv.ibm.com</uri>
       <updated>1999-02-19</updated>
     </person>
+    <person id="Steven_Lasker">
+      <name>Steven Lasker</name>
+      <uri>mailto:StevenLasker&amp;hotmail.com</uri>
+      <updated>2020-04-09</updated>
+    </person>
     <person id="Kevin_Lau">
       <name>Kevin Lau</name>
       <uri>mailto:kevinlau&amp;microsoft.com</uri>
@@ -11064,6 +11554,11 @@ by the IANA.</note>
       <uri>mailto:sten.linnarsson&amp;ki.se</uri>
       <updated>2019-07-09</updated>
     </person>
+    <person id="Linux_Foundation">
+      <name>Linux Foundation</name>
+      <uri>mailto:kstewart&amp;linuxfoundation.org</uri>
+      <updated>2020-05-04</updated>
+    </person>
     <person id="Slawomir_Lisznianski">
       <name>Slawomir Lisznianski</name>
       <uri>mailto:sl&amp;pushcoin.com</uri>
@@ -11084,10 +11579,10 @@ by the IANA.</note>
       <uri>mailto:mludwig&amp;quobject.com</uri>
       <updated>2011-03-08</updated>
     </person>
-    <person id="William_Lupton">
-      <name>William Lupton</name>
-      <uri>mailto:wlupton&amp;broadband-forum.org</uri>
-      <updated>2019-04-29</updated>
+    <person id="Howard_Lukk">
+      <name>Howard Lukk</name>
+      <uri>mailto:hlukk&amp;smpte.org</uri>
+      <updated>2017-12-11</updated>
     </person>
     <person id="Tim_Macdonald">
       <name>Tim Macdonald</name>
@@ -11103,6 +11598,11 @@ by the IANA.</note>
       <name>AC Mahendran</name>
       <uri>mailto:ac&amp;qualcomm.com</uri>
       <updated>2007-11-06</updated>
+    </person>
+    <person id="Piotr_Majdak">
+      <name>Piotr Majdak</name>
+      <uri>mailto:piotr.majdak&amp;oeaw.ac.at</uri>
+      <updated>2020-06-16</updated>
     </person>
     <person id="Shawn_Maloney">
       <name>Shawn Maloney</name>
@@ -11130,7 +11630,7 @@ by the IANA.</note>
       <updated>2009-02-18</updated>
     </person>
     <person id="Jerome_Marcon">
-      <name>Jérôme Marcon</name>
+      <name>JÃ©rÃ´me Marcon</name>
       <uri>mailto:jerome.marcon&amp;alcatel-lucent.com</uri>
       <updated>2010-02-24</updated>
     </person>
@@ -11223,6 +11723,11 @@ by the IANA.</note>
       <uri>mailto:roger&amp;apache.org</uri>
       <updated>2014-11-25</updated>
     </person>
+    <person id="Donald_L._Mendelson">
+      <name>Donald L. Mendelson</name>
+      <uri>mailto:donmendelson&amp;silver-flash.net</uri>
+      <updated>2020-04-14</updated>
+    </person>
     <person id="Christian_Mercat">
       <name>Christian Mercat</name>
       <uri>mailto:Christian.Mercat&amp;univ-montp2.fr</uri>
@@ -11232,6 +11737,11 @@ by the IANA.</note>
       <name>John M. Meredith</name>
       <uri>mailto:john.meredith&amp;etsi.org</uri>
       <updated>2009-10-13</updated>
+    </person>
+    <person id="Andy_Miller">
+      <name>Andy Miller</name>
+      <uri>mailto:amiller&amp;imsglobal.org</uri>
+      <updated>2020-10-02</updated>
     </person>
     <person id="Steve_Mills">
       <name>Steve Mills</name>
@@ -11281,7 +11791,7 @@ by the IANA.</note>
     <person id="John_Mudge">
       <name>John Mudge</name>
       <uri>mailto:helpdesk&amp;omaorg.org</uri>
-      <updated>2016-06-20</updated>
+      <updated>2020-08-03</updated>
     </person>
     <person id="Masanori_Murai">
       <name>Masanori Murai</name>
@@ -11398,7 +11908,7 @@ by the IANA.</note>
       <updated>2014-07-25</updated>
     </person>
     <person id="Magnus_Nystrom">
-      <name>Magnus Nyström</name>
+      <name>Magnus NystrÃ¶m</name>
       <uri>mailto:magnus&amp;rsasecurity.com</uri>
       <updated>2006-03-23</updated>
     </person>
@@ -11479,20 +11989,30 @@ by the IANA.</note>
       <uri>mailto:Masanori.Onda&amp;fujixerox.co.jp</uri>
       <updated>2000-02-20</updated>
     </person>
+    <person id="OPC_Foundation">
+      <name>OPC Foundation</name>
+      <uri>mailto:sysadmin&amp;opcfoundation.org</uri>
+      <updated>2020-09-01</updated>
+    </person> 
     <person id="Open_Mobile_Naming_Authority">
       <name>Open Mobile Naming Authority (OMNA)</name>
       <uri>mailto:OMA-OMNA&amp;mail.openmobilealliance.org</uri>
-      <updated>2016-06-20</updated>
-    </person>
+      <updated>2020-08-03</updated>
+    </person>   
     <person id="Open_Mobile_Alliance_BAC_DLDRM_Working_Group">
       <name>Open Mobile Alliance's BAC DLDRM Working Group</name>
       <uri>mailto:technical-comments&amp;mail.openmobilealliance.org</uri>
       <updated>2006-03-23</updated>
     </person>
+    <person id="OP3FT">
+      <name>Organization for the Promotion, Protection and Progress of Frogans Technology (OP3FT)</name>
+      <uri>mailto:contact-standards&amp;op3ft.org</uri>
+      <updated>2020-05-04</updated>
+    </person>
     <person id="Miguel_Angel_Reina_Ortega">
       <name>Miguel Angel Reina Ortega</name>
       <uri>mailto:MiguelAngel.ReinaOrtega&amp;etsi.org</uri>
-      <updated>2019-01-08</updated>
+      <updated>2020-01-10</updated>
     </person>
     <person id="Tapani_Otala">
       <name>Tapani Otala</name>
@@ -11514,10 +12034,10 @@ by the IANA.</note>
       <uri>mailto:yutaka_ozaki&amp;gen.co.jp</uri>
       <updated>1999-01-19</updated>
     </person>
-    <person id="Jörg_Palmer">
-      <name>Jörg Palmer</name>
+    <person id="JÃ¶rg_Palmer">
+      <name>JÃ¶rg Palmer</name>
       <uri>mailto:Joerg.Palmer&amp;compart.com</uri>
-      <updated>2018-05-01</updated>
+      <updated>2020-10-12</updated>
     </person>
     <person id="John_Palmieri">
       <name>John Palmieri</name>
@@ -11585,6 +12105,11 @@ by the IANA.</note>
       <uri>mailto:iana&amp;gbp.gaige.net</uri>
       <updated>2010-11-16</updated>
     </person>
+    <person id="PCO_AG">
+      <name>PCO AG</name>
+      <uri/>
+      <updated>2020-09-17</updated>
+    </person>
     <person id="Gavin_Peacock">
       <name>Gavin Peacock</name>
       <uri>mailto:gpeacock&amp;palm.com</uri>
@@ -11610,10 +12135,20 @@ by the IANA.</note>
       <uri>mailto:info&amp;verimatrix.com</uri>
       <updated>2010-08-31</updated>
     </person>
+    <person id="Nils_Peters">
+      <name>Nils Peters</name>
+      <uri>mailto:npeters&amp;qti.qualcomm.com</uri>
+      <updated>2020-04-04</updated>
+    </person>
     <person id="David_Petersen">
       <name>David Petersen</name>
       <uri>mailto:david.petersen&amp;sealedmedia.com</uri>
       <updated>2003-09-20</updated>
+    </person>
+    <person id="Silvia_Pfeiffer">
+      <name>Silvia Pfeiffer</name>
+      <uri>mailto:silviapfeiffer1&amp;gmail.com</uri>
+      <updated>2019-10-14</updated>
     </person>
     <person id="James_F_Philbin">
       <name>James F Philbin</name>
@@ -11750,6 +12285,16 @@ by the IANA.</note>
       <uri>mailto:presnick&amp;qualcomm.com</uri>
       <updated>2000-02-20</updated>
     </person>
+    <person id="Cynthia_RevstrÃ¶m">
+      <name>Cynthia RevstrÃ¶m</name>
+      <uri>mailto:iana&amp;cynthia.re</uri>
+      <updated>2020-09-29</updated>
+    </person>
+    <person id="Bryn_Rhodes">
+      <name>Bryn Rhodes</name>
+      <uri>mailto:bryn&amp;dynamiccontentgroup.com</uri>
+      <updated>2020-12-08</updated>
+    </person>
     <person id="Steve_Rice">
       <name>Steve Rice</name>
       <uri>mailto:developers&amp;pagerduty.com</uri>
@@ -11785,8 +12330,8 @@ by the IANA.</note>
       <uri>mailto:rluc&amp;villagedata.com</uri>
       <updated>2006-05-18</updated>
     </person>
-    <person id="Erik_Ronström">
-      <name>Erik Ronström</name>
+    <person id="Erik_RonstrÃ¶m">
+      <name>Erik RonstrÃ¶m</name>
       <uri>mailto:erik.ronstrom&amp;doremir.com</uri>
       <updated>2014-07-25</updated>
     </person>
@@ -11895,13 +12440,13 @@ by the IANA.</note>
       <uri>mailto:Svante.Schubert&amp;sun.com</uri>
       <updated>2009-01-16</updated>
     </person>
-    <person id="Heinz-Peter_Schütz">
-      <name>Heinz-Peter Schütz</name>
+    <person id="Heinz-Peter_SchÃ¼tz">
+      <name>Heinz-Peter SchÃ¼tz</name>
       <uri>mailto:heinz.schuetz&amp;bint.ch</uri>
       <updated>2017-04-07</updated>
     </person>
-    <person id="Jan_Schütze">
-      <name>Jan Schütze</name>
+    <person id="Jan_SchÃ¼tze">
+      <name>Jan SchÃ¼tze</name>
       <uri>mailto:jans&amp;dracoblue.de</uri>
       <updated>2017-01-09</updated>
     </person>
@@ -11924,6 +12469,11 @@ by the IANA.</note>
       <name>Guy Selzler</name>
       <uri>mailto:gselzler&amp;shana.com</uri>
       <updated>1997-02-19</updated>
+    </person>
+    <person id="Sequence_Ontology">
+      <name>Sequence Ontology</name>
+      <uri>mailto:song-devel&amp;lists.utah.edu</uri>
+      <updated>2020-08-17</updated>
     </person>
     <person id="Doug_R._Serres">
       <name>Doug R. Serres</name>
@@ -12118,8 +12668,13 @@ by the IANA.</note>
       <uri>mailto:armands.strazds&amp;medienhaus-bremen.de</uri>
       <updated>1999-01-19</updated>
     </person>
-    <person id="Maik_Stührenberg">
-      <name>Maik Stührenberg</name>
+    <person id="Markus_Strehle">
+      <name>Markus Strehle</name>
+      <uri>mailto:markus.strehle&amp;sap.com</uri>
+      <updated>2020-01-31</updated>
+    </person>
+    <person id="Maik_StÃ¼hrenberg">
+      <name>Maik StÃ¼hrenberg</name>
       <uri>mailto:maik&amp;xstandoff.net</uri>
       <updated>2010-04-22</updated>
     </person>
@@ -12188,11 +12743,6 @@ by the IANA.</note>
       <uri>mailto:twhite&amp;midi.org</uri>
       <updated>2007-01-30</updated>
     </person>
-    <person id="Yasuo_Taguchi">
-      <name>Yasuo Taguchi</name>
-      <uri>mailto:yasuo.taguchi&amp;fujixerox.co.jp</uri>
-      <updated>1998-07-19</updated>
-    </person>
     <person id="Hiroaki_Takahashi">
       <name>Hiroaki Takahashi</name>
       <uri>mailto:takaha&amp;beat.yamaha.co.jp</uri>
@@ -12205,8 +12755,8 @@ by the IANA.</note>
     </person>
     <person id="Alexis_Tamas">
       <name>Alexis Tamas</name>
-      <uri>mailto:fsdl&amp;frogans.com</uri>
-      <updated>2006-03-23</updated>
+      <uri>mailto:alexis.tamas&amp;op3ft.org</uri>
+      <updated>2020-05-04</updated>
     </person>
     <person id="Fumio_Tanabe">
       <name>Fumio Tanabe</name>
@@ -12231,7 +12781,7 @@ by the IANA.</note>
     <person id="Mi_Tar">
       <name>Mi Tar</name>
       <uri>mailto:mitar.iana&amp;tnode.com</uri>
-      <updated>2018-06-04</updated>
+      <updated>2020-09-18</updated>
     </person>
     <person id="Lauri_Tarkkala">
       <name>Lauri Tarkkala</name>
@@ -12258,6 +12808,11 @@ by the IANA.</note>
       <uri>mailto:jouko.tenhunen&amp;nokia.com</uri>
       <updated>2003-11-01</updated>
     </person>
+    <person id="Johann_Terblanche">
+      <name>Johann Terblanche</name>
+      <uri>mailto:johann.terblanche&amp;sycle.net</uri>
+      <updated>2020-09-02</updated>
+    </person>
     <person id="Hemant_Thakkar">
       <name>Hemant Thakkar</name>
       <uri>mailto:hemant&amp;kinar.com</uri>
@@ -12283,6 +12838,11 @@ by the IANA.</note>
       <uri>mailto:jiangt&amp;digitalwave.cn</uri>
       <updated>2009-06-02</updated>
     </person>
+    <person id="Dr._Jun_Tian">
+      <name>Dr. Jun Tian</name>
+      <uri>mailto:jtian&amp;wi-fi.org</uri>
+      <updated>2020-10-19</updated>
+    </person>
     <person id="Paul_Tidwell">
       <name>Paul Tidwell</name>
       <uri>mailto:paul.tidwell&amp;ericsson.com</uri>
@@ -12297,8 +12857,8 @@ by the IANA.</note>
       <name>Luke Tomasello</name>
       <uri>mailto:luket&amp;intertrust.com</uri>
     </person>
-    <person id="Szilveszter_Tóth">
-      <name>Szilveszter Tóth</name>
+    <person id="Szilveszter_TÃ³th">
+      <name>Szilveszter TÃ³th</name>
       <uri>mailto:sztoth&amp;microsec.hu</uri>
       <updated>2007-07-31</updated>
     </person>
@@ -12347,6 +12907,16 @@ by the IANA.</note>
       <uri>mailto:mime&amp;unity3d.com</uri>
       <updated>2007-07-03</updated>
     </person>
+    <person id="Oleg_Uryutin">
+      <name>Oleg Uryutin</name>
+      <uri>mailto:oleg&amp;aplextor.com</uri>
+      <updated>2019-11-21</updated>
+    </person>
+    <person id="Anne_van_Kesteren">
+      <name>Anne van Kesteren</name>
+      <uri>mailto:annevk&amp;annevk.nl</uri>
+      <updated>2020-07-14</updated>
+    </person>   
     <person id="Greg_Vaudreuil">
       <name>Greg Vaudreuil</name>
       <uri>mailto:gregv&amp;lucent.com</uri>
@@ -12391,10 +12961,20 @@ by the IANA.</note>
       <uri>mailto:public-rdf-comments&amp;w3.org</uri>
       <updated>2016-11-30</updated>
     </person>
+    <person id="W3C_SHACL_Community_Group">
+      <name>W3C SHACL Community Group</name>
+      <uri>https://www.w3.org/community/shacl</uri>
+      <updated>2020-06-30</updated>
+    </person>
     <person id="W3C_Timed_Text_Working_Group">
       <name>Timed Text Working Group</name>
       <uri>mailto:public-tt&amp;w3.org</uri>
       <updated>2016-09-27</updated>
+    </person>
+    <person id="Takatomo_Wakibayashi">
+      <name>Takatomo Wakibayashi</name>
+      <uri>mailto:takatomo.wakibayashi&amp;fujixerox.co.jp</uri>
+      <updated>2019-12-03</updated>
     </person>
     <person id="WAP-Forum">
       <name>WAP Forum Ltd.</name>
@@ -12485,6 +13065,11 @@ by the IANA.</note>
       <uri>mailto:thomas.weyn&amp;ucamco.com</uri>
       <updated>2015-02-05</updated>
     </person>
+    <person id="WHATWG">
+      <name>WHATWG</name>
+      <uri>https://www.whatwg.org/</uri>
+      <updated>2020-07-14</updated>
+    </person>
     <person id="Catherine_E._White">
       <name>Catherine E. White</name>
       <uri>mailto:cewhite&amp;llamagraphics.com</uri>
@@ -12493,7 +13078,7 @@ by the IANA.</note>
     <person id="Wi-Fi_Alliance">
       <name>Wi-Fi Alliance</name>
       <uri>mailto:tech&amp;wi-fi.org</uri>
-      <updated>2006-08-11</updated>
+      <updated>2020-10-19</updated>
     </person>
     <person id="James_Wick">
       <name>James Wick</name>
@@ -12516,7 +13101,7 @@ by the IANA.</note>
       <updated>2016-04-04</updated>
     </person>
     <person id="Jorn_Wildt">
-      <name>Jørn Wildt</name>
+      <name>JÃ¸rn Wildt</name>
       <uri>mailto:jw&amp;fjeldgruppen.dk</uri>
       <updated>2014-04-08</updated>
     </person>
@@ -12615,6 +13200,11 @@ by the IANA.</note>
       <uri>mailto:rintze.zelle&amp;gmail.com</uri>
       <updated>2015-02-23</updated>
     </person>
+    <person id="Jan_Zeman">
+      <name>Jan Zeman</name>
+      <uri>mailto:development&amp;pco.de</uri>
+      <updated>2020-09-17</updated>
+    </person>
     <person id="Wenjun_Zeng">
       <name>Wenjun Zeng</name>
       <uri>mailto:zengw&amp;huawei.com</uri>
@@ -12656,4 +13246,5 @@ by the IANA.</note>
       <updated>2019-05-02</updated>
     </person>
   </people>
+
 </registry>
