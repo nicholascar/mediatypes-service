@@ -20,7 +20,9 @@ def get_system_uri(absolute_uri, system_uri_override):
     if system_uri_override is not None:
         return system_uri_override
     else:
-        return "{}/object?uri={}".format(config.SYSTEM_URI_BASE, url_encode(absolute_uri))
+        return "{}/object?uri={}".format(
+            config.SYSTEM_URI_BASE, url_encode(absolute_uri)
+        )
 
 
 def get_absolute_uri(uri):
@@ -47,4 +49,3 @@ def get_pretty_mediatype(mediatype):
         "application/n-triples": "N-Triples",
     }
     return MEDIATYPE_NAMES.get(mediatype, mediatype)
-

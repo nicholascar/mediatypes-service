@@ -18,9 +18,7 @@ def context_processor():
     :return: A dictionary of variables
     :rtype: dict
     """
-    return dict(
-        utils=u,  # gives access to all functions defined in utils.py
-    )
+    return dict(utils=u,)  # gives access to all functions defined in utils.py
 
 
 #

@@ -23,9 +23,7 @@ for register in objectify.parse("mediatypes.xml").getroot().getchildren():
                 if hasattr(record, "file"):
                     me = URIRef(MT + record.file)
                     g.add((me, RDF.type, DCTERMS.FileFormat))
-                    g.add(
-                        (me, DCTERMS.title, Literal(record.name))
-                    )
+                    g.add((me, DCTERMS.title, Literal(record.name)))
                     for x in record.xref:
                         if x.get("data") is not None:
                             if x.get("type") == "rfc":
@@ -54,17 +52,19 @@ for register in objectify.parse("mediatypes.xml").getroot().getchildren():
             g.add((me, FOAF.name, Literal(person.name)))
             if hasattr(person, "uri"):
                 if str(person.uri).startswith("mailto:") or "@" in str(person.uri):
-                    g.get_context(URIRef(MT + "person/")).add((
-                        me,
-                        FOAF.mbox,
-                        URIRef(str(person.uri).replace("&", "@").replace(" at ", "@"))
-                    ))
+                    g.get_context(URIRef(MT + "person/")).add(
+                        (
+                            me,
+                            FOAF.mbox,
+                            URIRef(
+                                str(person.uri).replace("&", "@").replace(" at ", "@")
+                            ),
+                        )
+                    )
                 elif str(person.uri).startswith("http"):
-                    g.get_context(URIRef(MT + "person/")).add((
-                        me,
-                        FOAF.homepage,
-                        URIRef(str(person.uri))
-                    ))
+                    g.get_context(URIRef(MT + "person/")).add(
+                        (me, FOAF.homepage, URIRef(str(person.uri)))
+                    )
                 else:
                     # junk value
                     pass
