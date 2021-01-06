@@ -1,4 +1,4 @@
-import _conf as conf
+import _config as conf
 
 
 def sparql_query(q):

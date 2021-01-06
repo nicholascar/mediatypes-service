@@ -1,6 +1,6 @@
 import model.mediatype
 from SPARQLWrapper import SPARQLWrapper, JSON, TURTLE, N3, RDFXML
-import _conf as conf
+import _config as conf
 from rdflib import Graph, Namespace
 
 

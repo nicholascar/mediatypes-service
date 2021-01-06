@@ -5,9 +5,22 @@ from model.agent import AgentRenderer
 from model.dataset import DatasetRenderer
 from model import sparql as s
 import os
-import _conf as conf
+import _config as conf
+import utils as u
 
 routes = Blueprint("controller", __name__)
+
+
+@routes.context_processor
+def context_processor():
+    """
+    A set of variables available globally for all Jinja templates.
+    :return: A dictionary of variables
+    :rtype: dict
+    """
+    return dict(
+        utils=u,  # gives access to all functions defined in utils.py
+    )
 
 
 #

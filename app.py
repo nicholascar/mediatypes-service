@@ -1,7 +1,8 @@
 import logging
-import _conf as conf
+import _config as conf
 from flask import Flask
 from controller import routes
+import utils as u
 
 app = Flask(__name__, template_folder=conf.TEMPLATES_DIR, static_folder=conf.STATIC_DIR)
 app.register_blueprint(routes.routes)

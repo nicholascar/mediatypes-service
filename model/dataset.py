@@ -2,7 +2,7 @@ from pyldapi import Renderer, Profile
 import os
 from flask import Response, render_template
 from rdflib import Graph
-import _conf as conf
+import _config as conf
 
 
 class DatasetRenderer(Renderer):

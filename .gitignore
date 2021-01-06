@@ -112,4 +112,4 @@ venv.bak/
 .DS_Store
 
 # config
-_conf/
+_config/
